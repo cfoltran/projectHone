@@ -1,0 +1,17 @@
+HELP ZONE
+-----------------------------------------------------
+
+
+Félicitation vous avez réussis à cloner une repo
+
+
+Pour ajouter un fichier :
+	git add monficher.txt
+	git commit -m "mon nouveau fichier"
+	git push origin master
+	git pull origin master (télécharge tous les fichiers sur votre ordi)
+
+
+	Quelque commande : 
+	git status : 
+
