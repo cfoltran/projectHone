@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Loader from './components/loader';
 import Map from './components/map';
-import './App.css';
+import './style/css/App.css';
+import Searchbar from "./components/searchbar";
+import Search from "./components/Search";
 
 class App extends Component {
     componentDidMount(){
@@ -15,7 +17,9 @@ class App extends Component {
             }, 1000)
         }
     }
-    render() {
+
+render() {
+    // const tag = <Search ref={this.state.tag}/>;
         return (
             <div>
                 <Loader/>
@@ -26,3 +30,5 @@ class App extends Component {
 }
 
 export default App;
+
+
