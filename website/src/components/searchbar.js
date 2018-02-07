@@ -38,7 +38,7 @@ class Searchbar extends Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>Search</Button>
+                <Button color="danger" onClick={this.toggle}>Rechercher <i className="fas fa-search"></i></Button>
                 <Modal contentClassName="padding-150x" isOpen={this.state.modal} modalTransition={{ timeout: 20 }} backdropTransition={{ timeout: 10 }}
                        toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Recherche d'un hashtag en fonction du sentiment voulu!</ModalHeader>
@@ -47,13 +47,13 @@ class Searchbar extends Component {
                             <form onSubmit={this.toggle}>
                                 <input type="text" required="required" ref={input =>{this.tag = input}}/>
                                     <label className="radio-inline padding-10">
-                                        <input type="radio" name="optradio"/>Bon
+                                        <input type="radio" name="optradio"/>Positif
                                     </label>
                                     <label className="radio-inline padding-10">
-                                        <input type="radio" name="optradio"/>Mauvais
+                                        <input type="radio" name="optradio"/>Négatif
                                     </label>
                                     <label className="radio-inline padding-10">
-                                        <input type="radio" name="optradio" defaultChecked="defaultChecked"/>All
+                                        <input type="radio" name="optradio" defaultChecked="defaultChecked"/>Les deux
                                     </label>
                                 <button className="btn btn-primary" type="onSubmit" to={{pathname:`/search/` }}>Search</button>
                             </form>

@@ -8,9 +8,7 @@ $(document).ready(function(){
 
 
     /* navigation bar color change */
-    var changeColor = function() {
-
-        console.log('scroll')
+    let changeColor = function() {
         var scroll_start = 0;
         var startchange = $('#start');
         var offset = startchange.offset();
@@ -18,19 +16,21 @@ $(document).ready(function(){
             $(document).scroll(function() {
                 scroll_start = $(this).scrollTop();
                 if(scroll_start > offset.top) {
-                    $(".navbar").addClass('bg-cloud')
+                    $(".navbar").addClass('bg-cloud');
+                    $(".navbar").removeClass('navbar-dark');
+                    $(".navbar").addClass('navbar-light');
                 } else {
-                    $(".navbar").removeClass('bg-light')
-                    $(".navbar").removeClass('bg-cloud')
-
-                    console.log('toto')
+                    $(".navbar").removeClass('bg-light');
+                    $(".navbar").removeClass('bg-cloud');
+                    $(".navbar").removeClass('navbar-light');
+                    $(".navbar").addClass('navbar-dark');
                 }
             });
         }
-    }
+    };
 
     /* page scroll on click */
-    var scroll = function() {
+    let scroll = function() {
         $('.page-scroll a').bind('click', function(event) {
             var $anchor = $(this);
             $('html, body').stop().animate({
@@ -38,7 +38,7 @@ $(document).ready(function(){
             }, 1000, 'easeInOutExpo');
             event.preventDefault();
         });
-    }
+    };
 
     changeColor();
     scroll();

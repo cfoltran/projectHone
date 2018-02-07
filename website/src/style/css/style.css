@@ -93,3 +93,16 @@ body {
 .bg-fixed {
     background-attachment: fixed;
 }
+
+@media (min-width: 992px) {
+    .navbar-brand.abs
+    {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        margin:0 auto;
+    }
+}
+
+.fas { font-family: fontawesome; }
