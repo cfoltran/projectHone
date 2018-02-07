@@ -55,7 +55,7 @@ class Searchbar extends Component {
                                     <label className="radio-inline padding-10">
                                         <input type="radio" name="optradio" defaultChecked="defaultChecked"/>Les deux
                                     </label>
-                                <button className="btn btn-primary" type="onSubmit" to={{pathname:`/search/` }}>Search</button>
+                                <button className="btn btn-primary" type="onSubmit" to={{pathname:`/search/` }}>Rechercher</button>
                             </form>
                         </div>
                     </ModalBody>
