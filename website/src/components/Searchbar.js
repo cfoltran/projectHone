@@ -5,7 +5,7 @@
  */
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { browserHistory } from 'history';
+// import { browserHistory } from 'history';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 
@@ -26,6 +26,7 @@ class Searchbar extends Component {
             });
     }
 
+    /*
     searchTag = event =>{
         //Function will search hashtag
 
@@ -34,11 +35,12 @@ class Searchbar extends Component {
             sementic: this.sementic.value
         };
     };
+    */
 
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>Rechercher <i className="fas fa-search"></i></Button>
+                <Button color="primary" onClick={this.toggle}>Rechercher <i className="fas fa-search"></i></Button>
                 <Modal contentClassName="padding-150x" isOpen={this.state.modal} modalTransition={{ timeout: 20 }} backdropTransition={{ timeout: 10 }}
                        toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Recherche d'un hashtag en fonction du sentiment voulu!</ModalHeader>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Loader from './components/loader';
-import Map from './components/map';
+import Loader from './components/Loader';
+import Map from './components/Map';
+import Bot from './components/Bot';
 import './style/css/App.css';
-import Searchbar from "./components/searchbar";
-import Search from "./components/Search";
 
 class App extends Component {
     componentDidMount(){
@@ -24,6 +23,7 @@ render() {
             <div>
                 <Loader/>
                 <Map/>
+                <Bot/>
             </div>
         );
     }

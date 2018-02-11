@@ -11,7 +11,7 @@ import {render} from 'react-dom';
 //componant
 import App from './App';
 import Search from './components/Search';
-import Searchbar from './components/searchbar';
+import Searchbar from './components/Searchbar';
 
 //config
 import registerServiceWorker from './registerServiceWorker';
