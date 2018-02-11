@@ -79,6 +79,8 @@ body {
     border-bottom: 1px solid #333;
 }
 
+#navbar a, #navbar button { font-weight: 700; }
+
 .bg-clear {
     background: transparent;
 }
@@ -106,4 +108,4 @@ body {
     }
 }
 
-.fas { font-family: fontawesome; }
+.fas { font-family: fontawesome; font-style: normal;}
