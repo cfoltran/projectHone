@@ -5,6 +5,7 @@ import Bot from './components/Bot';
 import './style/css/App.css';
 
 class App extends Component {
+
     componentDidMount(){
         const load = document.getElementById('loader-progress');
         if(load){
