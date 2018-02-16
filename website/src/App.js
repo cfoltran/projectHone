@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Loader from './components/Loader';
 import Map from './components/Map';
-import Bot from './components/Bot';
 import './style/css/App.css';
 
 class App extends Component {
@@ -24,12 +23,9 @@ render() {
             <div>
                 <Loader/>
                 <Map/>
-                <Bot/>
             </div>
         );
     }
 }
 
 export default App;
-
-
