@@ -1,0 +1,111 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+}
+
+/* utilities */
+
+
+.padding-150 {
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+
+.bg-dark {
+    background: #212529;
+}
+
+.bg-cloud {
+    background: rgb(236, 240, 241);
+}
+
+.bg-blue{
+    background-color:#225378;
+    color: white;
+}
+
+.bg-purple{
+    color: white;
+    background-color:rgba(20,0,72,0.8);
+}
+
+.text-cloud {
+    color: rgb(236, 240, 241);
+}
+
+.text-dark {
+    color: #212529;
+}
+
+.h-100 {
+    height: 100px;
+}
+
+.h-250 {
+    height: 250px;
+}
+
+.paddingZero {
+    padding: 0;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.font-40 {
+    font-size: 40px;
+}
+.font-60 {
+    font-size: 60px;
+}
+.font-70 {
+    font-size: 5vw;
+}
+.font-80 {
+    font-size: 80px;
+}
+
+/* navbar */
+#navbar {
+    min-height: 10vh;
+    transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    border-bottom: 1px solid #333;
+}
+
+#navbar a, #navbar button { font-weight: 700; }
+
+.bg-clear {
+    background: transparent;
+}
+
+.bg {
+    background: url('/website/src/style/img/bg-mountain-clouds.jpg')no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+@media (min-width: 992px) {
+    .navbar-brand.abs
+    {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        margin:0 auto;
+    }
+}
+
+.fas { font-family: fontawesome; font-style: normal;}
