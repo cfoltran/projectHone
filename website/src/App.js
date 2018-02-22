@@ -1,62 +1,30 @@
+//React
 import React, { Component } from 'react';
-import Loader from './components/Loader';
-import Map from './components/Map';
-import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
-import steps from './config/steps';
-import bot from './config/bot';
-import './style/css/App.css';
-import './style/css/bot.css';
+
+//config
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+//Components
+import Home from './components/Home'
+import Search from './components/Search';
+import GenericNotFound from './components/GenericNotFound'
+
 
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false
-        };
-
-        this.toggleFloating = this.toggleFloating.bind(this);
-    }
-
-    toggleFloating() {
-        this.setState({
-            open: !this.state.open
-        });
-    }
-
-    componentDidMount() {
-        const load = document.getElementById('loader-progress');
-        if(load){
-            setTimeout(() => {
-                load.classList.add('available');
-                setTimeout(() => {
-                    load.outerHTML = '';
-                }, 2000)
-            }, 1000)
-        }
-    }
 
     render() {
         // const tag = <Search ref={this.state.tag}/>;
         return (
-            <div>
-                <Loader/>
-                <Map/>
-                <ThemeProvider theme={bot}>
-                    <ChatBot
-                        steps={steps}
-                        floating={true}
-                        toggleFloating={this.toggleFloating}
-                        opened={this.state.open}
-                        headerTitle="Twot"
-                        botAvatar="./img/logo.png"
-                        placeholder="Tapez votre recherche..."
-                    />
-                </ThemeProvider>
-            </div>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route  path="/search/:tag/:sementic" component={Search}/>
+                    <Route component={GenericNotFound} />
+                </Switch>
+            </Router>
         );
     }
+
 }
 
 export default App;
