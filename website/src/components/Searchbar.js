@@ -12,7 +12,6 @@ import {withRouter} from "react-router-dom";
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
-import Tweet from "./Tweet";
 
 class Searchbar extends Component
 {
@@ -38,13 +37,13 @@ class Searchbar extends Component
 
         let sementic = "";
             if(this.good_checked.checked){
-               sementic="positif";
+               sementic="Positif";
             }
             else if(this.bad_checked.checked){
-                 sementic="negative";
+                 sementic="Negatif";
             }
             else{
-                 sementic="positif et negatif"
+                 sementic="Positif&Negatif"
             }
             console.log(this.bad_checked.checked);
         return sementic;
@@ -59,7 +58,8 @@ class Searchbar extends Component
         const tagSementic = {
             tag: this.tag.value,
             sementic: this.getValueChecked()
-    };
+        };
+
         this.props.history.push(`/search/${tagSementic.tag}/${tagSementic.sementic}`);
 
     };
@@ -71,24 +71,23 @@ class Searchbar extends Component
             <div>
 
                 {/*<!--===========================================-->*/}
-                {               /*<!--Header-->*/}
+                {/*                     <!--Header-->                */}
                 {/*<!--===========================================-->*/}
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top" id="navbar">
-                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
+                <nav className="navbar navbar-expand-md navbar-light fixed-top" id="navbar">
+                    <a className="navbar-brand abs" href="/">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>
                     <div className="navbar-collapse collapse" id="menu">
                         <ul className="navbar-nav">
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"> <i className="fas fa-map"> Map</i></a>
+                                <a className="nav-link" href="/"> <i className="fas fa-map"></i> Map</a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link" > <i
-                                    className="fas fa-home"> Accueil</i></a>
+                                <a className="nav-link" href="/"><i className="fas fa-home"></i> Accueil</a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
+                                <a className="nav-link" href="/"><i className="fas fa-question-circle"></i> Présentation</a>
                             </li>
                         </ul>
 
@@ -97,7 +96,7 @@ class Searchbar extends Component
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item page-scroll">
-                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
+                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"></i> Rechercher</Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
                                        backdropTransition={{timeout: 10}}
                                        toggle={this.toggle} className={this.props.className}>
