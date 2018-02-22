@@ -53,7 +53,18 @@ class Home extends Component {
             <div>
                 <Searchbar/>
                 <Loader/>
-                <Map/>
+                <section className="padding-150 bg-dark">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <Map/>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
                 <ThemeProvider theme={bot}>
                 <ChatBot
                 steps={steps}
