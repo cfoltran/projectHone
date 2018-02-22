@@ -38,9 +38,11 @@ export default class Tweets extends React.Component {
                                     {
                                         this.state.tweets.map((tweet, i) => {
                                            var analyze="None";
-                                           if (tweet.sentiment[0]>=0){
+                                           if (tweet.sentiment[0]>0.25){
                                              analyze = "Positive";
-                                           }else{
+                                           }else if (tweet.sentiment[0]>=0){
+                                             analyze = "Neutre";
+                                           } else{
                                               analyze = "Negative";
                                            }
                                             return <Tweet author={tweet.author} text={tweet.tweet} sentiment={analyze}/>

@@ -31,7 +31,7 @@ def send_warnning():
 @app.route('/sentiment/analyze', methods=['GET'])
 @cross_origin()
 def analyze_text():
-    analyze = Sentiment(request.form['text'])
+    analyze = Sentiment(request.args.get("text"))
     return jsonify({'sentiment': analyze.analyze_text()})
 
 @app.route('/tweets/getTweet', methods=['GET'])
