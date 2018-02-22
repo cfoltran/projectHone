@@ -13,7 +13,7 @@ export default class Tweets extends React.Component {
 
     loadData(path) {
         //
-        window.fetch('http://127.0.0.1:5001/tweets/GottaGetEmAll')
+        window.fetch('http://localhost:5001/tweets/getTweet')
         //  window.fetch('./data/exemple.json')
             .then(res => {
                 console.log(res);
@@ -37,7 +37,13 @@ export default class Tweets extends React.Component {
                                 <main>
                                     {
                                         this.state.tweets.map((tweet, i) => {
-                                            return <Tweet author={tweet.author} text={tweet.text} key={'tweet' + i}/>
+                                           var analyze="None";
+                                           if (tweet.sentiment[0]>=0){
+                                             analyze = "Positive";
+                                           }else{
+                                              analyze = "Negative";
+                                           }
+                                            return <Tweet author={tweet.author} text={tweet.tweet} sentiment={analyze}/>
                                         })
                                     }
                                 </main>
