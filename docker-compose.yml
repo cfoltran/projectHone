@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  restfull-app:
+      container_name: "server-side2"
+      restart: always
+      build:
+        context: ./server
+        dockerfile: Dockerfile
+        args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+      volumes:
+        - ./server/myapp/:/myapp/
+      ports:
+        - 5001:5001
+  react_demo:
+    container_name: "client-side2"
+    restart: always
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+      args:
+      - http_proxy
+      - https_proxy
+      - no_proxy
+    volumes:
+     - ./website/public:/public/
+     - ./website/src:/src/
+    ports:
+      - "3001:3000"
+    depends_on:
+      - restfull-app
+    links:
+      - restfull-app
