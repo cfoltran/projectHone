@@ -14,6 +14,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 import Tweet from "./Tweet";
 
+
 class Searchbar extends Component
 {
 
@@ -33,7 +34,6 @@ class Searchbar extends Component
             modal: !this.state.modal
         });
     }
-
     getValueChecked(){
 
         let sementic = "";
@@ -73,7 +73,7 @@ class Searchbar extends Component
                 {/*<!--===========================================-->*/}
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top" id="navbar">
+                <nav className="navbar navbar-expand-md navbar-light fixed-top " id="navbar">
                     <a className="navbar-brand abs" href="#">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,7 @@ class Searchbar extends Component
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
-                            {/* Switch jour/nuit */}
+                            {/* Switch day/night */}
                             <li>
                                 <div class="toggle-mode">
                                     <div class="icon">
@@ -103,7 +103,7 @@ class Searchbar extends Component
                                     </div>
                                     <div class="toggle-switch">
                                         <label class="switch">
-                                            <input type="checkbox" id="switch-style"/>
+                                            <input type="checkbox" id="switch-style" onClick="switchDayNight()"/>
                                             <div class="slider round"></div>
                                         </label>
                                     </div>

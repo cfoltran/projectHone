@@ -55,7 +55,7 @@ class Home extends Component {
             <div>
                 <Searchbar/>
                 <Loader/>
-                <section className="padding-150 bg-dark">
+                <section className="padding-150 bg-light">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">

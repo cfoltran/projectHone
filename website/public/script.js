@@ -6,8 +6,21 @@
 
 $(document).ready(function(){
 
+    /* site color change by clicking on the day/night switch */
+    let switchDayNight = function(){
+        /*get the checkbox */
+        var checkBox = document.getElementById('switch-style');
+        /*get the style */
+        var bdy=document.getElementsByName("body");
+        if(checkBox.checked==true){
+            bdy.style.backgroundColor="white";
+        }
+        else{
+            bdy.style.backgroundColor="black";
+        }
+    }
 
-    /* navigation bar color change */
+    /* navigation bar color change
     let changeColor = function() {
         var scroll_start = 0;
         var startchange = $('#start');
@@ -28,7 +41,7 @@ $(document).ready(function(){
             });
         }
     };
-
+ */
     /* page scroll on click */
     let scroll = function() {
         $('.page-scroll a').bind('click', function(event) {
@@ -40,7 +53,7 @@ $(document).ready(function(){
         });
     };
 
-    changeColor();
+   /* changeColor(); */
     scroll();
 
 });
