@@ -91,11 +91,27 @@ class Searchbar extends Component
                                 <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
                             </li>
                         </ul>
-
                         {/*<!--===========================================-->*/}
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
+                            {/* Switch jour/nuit */}
+                            <li>
+                                <div class="toggle-mode">
+                                    <div class="icon">
+                                        <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <label class="switch">
+                                            <input type="checkbox" id="switch-style"/>
+                                            <div class="slider round"></div>
+                                        </label>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-moon-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </li>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
