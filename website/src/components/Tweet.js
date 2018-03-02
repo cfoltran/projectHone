@@ -6,6 +6,7 @@ class Tweet extends Component {
       <div className="tweet">
         <h1>{ this.props.author }</h1>
         <p>{ this.props.text }</p>
+        <p>Analyse: { this.props.sentiment} </p>
       </div>
     );
   }
