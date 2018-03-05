@@ -1,9 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from textblob import Blobber
 from textblob import TextBlob
 from textblob_fr import PatternTagger, PatternAnalyzer
 import json
 import carmen
-
+import tweepy
 class Tweet:
     text = ""
     sender = "inconnu"
@@ -85,19 +88,12 @@ class Tweet:
         self.sentiment = blob.sentiment
         return self.sentiment # polarité et subjectivité
 
-    #initialize and return sentiment version 2
+    #initialize and return sentiment version 2 (polarité)
     def analyze_textV2(self):
         french_blob = TextBlob(self.text)
         english_blob = french_blob.translate(from_lang="fr",to='en')
         self.sentiment = english_blob.sentiment.polarity #récupère la polarité seulement
         return self.sentiment
-   #https://github.com/mdredze/carmen-python/blob/master/doc/quickstart.rst
-   def location_Tweet(self):
-        tweet = json.loads(tweet_json)
-        resolver = carmen.get_resolver()
-        resolver.load_locations()
-        location = resolver.resolve_tweet(tweet)
-        self.region = location.country
 
 
 
@@ -112,6 +108,21 @@ class Tweet:
             'nbRT': self.nbRT,
             'sentiment': json.loads(json.dumps(self.sentiment))
         }
+
+    def tweetsParRegion(self, region):
+        #consumer_key = 'd9UUsBFWzdBrMv8HwEay8mzeP'
+	    #consumer_secret = 'YhheggCydfUm3VwHiT14ig1lM0ahLAIaFbtBfq71JgWp6dHA5B'
+	    #access_token = '960451934535774208-g3s0XuB7efDic5lQBK8RNfSa4GL5GKB'
+	    #access_token_secret = 'XW05i2CvXt2Th9ipoY8wU4ICk39mVhSI051DPj7ad8gej'
+        auth = tweepy.OAuthHandler('d9UUsBFWzdBrMv8HwEay8mzeP', 'YhheggCydfUm3VwHiT14ig1lM0ahLAIaFbtBfq71JgWp6dHA5B')
+        auth.set_access_token('960451934535774208-g3s0XuB7efDic5lQBK8RNfSa4GL5GKB', 'XW05i2CvXt2Th9ipoY8wU4ICk39mVhSI051DPj7ad8gej')
+        
+        api = tweepy.API(auth)
+        places = api.geo_search(query=region, granularity="country")
+        place_id = places[0].id
+        tweets = api.search(q="place:%s" % place_id)
+        return tweets
+
 
 
 

@@ -1,3 +1,7 @@
+
+# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+
 #import the class Tweet
 from Tweet import *
 import tweepy
@@ -7,6 +11,7 @@ untweet.displayTweet()
 print("Sentiment...")
 print(untweet.analyze_textV2())
 print("Location...")
-untweet.location_Tweet()
+
 print(untweet.region)
 
+print(tweetsParRegion("Bretagne"))
