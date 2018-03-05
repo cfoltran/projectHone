@@ -8,6 +8,8 @@ import React, { Component, PropTypes } from 'react';
 //config
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {withRouter} from "react-router-dom";
+//Component
+import Switch from './Switch';
 
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -95,23 +97,7 @@ class Searchbar extends Component
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
-                            {/* Switch day/night */}
-                            <li>
-                                <div class="toggle-mode">
-                                    <div class="icon">
-                                        <i class="fa fa-sun-o" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="toggle-switch">
-                                        <label class="switch">
-                                            <input type="checkbox" id="switch-style" onClick="switchDayNight()"/>
-                                            <div class="slider round"></div>
-                                        </label>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-moon-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </li>
+                            <Switch/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}

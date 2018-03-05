@@ -5,6 +5,9 @@ body {
     position: relative;
 }
 
+*{
+    font-family: 'Quicksand', sans-serif;
+}
 /* utilities */
 
 
@@ -80,7 +83,12 @@ body {
     border-bottom: 1px solid #333;
 }
 
-#navbar a, #navbar button { font-weight: 700; }
+#navbar a, #navbar button{
+    font-weight: 700;
+}
+#navbar a:hover{
+    cursor: pointer;
+}
 
 .bg-clear {
     background: transparent;
@@ -117,7 +125,7 @@ body {
 /* Day/Night Button */
 .toggle-mode{
     float:left;
-    padding:2px 0 0 10px;
+    padding:2px 20px 0 10px;
     width:100%;
 }
 
@@ -131,7 +139,7 @@ body {
     float:left;
     height:40px;
     width:60px;
-    padding:5px 7px 0 2px;
+    padding:5px 7px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,12 +163,12 @@ body {
     left:3px;
     right:-3px;
     bottom:0;
-    background-color:#c3e4f7;
-    border:1px solid #c3e4f7;
+    background-color:darkgray;
+    border:1px solid darkgray;
 }
 
 .slider:before{
-    background-color:#4fa1d0;
+    background-color: black;
     position:absolute;
     content:"";
     height:15px;
@@ -169,7 +177,7 @@ body {
     bottom:1px;
 }
 
-input:focus+.slider{
+    input:focus+.slider{
     box-shadow:0 0 1px #2196F3;
 }
 
@@ -185,4 +193,3 @@ input:checked+.slider:before{
 .slider.round:before{
     border-radius:50%;
 }
-
