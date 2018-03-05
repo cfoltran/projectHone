@@ -50,11 +50,11 @@ def get_tweet():
     #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
 
-@app.route('/statistics/', methods=['GET'])
+@app.route('/statistics', methods=['GET'])
 @cross_origin()
 def getStatistics():
-    statistics = Statistics(request.args.get("#"))
-    return jsonify({'statistics': statistics.retrieveStatistics()})
+    statistics = Statistics(request.args.get("hashtag"))
+    return statistics.retrieveStatistics()
 
 
 if __name__ == '__main__':

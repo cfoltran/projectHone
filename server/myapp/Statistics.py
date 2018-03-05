@@ -41,9 +41,8 @@ class Statistics:
                 newTweets = api.search(q=self.hashtag, since=today-margin, lang="fr", count=TWEETS_PER_SEARCH, max_id=oldestTweetId-1)
             # If there is no more tweets found we exit the while loop
             if not newTweets:
-                print("No more tweets with this hashtag ! \n")
                 break
-            else:    
+            else:
                 # Keep the oldest tweet id to retrieve older tweets (used as the maximum id to reach)
                 oldestTweetId = newTweets[len(newTweets)-1].id
 
@@ -57,12 +56,13 @@ class Statistics:
 
                 # Increment number of tweets
                 tweetCount += len(newTweets)
-        ##
-        print("Number of tweets : {}.\n".format(tweetCount))
+                
         # Sort dataTweets and drop duplicates (Sort by retweets)
         dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
-        print(dataTweets)
-        return dataTweets
+        # Reset index to allow the serialization
+        dataTweets.reset_index(inplace=True, drop=True)
+        # Serialize the dataFrame to a json & return it
+        return dataTweets.to_json(orient='records', lines=True)
 
     def initializeAPI(self):
         # Authentication and access using keys
@@ -72,7 +72,3 @@ class Statistics:
         # Return API with authentication
         api = tweepy.API(auth)
         return api
-
-
-stats = Statistics("MHSCOL")
-stats.retrieveStatistics()
