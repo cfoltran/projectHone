@@ -3,14 +3,13 @@ import six
 
 from Tweet import Tweet
 from SentimentAnalyze import Sentiment
+from Statistics import Statistics
 
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CORS(app)
-
-
 
 @app.errorhandler(400)
 @cross_origin()
@@ -50,6 +49,13 @@ def get_tweet():
 
     #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
+
+@app.route('/statistics/', methods=['GET'])
+@cross_origin()
+def getStatistics():
+    statistics = Statistics(request.args.get("#"))
+    return jsonify({'statistics': statistics.retrieveStatistics})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
