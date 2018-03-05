@@ -1,5 +1,8 @@
 from textblob import Blobber
+from textblob import TextBlob
 from textblob_fr import PatternTagger, PatternAnalyzer
+import json
+import carmen
 
 class Tweet:
     text = ""
@@ -57,6 +60,12 @@ class Tweet:
     def setDateTweet(self,date):
          self.dateTweet = date
 
+    def setNbLike(self,nbLike):
+        this.nbLike = nbLike
+
+    def setNbRT(self,nbRT):
+        this.nbRT = nbRT
+
     def incrementnbLike(self):
          self.nbLike += 1 
 
@@ -74,7 +83,23 @@ class Tweet:
         tb = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
         blob = tb(self.text)
         self.sentiment = blob.sentiment
+        return self.sentiment # polarité et subjectivité
+
+    #initialize and return sentiment version 2
+    def analyze_textV2(self):
+        french_blob = TextBlob(self.text)
+        english_blob = french_blob.translate(from_lang="fr",to='en')
+        self.sentiment = english_blob.sentiment.polarity #récupère la polarité seulement
         return self.sentiment
+   #https://github.com/mdredze/carmen-python/blob/master/doc/quickstart.rst
+   def location_Tweet(self):
+        tweet = json.loads(tweet_json)
+        resolver = carmen.get_resolver()
+        resolver.load_locations()
+        location = resolver.resolve_tweet(tweet)
+        self.region = location.country
+
+
 
     # methode pour mettre le tweet dans la conformite du fichier json
     def serialize(self):
