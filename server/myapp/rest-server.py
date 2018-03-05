@@ -54,7 +54,7 @@ def get_tweet():
 @cross_origin()
 def getStatistics():
     statistics = Statistics(request.args.get("#"))
-    return jsonify({'statistics': statistics.retrieveStatistics})
+    return jsonify({'statistics': statistics.retrieveStatistics()})
 
 
 if __name__ == '__main__':
