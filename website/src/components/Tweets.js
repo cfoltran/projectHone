@@ -29,7 +29,7 @@ export default class Tweets extends React.Component {
     render() {
         return (
             <div>
-                <section className="bg-blue" id="home">
+                <section className="bg-light" id="home">
                     <div className="container padding-150" >
                         <div className="row text-center">
                             <div className="col-md-12" id="tweets">
@@ -46,7 +46,7 @@ export default class Tweets extends React.Component {
                     </div>
                 </section>
 
-                <section className="bg-cloud" id="presentation">
+                <section className="bg-light" id="presentation">
                     <div className="container padding-150">
                         <div className="row text-center">
                             <div className="col-md-12">
