@@ -43,26 +43,30 @@ class Statistics:
             if not newTweets:
                 print("No more tweets with this hashtag ! \n")
                 break
-            else:    
+            else:
                 # Keep the oldest tweet id to retrieve older tweets (used as the maximum id to reach)
                 oldestTweetId = newTweets[len(newTweets)-1].id
 
                 # Add informations about new tweets in dataTweets
-                data = pandas.DataFrame(columns=['Content','Date','Retweets','Likes'])
-                data['Content'] = np.array([tweet.text for tweet in newTweets])
-                data['Date'] = np.array([tweet.created_at for tweet in newTweets])
-                data['Retweets'] = np.array([tweet.retweet_count for tweet in newTweets])
-                data['Likes'] = np.array([tweet.favorite_count for tweet in newTweets])
-                dataTweets = dataTweets.append(data)
+                dataTmp = pandas.DataFrame(columns=['Content','Date','Retweets','Likes'])
+                dataTmp['Content'] = np.array([tweet.text for tweet in newTweets])
+                dataTmp['Date'] = np.array([tweet.created_at for tweet in newTweets])
+                dataTmp['Retweets'] = np.array([tweet.retweet_count for tweet in newTweets])
+                dataTmp['Likes'] = np.array([tweet.favorite_count for tweet in newTweets])
+                dataTweets = pandas.concat([dataTweets,dataTmp])
 
                 # Increment number of tweets
                 tweetCount += len(newTweets)
         ##
         print("Number of tweets : {}.\n".format(tweetCount))
+
+        dataTweets.reset_index()
+
         # Sort dataTweets and drop duplicates (Sort by retweets)
         dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
         print(dataTweets)
-        return dataTweets
+        print(dataTweets.to_json())
+        return dataTweets.to_json()
 
     def initializeAPI(self):
         # Authentication and access using keys
@@ -72,7 +76,3 @@ class Statistics:
         # Return API with authentication
         api = tweepy.API(auth)
         return api
-
-
-stats = Statistics("MHSCOL")
-stats.retrieveStatistics()
