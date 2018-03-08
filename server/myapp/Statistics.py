@@ -65,8 +65,7 @@ class Statistics:
         # Sort dataTweets and drop duplicates (Sort by retweets)
         dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
         print(dataTweets)
-        print(dataTweets.to_json())
-        return dataTweets.to_json()
+        return dataTweets
 
     def initializeAPI(self):
         # Authentication and access using keys

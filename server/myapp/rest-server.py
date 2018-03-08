@@ -54,7 +54,10 @@ def get_tweet():
 @cross_origin()
 def getStatistics():
     statistics = Statistics(request.args.get("hashtag"))
-    return jsonify({'statistics': statistics.retrieveStatistics()})
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    json = jsonify({'statistics':result})
+    return json
 
 
 if __name__ == '__main__':
