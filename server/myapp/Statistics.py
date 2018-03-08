@@ -60,7 +60,7 @@ class Statistics:
         ##
         print("Number of tweets : {}.\n".format(tweetCount))
 
-        dataTweets.reset_index()
+        dataTweets = dataTweets.reset_index()
 
         # Sort dataTweets and drop duplicates (Sort by retweets)
         dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
