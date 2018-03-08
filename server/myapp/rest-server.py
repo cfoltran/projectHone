@@ -50,12 +50,19 @@ def get_tweet():
     #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
 
-@app.route('/statistics', methods=['GET'])
+@app.route('/statistics/hashtag/<hashtagSearched>')
 @cross_origin()
-def getStatistics():
-    statistics = Statistics(request.args.get("hashtag"))
+def getStatistics(hashtagSearched):
+    statistics = Statistics(hashtagSearched)
     return statistics.retrieveStatistics()
 
+@app.route('/statistics/region/<codeRegion>', methods=['GET'])
+@cross_origin()
+def regionRouting(codeRegion):
+    if(request.args.get("date")):
+        return ("Arugment passé dans l'url")
+    else:
+        return ("Pas d'argument")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
