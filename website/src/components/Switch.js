@@ -23,7 +23,7 @@ export default class Switch extends Component
 
     }
 
-    handeSwitch(e)
+    handleSwitch(e)
     {
         this.setState({
             clicked: !this.state.clicked
