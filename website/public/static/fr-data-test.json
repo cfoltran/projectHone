@@ -1,0 +1,21 @@
+{
+	[
+		{"state" : "Île-de-France", "value" : 1.1791},
+		{"state" : "Auvergne-Rhône-Alpes", "value" : 1.3705},
+		{"state" : "Bourgogne-Franche-Comté", "value" : 1.3847},
+		{"state" : "Bretagne", "value" : 1.7979},
+		{"state" : "Corse", "value" : 1.0325},
+		{"state" : "Grand Est", "value" : 1.3209},
+		{"state" : "Guadeloupe", "value" : 1.4345},
+		{"state" : "Guyane", "value" : 1.6304},
+		{"state" : "Hauts-de-France", "value" : 1.3891},
+		{"state" : "La Réunion", "value" : 1.5297},
+		{"state" : "Martinique", "value" : 1.4285},
+		{"state" : "Mayotte", "value" : 1.5297},
+		{"state" : "Normandie", "value" : 1.4220},
+		{"state" : "Nouvelle-Aquitaine", "value" : 1.0124},
+		{"state" : "Occitanie", "value" : 0.9403},
+		{"state" : "Pays de la Loire", "value" : 0.9904},
+		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1.3877}
+	]
+}
