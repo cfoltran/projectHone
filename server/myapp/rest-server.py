@@ -59,10 +59,8 @@ def getStatistics(hashtagSearched):
 @app.route('/statistics/region/<codeRegion>', methods=['GET'])
 @cross_origin()
 def regionRouting(codeRegion):
-    if(request.args.get("date")):
-        return ("Arugment passé dans l'url")
-    else:
-        return ("Pas d'argument")
+    statistics = Statistics(None, codeRegion)
+    return statistics.retrieveStatistics()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
