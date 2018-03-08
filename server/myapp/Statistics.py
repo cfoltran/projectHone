@@ -90,9 +90,9 @@ class Statistics:
             while tweetCount < MAX_TWEETS:
                 # First iteration, we retrieve the most recent tweets
                 if(not oldestTweetId):
-                    newTweets = api.search(q="*", since=today-margin, lang="fr", geocode=regions.get(self.region), count=TWEETS_PER_SEARCH)
+                    newTweets = api.search(q="*", since=today-margin, lang="fr", geocode=regions.get(int(self.region)), count=TWEETS_PER_SEARCH)
                 else:
-                    newTweets = api.search(q="*", since=today-margin, lang="fr", geocode=regions.get(self.region), count=TWEETS_PER_SEARCH, max_id=oldestTweetId-1)
+                    newTweets = api.search(q="*", since=today-margin, lang="fr", geocode=regions.get(int(self.region)), count=TWEETS_PER_SEARCH, max_id=oldestTweetId-1)
                 # If there is no more tweets found we exit the while loop
                 if not newTweets:
                     break
@@ -116,9 +116,6 @@ class Statistics:
             # Reset index to allow the serialization
             dataTweets.reset_index(inplace=True, drop=True)
             # Serialize the dataFrame to a json & return it
-            print(self.region)
-            print("\n")
-            print(regions.get(int(self.region)))
             return dataTweets.to_json(orient='index')
 
     def initializeAPI(self):
