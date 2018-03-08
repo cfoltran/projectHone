@@ -80,8 +80,7 @@ class Statistics:
             dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
             # Reset index to allow the serialization
             dataTweets.reset_index(inplace=True, drop=True)
-            # Serialize the dataFrame to a json & return it
-            return dataTweets.to_json(orient='index')
+            return dataTweets
 
         else:
             # Store tweets with their informations
@@ -115,8 +114,7 @@ class Statistics:
             dataTweets = dataTweets.sort_values(by='Retweets', ascending=False).drop_duplicates(subset='Content')
             # Reset index to allow the serialization
             dataTweets.reset_index(inplace=True, drop=True)
-            # Serialize the dataFrame to a json & return it
-            return dataTweets.to_json(orient='index')
+            return dataTweets
 
     def initializeAPI(self):
         # Authentication and access using keys

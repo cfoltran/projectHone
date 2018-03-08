@@ -54,13 +54,19 @@ def get_tweet():
 @cross_origin()
 def getStatistics(hashtagSearched):
     statistics = Statistics(hashtagSearched)
-    return statistics.retrieveStatistics()
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    json = jsonify({'statistics':result})
+    return json
 
 @app.route('/statistics/region/<codeRegion>', methods=['GET'])
 @cross_origin()
 def regionRouting(codeRegion):
     statistics = Statistics(None, codeRegion)
-    return statistics.retrieveStatistics()
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    json = jsonify({'statistics':result})
+    return json
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
