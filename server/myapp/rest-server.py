@@ -53,8 +53,11 @@ def get_tweet():
 @app.route('/statistics/', methods=['GET'])
 @cross_origin()
 def getStatistics():
-    statistics = Statistics(request.args.get("#"))
-    return jsonify({'statistics': statistics.retrieveStatistics()})
+    statistics = Statistics(request.args.get("hashtag"))
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    json = jsonify({'statistics':result})
+    return json
 
 
 if __name__ == '__main__':
