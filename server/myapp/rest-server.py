@@ -92,5 +92,15 @@ def regionRouting(codeRegion):
     json = jsonify({'statistics':result})
     return json
 
+@app.route('/tweets/getTweetWithTime', methods=['GET'])
+@cross_origin()
+def get_tweet_with_time():
+
+    myTweet = Tweet()
+
+    tweets = myTweet.getTweetWithTime()
+
+    return jsonify({'tweets': tweets})
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)

@@ -39,6 +39,8 @@ class Statistics:
         api = self.initializeAPI()
         # Get today date
         today = datetime.date.today()
+
+        print(today)
         # Create the margin
         margin = datetime.timedelta(days=MARGIN_DAY)
 
