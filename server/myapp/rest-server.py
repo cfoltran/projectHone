@@ -33,6 +33,13 @@ def analyze_text():
     analyze = Sentiment(request.args.get("text"))
     return jsonify({'sentiment': analyze.analyze_text()})
 
+@app.route('/polarity', methods=['POST'])
+@cross_origin()
+def getPolarity():
+    return []
+    tweet = request.args.POST("tweet")
+    return jsonify({'sentiment': analyze.analyze_text()})
+
 @app.route('/tweets/getTweet', methods=['GET'])
 @cross_origin()
 def get_tweet():
