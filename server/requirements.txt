@@ -12,3 +12,4 @@ textblob-fr==0.2.0
 tweepy==3.5.0
 numpy==1.14.1
 pandas==0.17.0
+
