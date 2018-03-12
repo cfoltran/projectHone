@@ -50,12 +50,47 @@ def get_tweet():
     #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
 
-@app.route('/statistics/', methods=['GET'])
+@app.route('/statistics/hashtag/<hashtagSearched>')
 @cross_origin()
-def getStatistics():
-    statistics = Statistics(request.args.get("#"))
-    return jsonify({'statistics': statistics.retrieveStatistics()})
+def getStatistics(hashtagSearched):
+    statistics = Statistics(hashtagSearched)
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    # fix key error string
+    for key in result.keys():
+        if type(key) is not str:
+            try:
+                result[str(key)] = result[key]
+            except:
+                try:
+                    result[repr(key)] = result[key]
+                except:
+                    pass
+            del result[key]
 
+    json = jsonify({'statistics':result})
+    return json
+
+@app.route('/statistics/region/<codeRegion>', methods=['GET'])
+@cross_origin()
+def regionRouting(codeRegion):
+    statistics = Statistics(None, codeRegion)
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    # fix key error string
+    for key in result.keys():
+        if type(key) is not str:
+            try:
+                result[str(key)] = result[key]
+            except:
+                try:
+                    result[repr(key)] = result[key]
+                except:
+                    pass
+            del result[key]
+
+    json = jsonify({'statistics':result})
+    return json
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
