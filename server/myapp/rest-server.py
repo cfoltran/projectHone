@@ -56,6 +56,18 @@ def getStatistics(hashtagSearched):
     statistics = Statistics(hashtagSearched)
     df = statistics.retrieveStatistics()
     result = df.to_dict(orient='index')
+    # fix key error string
+    for key in result.keys():
+        if type(key) is not str:
+            try:
+                result[str(key)] = result[key]
+            except:
+                try:
+                    result[repr(key)] = result[key]
+                except:
+                    pass
+            del result[key]
+
     json = jsonify({'statistics':result})
     return json
 
@@ -65,6 +77,18 @@ def regionRouting(codeRegion):
     statistics = Statistics(None, codeRegion)
     df = statistics.retrieveStatistics()
     result = df.to_dict(orient='index')
+    # fix key error string
+    for key in result.keys():
+        if type(key) is not str:
+            try:
+                result[str(key)] = result[key]
+            except:
+                try:
+                    result[repr(key)] = result[key]
+                except:
+                    pass
+            del result[key]
+
     json = jsonify({'statistics':result})
     return json
 
