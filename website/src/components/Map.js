@@ -28,7 +28,7 @@ class Map extends Component {
             
             //Define quantize scale to sort data values into buckets of color
             var color = d3.scaleQuantize()
-                                .range(["#ff0000","#ff3300","#ff6600","#ff9933","#ffcc66"," #ffff99","#ccff99","#99ff66","#66ff33","#33cc33"]);
+                                .range(["#6CFF3A","#E8E23D","#FFCC50","#E87B31","#FF453E"]);
 
             //Create SVG element
             var svgMap = d3.select('#map').append("svg")

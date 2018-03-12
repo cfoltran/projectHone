@@ -1,22 +1,22 @@
 {
 	[
-		{"state" : "Île-de-France", "value" : 1.1791},
-		{"state" : "Auvergne-Rhône-Alpes", "value" : 1.3705},
-		{"state" : "Bourgogne-Franche-Comté", "value" : 1.3847},
-		{"state" : "Bretagne", "value" : 1.7979},
-		{"state" : "Centre-Val de Loire", "value" : 1,2323}
-		{"state" : "Corse", "value" : 1.0325},
-		{"state" : "Grand Est", "value" : 1.3209},
-		{"state" : "Guadeloupe", "value" : 1.4345},
-		{"state" : "Guyane", "value" : 1.6304},
-		{"state" : "Hauts-de-France", "value" : 1.3891},
-		{"state" : "La Réunion", "value" : 1.5297},
-		{"state" : "Martinique", "value" : 1.4285},
-		{"state" : "Mayotte", "value" : 1.5297},
-		{"state" : "Normandie", "value" : 1.4220},
-		{"state" : "Nouvelle-Aquitaine", "value" : 1.0124},
-		{"state" : "Occitanie", "value" : 0.9403},
-		{"state" : "Pays de la Loire", "value" : 0.9904},
-		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1.3877}
+		{"state" : "Île-de-France", "value" : -1},
+		{"state" : "Auvergne-Rhône-Alpes", "value" : -0.9},
+		{"state" : "Bourgogne-Franche-Comté", "value" : -0.8},
+		{"state" : "Bretagne", "value" : -0.7},
+		{"state" : "Centre-Val de Loire", "value" : -0.6}
+		{"state" : "Corse", "value" : -0.5},
+		{"state" : "Grand Est", "value" : -0.4},
+		{"state" : "Guadeloupe", "value" : -0.3},
+		{"state" : "Guyane", "value" : 0},
+		{"state" : "Hauts-de-France", "value" : 0.3},
+		{"state" : "La Réunion", "value" : 0.4},
+		{"state" : "Martinique", "value" : 0.5},
+		{"state" : "Mayotte", "value" : 0.6},
+		{"state" : "Normandie", "value" : 0.7},
+		{"state" : "Nouvelle-Aquitaine", "value" : 0.8},
+		{"state" : "Occitanie", "value" : 0.9},
+		{"state" : "Pays de la Loire", "value" : 1},
+		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1}
 	]
 }
