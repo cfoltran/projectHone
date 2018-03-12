@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////
  */
 //React
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -18,17 +18,17 @@ export default class Switch extends Component
     {
         super(props);
         this.state = {
-            clicked: false
+            isChecked : null,
         };
 
     }
-
-    handleSwitch(e)
-    {
-        this.setState({
-            clicked: !this.state.clicked
-        });
+    componentWillMount () {
+        this.setState( { isChecked: this.props.isChecked } );
     }
+
+    toggle = event => {
+        this.setState( { isChecked: !this.state.isChecked } );
+    };
 
 
     render()
@@ -45,7 +45,7 @@ export default class Switch extends Component
                         </div>
                         <div class="toggle-switch">
                             <label class="switch">
-                                <input type="checkbox" id="switch-style" onClick=""/>
+                                <input type="checkbox" checked={this.state.isChecked} onChange={e => this.toggle(e)} id="switch-style"/>
                                 <div class="slider round"></div>
                             </label>
                         </div>
@@ -57,4 +57,6 @@ export default class Switch extends Component
             </div>
         );
     }
+
+
 }
