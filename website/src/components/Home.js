@@ -7,6 +7,8 @@ import Map from './Map';
 import Searchbar from './Searchbar'
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
+import Statistic from "./Statistic";
+
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -16,7 +18,6 @@ import bot from '../config/bot';
 //Style
 import '../style/css/App.css';
 import '../style/css/bot.css';
-import Statistique from "./Statistique";
 
 
 
@@ -78,7 +79,7 @@ class Home extends Component {
                 />
                 </ThemeProvider>
                 <Tweets/>
-                <Statistique/>
+                <Statistic/>
         </div>
         );
     }
