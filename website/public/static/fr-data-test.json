@@ -1,5 +1,5 @@
 {
-	[
+	"states" : [
 		{"state" : "Île-de-France", "value" : -1},
 		{"state" : "Auvergne-Rhône-Alpes", "value" : -0.9},
 		{"state" : "Bourgogne-Franche-Comté", "value" : -0.8},

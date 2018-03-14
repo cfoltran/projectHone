@@ -13,8 +13,7 @@ class Map extends Component {
 
     initMap() {
             // Width and height
-            var width = 900
-            var height = 900;
+            var width = 900, height = 900;
 
             //Define map projection
             var projection = d3.geoConicConformal()
@@ -27,30 +26,24 @@ class Map extends Component {
                          .projection(projection);
             
             //Define quantize scale to sort data values into buckets of color
-            var color = d3.scaleQuantize()
-                                .range(["#6CFF3A","#E8E23D","#FFCC50","#E87B31","#FF453E"]);
+            var color = ["#FF453E","#E87B31","#FFEEC8","#E8E23D","#6CFF3A"];
 
             //Create SVG element
             var svgMap = d3.select('#map').append("svg")
-                .attr("id", "svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("fil","#212529");
+                                          .attr("id", "svg")
+                                          .attr("width", width)
+                                          .attr("height", height)
+                                          .attr("fill","#212529");
 
             var deps = svgMap.append("g");
 
             var div = d3.select(this.refs.mapRender).append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+                                                    .attr("class", "tooltip")
+                                                    .style("opacity", 0);
 
             // Load in france data
-            d3.csv('/static/fr-data-test.csv', function(data) {
-                // Set in put domain for color scale
-                color.domain([
-                    d3.min(data, function(d) { return d.value; }),
-                    d3.max(data, function(d) { return d.value; }),
-                ])
-
+            d3.json('/static/fr-data-test.json', function(data) {
+                console.log(data);
                 //Load in GeoJSON data
                 d3.json('/static/departments.json', function(geojson) { 
                     // Merge the fr. data and GeoJSON
@@ -83,20 +76,19 @@ class Map extends Component {
                         .append("path")
                         .attr("d", path)
                         .style("fill", function(d) {
-                            /*
-                            [-1, -0.3] : négatif
-                            [-0.3, 0.3] : neutre
-                            [0.3, 1] : positif
-                            */
                             // Get data value
                             var value = d.properties.value;
-
-                            if(value) {
-                                // If value exists...
-                                return color(value);
-                            } else {
-                                // If value is undefined
-                                return "#ccc";
+                            if(typeof(value) == "number") {
+                                if(value >= -1 && value < -0.65) 
+                                    return color[0];
+                                else if(value >= -0.65 && value < -0.3)
+                                    return color[1];
+                                else if(value >= -0.3 && value < 0.3)
+                                    return color[2];
+                                else if(value >= 0.3 && value < 0.65)
+                                    return color[3];
+                                else if(value >= 0.65 && value <= 1)
+                                    return color[4];
                             }
                         })
                         .on("mouseover", function(d) {
