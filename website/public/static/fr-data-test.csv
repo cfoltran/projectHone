@@ -1,19 +1,19 @@
 state,value
-Île-de-France,-1
-Auvergne-Rhône-Alpes,-0.9
-Bourgogne-Franche-Comté,-0.8
-Bretagne,-0.7
-Centre-Val de Loire,-0.6
-Corse,-0.5
-Grand Est,-0.4
-Guadeloupe,-0.3
-Guyane,0
-Hauts-de-France,0,1
-La Réunion,0.4
-Martinique,0.5
-Mayotte,0.6
-Normandie,0.7
-Nouvelle-Aquitaine,0.8
-Occitanie,0.9
-Pays de la Loire,1
-Provence-Alpes-Côte d'Azur,1
+Île-de-France,1.1791 
+Auvergne-Rhône-Alpes,1.3705
+Bourgogne-Franche-Comté,1.3847
+Bretagne,1.7979
+Centre-Val de Loire,1.2323
+Corse,1.0325
+Grand Est,1.3209
+Guadeloupe,1.4345
+Guyane,1.6304
+Hauts-de-France,1.3891
+La Réunion,1.5297
+Martinique,1.4285
+Mayotte,1.5297
+Normandie,1.4220
+Nouvelle-Aquitaine,1.0124
+Occitanie,0.9403
+Pays de la Loire,0.9904
+Provence-Alpes-Côte d'Azur,1.3877

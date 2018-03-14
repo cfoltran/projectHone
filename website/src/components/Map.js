@@ -42,8 +42,7 @@ class Map extends Component {
                                                     .style("opacity", 0);
 
             // Load in france data
-            d3.json('/static/fr-data-test.json', function(data) {
-                console.log(data);
+            d3.csv('/static/fr-data-test.csv', function(data) {
                 //Load in GeoJSON data
                 d3.json('/static/departments.json', function(geojson) { 
                     // Merge the fr. data and GeoJSON
@@ -58,7 +57,7 @@ class Map extends Component {
                         // Find the corresponding state inside the GeoJSON
                         for(var j = 0; j < geojson.features.length; j++){
                             var jsonState = geojson.features[j].properties.nom;
-
+9
                             if(dataState == jsonState){
                                 // Copy the data value into the JSON
                                 geojson.features[j].properties.value = dataValue;
