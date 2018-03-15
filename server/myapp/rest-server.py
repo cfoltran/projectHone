@@ -50,6 +50,7 @@ def get_tweet():
     #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
 
+<<<<<<< HEAD
 @app.route('/statistics/', methods=['GET'])
 @cross_origin()
 def getStatistics():
@@ -65,5 +66,9 @@ def getTweetByRegion():
     return jsonify({'tweetbyregion': tweets.retrieveTweets()})
 
 
+=======
+def ditBonjour():
+    print("Bonjour");
+>>>>>>> 945e1a962925efd14d816176fa2b8e6b02b7dc77
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
