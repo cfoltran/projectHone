@@ -47,7 +47,7 @@ export default class Tweets extends React.Component {
                                            }
                                             return <Tweet author={tweet.author} text={tweet.tweet} sentiment={analyze}/>
                                         })
-                                  */}
+                                  */  }
                                 </main>
                             </div>
                         </div>
