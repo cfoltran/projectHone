@@ -29,6 +29,7 @@ class Home extends Component {
         };
 
         this.toggleFloating = this.toggleFloating.bind(this);
+        this.switchHome = this.switchHome.bind(this);
     }
 
     toggleFloating() {
@@ -49,13 +50,17 @@ class Home extends Component {
         }
     }
 
+    switchHome = checked => {
+        this.setState( { checked: checked} );
+    };
     render() {
         // const tag = <Search ref={this.state.tag}/>;
+        let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
         return (
             <div>
-                <Searchbar/>
+                <Searchbar onSwitchHome={this.switchHome}/>
                 <Loader/>
-                <section className="padding-150 bg-light">
+                <section className={classSwitch}>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">

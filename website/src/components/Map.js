@@ -7,9 +7,7 @@ class Map extends Component {
         this.initMap()
     }
 
-    componentDidUpdate(){
-        this.initMap()
-    }
+
 
     initMap() {
         var width = 900, height = 900;
@@ -74,6 +72,8 @@ class Map extends Component {
             })
 
 }
+
+
     render() {
         return (
 
