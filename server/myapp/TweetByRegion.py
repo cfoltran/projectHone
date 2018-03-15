@@ -9,7 +9,7 @@ from Credentials import *
 
 
 
-TWEETS_PER_SEARCH = 4 # Max Value = 100
+TWEETS_PER_SEARCH = 10 # Max Value = 100
 #https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search
 class TweetByRegion:
     region = ""
@@ -159,6 +159,6 @@ class TweetByRegion:
         return api
 
 
-tweet = TweetByRegion("Martinique","#JO2018")
+tweet = TweetByRegion("Guyane","#JO2018")
 tweet.retrieveTweets()
 tweet.displayTweetsByRegion()
