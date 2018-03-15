@@ -18,12 +18,13 @@ export default class Switch extends Component
     {
         super(props);
         this.state = {
-            checked : null,
+            checked : false,
         };
 
     }
     componentWillMount () {
         this.setState( { checked: this.props.checked } );
+
     }
 
     toggle = event => {
