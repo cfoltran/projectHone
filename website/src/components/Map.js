@@ -12,13 +12,13 @@ class Map extends Component {
     }
 
     initMap() {
-        var width = 900, height = 900;
+        var width = 1000, height = 900;
 
 
             var path = d3.geoPath();
 
             var projection = d3.geoConicConformal()
-                .center([2.454071, 46.379229])
+                .center([2.554071, 46.379229])
                 .scale(4000)
                 .translate([width / 2, height / 2]);
 
