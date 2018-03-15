@@ -28,6 +28,7 @@ class Searchbar extends Component
             };
 
             this.toggle = this.toggle.bind(this);
+            this.toggleSwitch = this.toggleSwitch.bind(this);
     }
 
     toggle()
@@ -66,16 +67,20 @@ class Searchbar extends Component
 
     };
 
+    toggleSwitch = checked => {
+        this.setState( { isChecked: checked} );
+    };
 
     render()
     {
+        let styleNav=(this.state.isChecked)?"navbar navbar-expand-md navbar-light fixed-top ":"navbar navbar-expand-md navbar-dark fixed-top ";
         return (
             <div>
 
                 {/*<!--===========================================-->*/}
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
-                <nav className="navbar navbar-expand-md navbar-light fixed-top " id="navbar">
+                <nav className={styleNav} id="navbar">
                     <a className="navbar-brand abs" href="#">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +103,7 @@ class Searchbar extends Component
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
                             {/*<!-- Bouton switch -->*/}
-                            <Switch isChecked={false}/>
+                            <Switch isChecked={false} onToggleSwitch={this.toggleSwitch}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}

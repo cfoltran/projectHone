@@ -27,9 +27,10 @@ export default class Switch extends Component
     }
 
     toggle = event => {
-        this.setState( { isChecked: !this.state.isChecked } );
+        this.setState( { isChecked: !this.state.isChecked} );
+        this.props.onToggleSwitch(this.state.isChecked);
     };
-
+    
 
     render()
     {
