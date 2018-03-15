@@ -118,7 +118,7 @@ class Map extends Component {
     render() {
         return (
 
-            <div className="bg-dark" id="map" ref="mapRender"></div>
+            <div className="bg-light" id="map" ref="mapRender"></div>
         )
     }
 }

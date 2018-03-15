@@ -5,6 +5,9 @@ body {
     position: relative;
 }
 
+*{
+    font-family: 'Quicksand', sans-serif;
+}
 /* utilities */
 
 
@@ -71,6 +74,7 @@ body {
 
 /* navbar */
 #navbar {
+    background: #f5f5f5;
     min-height: 10vh;
     transition: all 2s;
     -moz-transition: all 2s;
@@ -79,7 +83,12 @@ body {
     border-bottom: 1px solid #333;
 }
 
-#navbar a, #navbar button { font-weight: 700; }
+#navbar a, #navbar button{
+    font-weight: 700;
+}
+#navbar a:hover{
+    cursor: pointer;
+}
 
 .bg-clear {
     background: transparent;
@@ -108,4 +117,79 @@ body {
     }
 }
 
-.fas { font-family: fontawesome; font-style: normal;}
+.fas {
+    font-family: fontawesome;
+    font-style: normal;
+}
+
+/* Day/Night Button */
+.toggle-mode{
+    float:left;
+    padding:2px 20px 0 10px;
+    width:100%;
+}
+
+.toggle-mode .icon{
+    width:25px;
+    float:left;
+    font-size:1.5rem;
+}
+
+.toggle-switch{
+    float:left;
+    height:40px;
+    width:60px;
+    padding:5px 7px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch{
+    position:relative;
+    display:inline-block;
+    width:47px;
+    height:19px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:3px;
+    right:-3px;
+    bottom:0;
+    background-color:darkgray;
+    border:1px solid darkgray;
+}
+
+.slider:before{
+    background-color: black;
+    position:absolute;
+    content:"";
+    height:15px;
+    width:15px;
+    left:2px;
+    bottom:1px;
+}
+
+    input:focus+.slider{
+    box-shadow:0 0 1px #2196F3;
+}
+
+input:checked+.slider:before{
+    -webkit-transform:translateX(26px);
+    transform:translateX(26px);
+}
+
+.slider.round{
+    border-radius:34px;
+}
+
+.slider.round:before{
+    border-radius:50%;
+}
