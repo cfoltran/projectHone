@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/__pycache__
 
 # testing
 /coverage
@@ -21,3 +22,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+server/myapp/__pycache__
