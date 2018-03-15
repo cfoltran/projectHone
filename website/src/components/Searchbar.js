@@ -49,6 +49,7 @@ class Searchbar extends Component
                  sementic="positif et negatif"
             }
             console.log(this.bad_checked.checked);
+
         return sementic;
     }
 
@@ -57,10 +58,10 @@ class Searchbar extends Component
         event.preventDefault();
 
         console.log(this.getValueChecked());
-
         const tagSementic = {
             tag: this.tag.value,
             sementic: this.getValueChecked()
+        
     };
         this.props.history.push(`/search/${tagSementic.tag}/${tagSementic.sementic}`);
 
@@ -90,7 +91,7 @@ class Searchbar extends Component
                                     className="fas fa-home"> Accueil</i></a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
+                                <a className="nav-link"><i className="fas fa-question-circle"> Prétion</i> </a>
                             </li>
                         </ul>
                         {/*<!--===========================================-->*/}
