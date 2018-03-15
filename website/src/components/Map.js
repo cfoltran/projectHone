@@ -7,10 +7,6 @@ class Map extends Component {
         this.initMap()
     }
 
-    componentDidUpdate(){
-        this.initMap()
-    }
-
     // Source: http://shop.oreilly.com/product/0636920026938.do
     initMap() {
             // Width and height
