@@ -83,14 +83,14 @@ class Searchbar extends Component
                     <div className="navbar-collapse collapse" id="menu">
                         <ul className="navbar-nav">
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"> <i className="fas fa-map"> Map</i></a>
+                                <a className="nav-link"> <i className="fas fa-map"><span> Map</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link" > <i
-                                    className="fas fa-home"> Accueil</i></a>
+                                    className="fas fa-home"><span> Accueil</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
+                                <a className="nav-link"><i className="fas fa-question-circle"><span> Présentation</span></i> </a>
                             </li>
                         </ul>
                         {/*<!--===========================================-->*/}
@@ -100,7 +100,7 @@ class Searchbar extends Component
                             {/*<!-- Bouton switch -->*/}
                             <Switch isChecked={false}/>
                             <li className="nav-item page-scroll">
-                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
+                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
                                        backdropTransition={{timeout: 10}}
                                        toggle={this.toggle} className={this.props.className}>
