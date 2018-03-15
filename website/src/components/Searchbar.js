@@ -8,11 +8,14 @@ import React, { Component, PropTypes } from 'react';
 //config
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {withRouter} from "react-router-dom";
+//Component
+import Switch from './Switch';
 
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 import Tweet from "./Tweet";
+
 
 class Searchbar extends Component
 {
@@ -33,7 +36,6 @@ class Searchbar extends Component
             modal: !this.state.modal
         });
     }
-
     getValueChecked(){
 
         let sementic = "";
@@ -73,7 +75,7 @@ class Searchbar extends Component
                 {/*<!--===========================================-->*/}
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top" id="navbar">
+                <nav className="navbar navbar-expand-md navbar-light fixed-top " id="navbar">
                     <a className="navbar-brand abs" href="#">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,11 +93,12 @@ class Searchbar extends Component
                                 <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
                             </li>
                         </ul>
-
                         {/*<!--===========================================-->*/}
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
+                            {/*<!-- Bouton switch -->*/}
+                            <Switch isChecked={false}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
