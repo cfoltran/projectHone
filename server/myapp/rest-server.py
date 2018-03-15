@@ -33,29 +33,44 @@ def analyze_text():
     analyze = Sentiment(request.args.get("text"))
     return jsonify({'sentiment': analyze.analyze_text()})
 
+@app.route('/polarity', methods=['POST'])
+@cross_origin()
+def getPolarity():
+    return []
+    tweet = request.args.POST("tweet")
+    return jsonify({'sentiment': analyze.analyze_text()})
+
 @app.route('/tweets/getTweet', methods=['GET'])
 @cross_origin()
-def get_tweet():
+def getStatistics(hashtagSearched):
+    statistics = Statistics(hashtagSearched)
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    # fix key error string
+    result = {str(k):v for k,v in result.items()}
+    json = jsonify({'statistics':result})
+    return json
 
-    # je crée seulement un tweet comme exemple
+@app.route('/statistics/region/<codeRegion>', methods=['GET'])
+@cross_origin()
+def regionRouting(codeRegion):
+    statistics = Statistics(None, codeRegion)
+    df = statistics.retrieveStatistics()
+    result = df.to_dict(orient='index')
+    # fix key error string
+    result = {str(k):v for k,v in result.items()}
+    json = jsonify({'statistics':result})
+    return json
+
+@app.route('/tweets/getTweetWithTime', methods=['GET'])
+@cross_origin()
+def get_tweet_with_time():
+
     myTweet = Tweet()
 
-    # j'ai analysé son sentiment
-    myTweet.sentiment_analyze_tweet()
+    tweets = myTweet.getTweetWithTime()
 
-    # Je l'ai inclus dans une liste
-    tweets = []
-    tweets.append(myTweet.serialize())
-
-    #je donne la réponse au serveur
     return jsonify({'tweets': tweets})
-
-@app.route('/statistics/', methods=['GET'])
-@cross_origin()
-def getStatistics():
-    statistics = Statistics(request.args.get("#"))
-    return jsonify({'statistics': statistics.retrieveStatistics()})
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
