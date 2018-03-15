@@ -13,7 +13,7 @@ export default class Tweets extends React.Component {
 
     loadData(path) {
         //
-        window.fetch('http://localhost:5001/tweets/getTweet')
+        window.fetch('http://localhost:5001/tweets/getTweetWithTime')
         //  window.fetch('./data/exemple.json')
             .then(res => {
                 console.log(res);
