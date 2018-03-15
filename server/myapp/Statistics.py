@@ -10,7 +10,7 @@ from Credentials import *
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 MAX_TWEETS = 4
-TWEETS_PER_SEARCH = 2 # Max Value = 100
+TWEETS_PER_SEARCH = 10 # Max Value = 100
 
 
 class Statistics:

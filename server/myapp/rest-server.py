@@ -57,5 +57,13 @@ def getStatistics():
     return jsonify({'statistics': statistics.retrieveStatistics()})
 
 
+#URL/region
+@app.route('/region/', methods=['GET'])
+@cross_origin()
+def getTweetByRegion():
+    tweets = TweetByRegion(request.args.get("region","#"))
+    return jsonify({'tweetbyregion': tweets.retrieveTweets()})
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)

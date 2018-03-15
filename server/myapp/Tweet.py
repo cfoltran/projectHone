@@ -12,7 +12,7 @@ from SentimentAnalyze import Sentiment
 
 
 class Tweet():
-
+    
     """
     Constructor
     """
