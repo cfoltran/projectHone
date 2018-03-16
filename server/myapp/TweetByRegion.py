@@ -20,121 +20,124 @@ class TweetByRegion:
         self.hashtag = "#" + hashtagSearched
 
 #https://developers.google.com/maps/documentation/geocoding/intro?hl=fr
+#https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder?hl=fr
     def retrieveTweets(self): 
         # API Authentification
         api = self.initializeAPI()
        
         if self.region == 'France':
            self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-           geocode="46.227638,2.213749,km", granularity="country")
+           granularity="country", place_id="ChIJMVd4MymgVA0R99lHx5Y__Ws")
           
         elif self.region == 'Alsace':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.31818,7.441624,km", granularity="city")
+            granularity="city",place_id="ChIJv5Z326NGkUcR4CQ3mrlfCgE")
         
         elif self.region == 'Aquitaine':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="44.700222,-0.299579,km", granularity="city")
+            granularity="city", place_id="ChIJXUV5MymgVA0RCYiUCcIMmcI")
         
         elif self.region == 'Auvergne':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="45.70327,3.344854,km", granularity="city")
+            granularity="city", place_id="ChIJ3Y9LbrHk9kcRUCTjy688CQE")
             
         elif self.region == 'Basse Normandie':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.878847,-0.515749,km", granularity="city")
+            granularity="city",place_id="ChIJu46ajCY6CkgRICW1T0gUDAE")
             
         elif self.region == 'Bourgogne':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="47.052505,4.383721,km", granularity="city")
+            granularity="city",place_id="ChIJt9nzCDkE8kcRECUNszTOCQE")
         
         elif self.region == 'Bretagne':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.202047,-2.932644,km", granularity="city")
+            granularity="city",place_id="ChIJr45-rmHKEUgRsCTfNs2lDAE")
            
         elif self.region == 'Centre':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="47.751569,1.675063,km", granularity="city")
+            granularity="city", place_id="ChIJiV0INnu55EcRMCUzBdfIDQE")
+
+
         
         elif self.region == 'Champagne-Ardenne':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.793409,4.472525,km", granularity="city")
+            granularity="city", place_id="ChIJXad-Rv906UcRPauSZXj2v5o")
            
         elif self.region == 'Corse':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="42.039604,9.012893,km", granularity="city")
+            granularity="city",place_id="ChIJcQmbsAMk1xIRjcuhcewihag")
            
         elif self.region == 'Franche-Comte':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="47.134321,6.022302,km", granularity="city")
+            granularity="city",place_id="ChIJJwKvjhhjjUcREV-uvEkQBec")
 
         elif self.region == 'Haute Normandie':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="49.524641,0.882833,km", granularity="city")
+            granularity="city",place_id="ChIJfYshlSMv4EcRRVdFNfaAXnA")
 
         elif self.region == 'Ile-de-France':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.84992,2.637041,km", granularity="city")
+            granularity="city",place_id="ChIJF4ymA8Th5UcRcCWLaMOCCwE")
            
         elif self.region == 'Languedoc-Roussillon':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="43.591236,3.258363,km", granularity="city")
+            granularity="city",place_id="ChIJWcV6wLBksRIRQCRlFiGIBwE")
 
         elif self.region == 'Limousin':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="45.893223,1.569602,km", granularity="city")
+            granularity="city",place_id="ChIJ9Qt-IC4Q-UcRbgZJ0DHNvJI")
 
         elif self.region == 'Lorraine':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="48.874423,6.208093,km", granularity="city")
+            granularity="city",place_id="ChIJ1ZAR_lOXlEcR8CQ3mrlfCgE")
 
         elif self.region == 'Midi-Pyrenees':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="44.085943,1.520862,km", granularity="city")
+            granularity="city",place_id="ChIJi5Fh1PkgrBIRgCQ7L5z2BgE")
 
         elif self.region == 'Nord-Pas-de-Calais':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="50.573277,2.324468,km", granularity="city")
+            granularity="city",place_id="ChIJCfJtqIjVwkcR7-qpwxdEZek")
 
         elif self.region == 'Pays de la Loire':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="47.763284,-0.329969,km", granularity="city")
+           granularity="city",place_id="ChIJQQUJqjgXBUgRtkcc2Asrls8")
            
         elif self.region == 'Picardie':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="49.663613,2.528073,km", granularity="city")
+            granularity="city",place_id="ChIJL9Lah0CE50cRbrAvKEy_vg0")
 
         elif self.region == 'Poitou-Charentes':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="45.903552,-0.309184,km", granularity="city")
+            granularity="city",place_id="ChIJbRILoIqxAEgRoCTnYJLTBQE")
            
         elif self.region == "Provence-Alpes-Cote-d'Azur":
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="43.935169,6.067919,km", granularity="city")
+            granularity="city",place_id="ChIJrVP5ihlothIRp9EWPSaQFrc")
 
         elif self.region == 'Rhone-Alpes':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH, 
-            geocode="45.16958,5.450282,km", granularity="city")
+            granularity="city",place_id="ChIJS_HI7dPZikcRua8Cids1k3c")
 
         elif self.region == 'Guadeloupe':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="16.265,-61.551,km", granularity="city")
+            granularity="city",place_id="ChIJUX0od1p1DowRqwdKtzc-vuw")
 
         elif self.region == 'Martinique':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="14.641528,-61.024174,km", granularity="city")
+           granularity="city",place_id="ChIJDQdmAPmgaowRsOevFxIbAOE")
 
         elif self.region == 'Guyane':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="3.933889,-53.125782,km", granularity="city")
+            granularity="city",place_id="ChIJU9f3hVcVEo0RRvQKD-n3J94")
 
         elif self.region == 'La Reunion':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="-21.115141,55.536384,km", granularity="city")
+            granularity="city",place_id="ChIJO-S4EIF3eCER-erb7ImOf0o")
 
         elif self.region == 'Mayotte':
             self.newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
-            geocode="-12.8275,45.166244,km", granularity="city")
+           granularity="city",place_id="ChIJu43y3DMOCiIRSyr-lWcXMv8")
 
         
         return self.newTweets
@@ -160,5 +163,5 @@ class TweetByRegion:
 
 
 tweet = TweetByRegion("Guyane","#JO2018")
-tweet.retrieveTweets()
-tweet.displayTweetsByRegion()
+print(tweet.retrieveTweets())
+#tweet.displayTweetsByRegion()
