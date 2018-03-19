@@ -69,7 +69,7 @@ class Map extends Component {
                     function Humeur(num)
                     {
                       if(num >= -1 && num < -0.65)
-                          return "RAGEUX";
+                          return "Énervé";
                       else if(num >= -0.65 && num < -0.3)
                           return "Pas content";
                       else if(num >= -0.3 && num < 0.3)
