@@ -7,7 +7,6 @@ import Map from './Map';
 import Searchbar from './Searchbar'
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
-import Statistic from "./Statistic";
 
 
 //Config
@@ -81,7 +80,6 @@ class Home extends Component {
                 />
                 </ThemeProvider>
                 <Tweets/>
-                <Statistic/>
         </div>
         );
     }

@@ -13,11 +13,11 @@ class DashBoard extends Component {
     }
 
     initDashboard(){
-            var $ppc = d3.select('.progress-pie-chart'),
-            percent = parseInt($ppc.data('percent')),
+            var ppc = d3.select('.progress-pie-chart'),
+            percent = parseInt(ppc.data('percent'),10),
             deg = 360*percent/100;
           if (percent > 50) {
-            $ppc.addClass('gt-50');
+            ppc.addClass('gt-50');
           }
           d3.select('.ppc-progress-fill').style('transform','rotate('+ deg +'deg)');
           d3.select('.ppc-percents span').html(percent+'%');
@@ -48,7 +48,6 @@ class DashBoard extends Component {
                 {/*End Chart*/}
             </div>
             <div className="statRightHolder">
-
 
                 <ul>
                 <li> <h3 id='rt' className="blue"></h3> <span>Retweets</span></li>

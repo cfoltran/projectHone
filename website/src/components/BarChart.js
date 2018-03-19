@@ -36,7 +36,7 @@ class BarChart extends Component {
                     "translate(" + margin.left + "," + margin.top + ")");
 
           // get the data
-          d3.json("tweet.json", function(error, data) {
+          d3.json("/static/dataForBarChart.json", function(error, data) {
               if (error) throw error;
 
               // Scale the range of the data in the domains
