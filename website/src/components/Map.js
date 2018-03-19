@@ -66,7 +66,7 @@ class Map extends Component {
                         }
                     }
 
-                    function Humeur(num)
+                    function feeling(num)
                     {
                       if(num >= -1 && num < -0.65)
                           return "Énervé";
@@ -109,7 +109,7 @@ class Map extends Component {
                                 .duration(200)
                                 .style("opacity", .9);
                             div.html("Région : " + d.properties.nom + "<br>"
-                                +  "Humeur : " + Humeur(d.properties.value))
+                                +  "Humeur : " + feeling(d.properties.value))
                                 .style("left", (d3.event.pageX -350) + "px")
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
