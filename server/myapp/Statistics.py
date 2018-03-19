@@ -5,8 +5,7 @@ import pandas
 import numpy as np
 from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
-from Credentials import *
-
+from Connect import Connect
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 MAX_TWEETS = 10
@@ -119,10 +118,5 @@ class Statistics:
             return dataTweets
 
     def initializeAPI(self):
-        # Authentication and access using keys
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-        auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-        # Return API with authentication
-        api = tweepy.API(auth)
-        return api
+        co = Connect()
+        return co.authentication()

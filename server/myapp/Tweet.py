@@ -8,7 +8,7 @@ import datetime
 import pandas
 from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
-from Credentials import *
+from Connect import Connect
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 MAX_TWEETS = 4
@@ -61,24 +61,25 @@ class Tweet:
         api = self.initializeAPI()
         # Get today date
         today = datetime.date.today()
-        # Create the margin
-        margin = datetime.timedelta(days=MARGIN_DAY)
 
         newTweets = api.search(q=self.hashtag, lang="fr", count=3,
                                start_time=str(today) + "T00:00:00Z", end_time=str(today) + "T12:00:00Z")
 
-        return newTweets
+        data = pandas.DataFrame()
+        data['Content'] = np.array([tweet.text for tweet in newTweets])
+        data['Date'] = np.array([tweet.created_at for tweet in newTweets])
+        data['Retweets'] = np.array([tweet.retweet_count for tweet in newTweets])
+        data['Likes'] = np.array([tweet.favorite_count for tweet in newTweets])
+        data['Author'] = np.array([self.getAuthor(tweet) for tweet in newTweets])
+        return data
+
+    def getAuthor(self, tweet):
+        file = tweet.author._json
+        decodedfile = json.dumps(file)
+        decodedfile = json.loads(decodedfile)
+        name = str(decodedfile['screen_name'])
+        return name
 
     def initializeAPI(self):
-        # Authentication and access using keys
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-        auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-        # Return API with authentication
-        api = tweepy.API(auth)
-        return api
-
-myTweet = Tweet("#jo")
-
-# j'ai analysé son sentiment
-tweets = myTweet.getTweetWithTime()
+        co = Connect()
+        return co.authentication()

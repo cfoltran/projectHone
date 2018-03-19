@@ -55,7 +55,7 @@ class Map extends Component {
                         for(var j = 0; j < geojson.features.length; j++){
                             var jsonState = geojson.features[j].properties.nom;
 
-                            if(dataState == jsonState){
+                            if(dataState === jsonState){
                                 // Copy the data value into the JSON
                                 geojson.features[j].properties.value = dataValue;
 
@@ -74,7 +74,7 @@ class Map extends Component {
                         .style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
-                            if(typeof(value) == "number") {
+                            if(typeof(value) === "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
                                 else if(value >= -0.65 && value < -0.3)

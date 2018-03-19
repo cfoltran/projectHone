@@ -6,24 +6,29 @@ export default class Tweets extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tweets: []
+            tweets: null
         };
-        this.loadData();
     }
 
-    loadData(path) {
-        //
-        window.fetch('http://localhost:5001/tweets/getTweetWithTime')
-        //  window.fetch('./data/exemple.json')
-            .then(res => {
-                console.log(res);
-                return res.json()
-            })
-            .then(res => {
-                this.setState({tweets: res.tweets});
+    componentDidMount() {
+        this.loadData()
+        this.forceUpdate()
+        console.log(this.state)
+    }
 
-            })
+    loadData() {
+        window.fetch('http://localhost:5001/tweets/getTweetWithTime/*')
+            .then(
+                response => {
+                    response.json().then(result => {
+                        //console.log()
+                        this.setState({ tweets: result.tweets })
+                    })
+                })
+            //.then(console.log(this.state.tweets))
+            //.then(data => console.log(response)) /* this.setState({ tweets: data.tweets */
             .catch(error => console.error('Error:', error))
+        console.log(this.state.tweets)
     }
 
     render() {
@@ -36,18 +41,10 @@ export default class Tweets extends React.Component {
                                 <h1 className="font-70 text-dark">Tweets </h1><br/>
                                 <main>
                                     {/*
-                                        this.state.tweets.map((tweet, i) => {
-                                           var analyze="None";
-                                           if (tweet.sentiment[0]>0.25){
-                                             analyze = "Positive";
-                                           }else if (tweet.sentiment[0]>=0){
-                                             analyze = "Neutre";
-                                           } else{
-                                              analyze = "Negative";
-                                           }
-                                            return <Tweet author={tweet.author} text={tweet.tweet} sentiment={analyze}/>
+                                        this.state.tweets.map(function(tweet){
+                                            return <Tweet author={tweet.author} text={tweet.tweet}/>;
                                         })
-                                  */  }
+                                    */}
                                 </main>
                             </div>
                         </div>

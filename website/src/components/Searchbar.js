@@ -40,13 +40,13 @@ class Searchbar extends Component
 
         let sementic = "";
             if(this.good_checked.checked){
-               sementic="positif";
+               sementic="Positif";
             }
             else if(this.bad_checked.checked){
-                 sementic="negative";
+                 sementic="Negatif";
             }
             else{
-                 sementic="positif et negatif"
+                 sementic="Positif&Negatif"
             }
             console.log(this.bad_checked.checked);
         return sementic;

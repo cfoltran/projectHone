@@ -44,7 +44,7 @@ def getStatistics(hashtagSearched):
     json = jsonify({'statistics':result})
     return json
 
-@app.route('/statistics/region/<codeRegion>', methods=['GET'])
+@app.route('/statistics/region/<codeRegion>')
 @cross_origin()
 def regionRouting(codeRegion):
     statistics = Statistics(None, codeRegion)
@@ -55,15 +55,15 @@ def regionRouting(codeRegion):
     json = jsonify({'statistics':result})
     return json
 
-@app.route('/tweets/getTweetWithTime', methods=['GET'])
+@app.route('/tweets/getTweetWithTime/<hashtagSearched>')
 @cross_origin()
-def get_tweet_with_time():
+def get_tweet_with_time(hashtagSearched):
 
-    myTweet = Tweet()
-
+    myTweet = Tweet(hashtagSearched)
     tweets = myTweet.getTweetWithTime()
-
-    return jsonify({'tweets': tweets})
+    result = tweets.to_dict(orient='index')
+    result = {str(k):v for k,v in result.items()}
+    return jsonify({'tweets': result})
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
