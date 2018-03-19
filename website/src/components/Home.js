@@ -15,8 +15,14 @@ import bot from '../config/bot';
 
 //Style
 import '../style/css/App.css';
+<<<<<<< HEAD
 import '../style/css/bot.css';
 import Statistique from "./Statistique";
+=======
+import '../style/css/bot.css'
+
+
+>>>>>>> 6e95b2993cc4132bcb0e2f5e74bc49a0a98cde2d
 
 
 
@@ -54,7 +60,7 @@ class Home extends Component {
             <div>
                 <Searchbar/>
                 <Loader/>
-                <section className="padding-150 bg-dark">
+                <section className="padding-150 bg-light">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">

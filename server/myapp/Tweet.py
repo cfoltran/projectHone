@@ -24,7 +24,7 @@ TWEETS_PER_SEARCH = 2 # Max Value = 100
 """
 
 
-class Tweet():
+class Tweet:
 
     """
     Constructor
@@ -82,4 +82,3 @@ myTweet = Tweet("#jo")
 
 # j'ai analysé son sentiment
 tweets = myTweet.getTweetWithTime()
-print(tweets)
