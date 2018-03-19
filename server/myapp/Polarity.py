@@ -5,13 +5,16 @@ textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
 
 class Polarity:
-    def __init__(self, tweet):
-        self.tweet = tweet
+    def __init__(self, tweets):
+        self.tweets = tweets
 
     def getPolarityTweet(self):
-        polarity = textblob(self.tweet).sentiment
-        return polarity[0]
+        result = {}
+        for tweet in self.tweets:
+            polarity = textblob(tweet).sentiment
+            result[tweet] = polarity[0]
+        return result
 
-
-pola = Polarity("j'aime j'aime")
-print(pola.getPolarityTweet())
+tweets = ["je t'aime","affreux affreux","tu vas mourir demain"]
+test = Polarity(tweets)
+print(test.getPolarityTweet())
