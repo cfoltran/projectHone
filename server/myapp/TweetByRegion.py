@@ -21,6 +21,7 @@ class TweetByRegion:
 
 #https://developers.google.com/maps/documentation/geocoding/intro?hl=fr
 #https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder?hl=fr
+
     def retrieveTweets(self): 
         # Get today date
         today = datetime.date.today()
@@ -145,7 +146,7 @@ class TweetByRegion:
             place_id="ChIJu43y3DMOCiIRSyr-lWcXMv8",since=today-margin)
 
         
-        return self.newTweets
+        return self.newTweets # return data on tweets by a region, retrieve these data in json.
 
 
 
