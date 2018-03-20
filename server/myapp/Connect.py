@@ -33,6 +33,3 @@ class Connect:
         self.auth.set_access_token(self.access_token, self.access_token_secret)
         self.api = tweepy.API(self.auth)
         return self.api
-
-co = Connect()
-co.authentication()
