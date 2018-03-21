@@ -72,6 +72,7 @@ class Tweet:
         data['Author'] = np.array([self.getAuthor(tweet) for tweet in newTweets])
         data['Polarity'] = np.array([self.getPolarity(tweet.text) for tweet in newTweets])
         data['Location'] = np.array([self.getLocation(tweet) for tweet in newTweets])
+        data['Coordinates'] = np.array([self.getCoordinates(tweet) for tweet in newTweets])
         return data
 
 
@@ -92,6 +93,16 @@ class Tweet:
         decodedfile = json.dumps(file)
         decodedfile = json.loads(decodedfile)
         return str(decodedfile['location'])
+
+
+    def getCoordinates(self, tweet):
+        file = tweet._json
+        decodedfile = json.dumps(file)
+        decodedfile = json.loads(decodedfile)
+        if decodedfile['coordinates']:
+            return str(decodedfile['coordinates'].get("coordinates"))
+        else: 
+            return decodedfile['coordinates']
 
     def initializeAPI(self):
         co = Connect()
