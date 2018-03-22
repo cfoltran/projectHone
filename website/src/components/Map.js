@@ -28,7 +28,7 @@ class Map extends Component {
             var color = ["#FF453E","#E87B31","#FFEEC8","#E8E23D","#6CFF3A"];
 
             // Create SVG element
-            var svgMap = d3.select('#map').append("svg")
+            var svgMap = d3.select(this.refs.mapRender).append("svg")
                                           .attr("id", "svg")
                                           .attr("width", width)
                                           .attr("height", height)
@@ -131,7 +131,7 @@ class Map extends Component {
 
     render() {
         return (
-            <div className="" id="map" ref="mapRender"></div>
+            <div id="map" ref="mapRender"></div>
         )
     }
 }
