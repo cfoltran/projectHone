@@ -14,7 +14,6 @@ import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
-import Tweet from "./Tweet";
 
 
 class Searchbar extends Component
@@ -76,7 +75,7 @@ class Searchbar extends Component
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
                 <nav className="navbar navbar-expand-md navbar-light fixed-top " id="navbar">
-                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
+                    <a className="navbar-brand abs" href="">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Tweet from './Tweet';
 
 export default class Tweets extends React.Component {
 
@@ -12,9 +11,8 @@ export default class Tweets extends React.Component {
     }
 
     loadData(path) {
-        //
+
         window.fetch('http://localhost:5001/tweets/getTweetWithTime')
-        //  window.fetch('./data/exemple.json')
             .then(res => {
                 console.log(res);
                 return res.json()
