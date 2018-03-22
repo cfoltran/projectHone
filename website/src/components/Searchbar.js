@@ -14,7 +14,6 @@ import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
-import Tweet from "./Tweet";
 
 
 class Searchbar extends Component

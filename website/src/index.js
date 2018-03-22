@@ -10,11 +10,9 @@ import {render} from 'react-dom';
 
 //componant
 import App from './App';
-import Search from './components/Search';
 
 //config
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 const Root = () =>{

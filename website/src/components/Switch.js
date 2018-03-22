@@ -48,6 +48,7 @@ export default class Switch extends Component
                         <div className="toggle-switch">
                             <label className="switch">
                                 <input type="checkbox" checked={this.state.checked} onChange={e => this.toggle(e)} id="switch-style"/>
+
                                 <div className="slider round"></div>
                             </label>
                         </div>
@@ -59,6 +60,4 @@ export default class Switch extends Component
             </div>
         );
     }
-
-
 }
