@@ -78,13 +78,19 @@ function search_tweet(search_content){
 	gotData: fonction appelée affichant les data recupéré */
 }
 
-function analyseTweets(liste_tweets){
+function analyseTweets(msgToAnalyze){
 	fetch('http://localhost:5001/polarity', { 
 			method: 'POST', 
-			tweets: liste_tweets
-			}).then(polarites => {
-				console.log(polarites);
-				})
+			tweet: msgToAnalyze
+			}).then(res => {
+                console.log(res);
+                return sentiment.json()
+            })
+            .then(res => {
+                this.setState({polarite: sentiment.res});
+
+            })
+            .catch(error => console.error('Error:', error))
 
 
 
