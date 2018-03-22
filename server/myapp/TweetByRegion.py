@@ -9,7 +9,7 @@ from Credentials import *
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 
-TWEETS_PER_SEARCH = 10 # Max Value = 100
+TWEETS_PER_SEARCH = 5 # Max Value = 100
 #https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search
 class TweetByRegion:
     region = ""
@@ -168,6 +168,6 @@ class TweetByRegion:
         return api
 
 
-#tweet = TweetByRegion("France","#JO2018")
-#print(tweet.retrieveTweets())
+tweet = TweetByRegion("France","#JO2018")
+print(tweet.retrieveTweets())
 #tweet.displayTweetsByRegion()
