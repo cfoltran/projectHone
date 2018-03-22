@@ -91,7 +91,7 @@ class Searchbar extends Component
                                     className="fas fa-home"> Accueil</i></a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"><i className="fas fa-question-circle"> Prétion</i> </a>
+                                <a className="nav-link"><i className="fas fa-question-circle"> Présentation</i> </a>
                             </li>
                         </ul>
                         {/*<!--===========================================-->*/}

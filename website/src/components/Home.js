@@ -7,6 +7,7 @@ import Map from './Map';
 import Searchbar from './Searchbar'
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
+import CarouselTweet from "./CarouselTweet";
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -78,7 +79,7 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-                <Tweets/>
+                <CarouselTweet/>
         </div>
         );
     }
