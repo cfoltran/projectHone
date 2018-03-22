@@ -10,6 +10,7 @@ import Search from './components/Search';
 import GenericNotFound from './components/GenericNotFound'
 
 
+
 class App extends Component {
 
     render() {
@@ -19,6 +20,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route  path="/search/:tag/:sementic" component={Search}/>
+                    <Route  path="/map/:region" component={MapFocus}/>
                     <Route component={GenericNotFound} />
                 </Switch>
             </Router>

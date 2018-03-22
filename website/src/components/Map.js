@@ -8,9 +8,11 @@ class Map extends Component {
     }
 
     // Source: http://shop.oreilly.com/product/0636920026938.do
+
+
     initMap() {
             // Width and height
-            var width = 900, height = 900;
+            var width = 1000, height = 900;
 
             // Define map projection
             var projection = d3.geoConicConformal()
@@ -26,7 +28,7 @@ class Map extends Component {
             var color = ["#FF453E","#E87B31","#FFEEC8","#E8E23D","#6CFF3A"];
 
             // Create SVG element
-            var svgMap = d3.select('#map').append("svg")
+            var svgMap = d3.select(this.refs.mapRender).append("svg")
                                           .attr("id", "svg")
                                           .attr("width", width)
                                           .attr("height", height)
@@ -42,6 +44,7 @@ class Map extends Component {
             d3.json('/static/fr-data-test.json', function(data) {
                 // Load in GeoJSON data
                 d3.json('/static/departments.json', function(geojson) {
+                  console.log(geojson)
                     // Merge the fr. data and GeoJSON
                     // Loop through once for each fr. data value
                     for(var i = 0; i < data.states.length; i++) {
@@ -65,15 +68,30 @@ class Map extends Component {
                         }
                     }
 
+                    function feeling(num)
+                    {
+                      if(num >= -1 && num < -0.65)
+                          return "Énervé";
+                      else if(num >= -0.65 && num < -0.3)
+                          return "Pas content";
+                      else if(num >= -0.3 && num < 0.3)
+                          return "Neutre";
+                      else if(num >= 0.3 && num < 0.65)
+                          return "Content";
+                      else if(num >= 0.65 && num <= 1)
+                          return "Trés content";
+                    }
                     // Bind data and create one path per GeoJSON feature
                     deps.selectAll("path")
                         .data(geojson.features)
                         .enter()
                         .append("path")
                         .attr("d", path)
+                        .attr("stroke","black")
                         .style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
+                            var humeur
                             if(typeof(value) == "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
@@ -93,10 +111,15 @@ class Map extends Component {
                                 .duration(200)
                                 .style("opacity", .9);
                             div.html("Région : " + d.properties.nom + "<br>"
-                                +  "Code : " + d.properties.code)
-                                .style("left", (d3.event.pageX + 30) + "px")
-                                .style("top", (d3.event.pageY - 30) + "px")
+                                +  "Humeur : " + feeling(d.properties.value))
+                                .style("left", (d3.event.pageX -350) + "px")
+                                .style("top", (d3.event.pageY -200) + "px")
                         })
+
+                        .on("click", function(d) {
+                            
+                        })
+
                         .on("mouseout", function(d) {
                             d3.select(this).attr("fill","rgba(98,225,230,0.5)");
                             div.transition()
@@ -113,8 +136,7 @@ class Map extends Component {
 
     render() {
         return (
-
-            <div className="bg-light" id="map" ref="mapRender"></div>
+            <div id="map" ref="mapRender"></div>
         )
     }
 }
