@@ -17,7 +17,7 @@ import bot from '../config/bot';
 //Style
 import '../style/css/App.css';
 import '../style/css/bot.css';
-import Statistique from "./Statistique";
+import Statistique from "./Statistic";
 
 
 

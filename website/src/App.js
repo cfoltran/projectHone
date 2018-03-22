@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //Components
 import Home from './components/Home'
 import Search from './components/Search';
+import MapFocus from './components/MapFocus';
 import GenericNotFound from './components/GenericNotFound'
 
 
