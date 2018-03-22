@@ -105,12 +105,12 @@ function reactTweet(name, polarity){
 			tweetIT(tweetNeg);
 		}
 		//NEUTRE
-		if (tauxPN.polarity>=0.25 && .polarity<= 0.25) {
+		if (polarity>=0.25 && polarity<= 0.25) {
 			var tweetNeut = '@' + name + ' Ma foi, c\'est bien vrai.';
 			tweetIT(tweetNeut);
 		}
 		//POSITIF
-			if (tauxPN.polarity>0.25) {
+			if (polarity>0.25) {
 			var tweetPos = '@' + name + ' Ouai c\'est géniiial :-) !!!';
 			tweetIT(tweetPos);
 		}
