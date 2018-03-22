@@ -9,6 +9,7 @@ import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
 
+
 //Config
 import { ThemeProvider } from 'styled-components';
 import steps from '../config/steps';
@@ -26,10 +27,12 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            checked: false
         };
 
         this.toggleFloating = this.toggleFloating.bind(this);
+        this.switchHome = this.switchHome.bind(this);
     }
 
     toggleFloating() {
@@ -50,13 +53,17 @@ class Home extends Component {
         }
     }
 
+    switchHome = checked => {
+        this.setState( { checked: checked} );
+    };
     render() {
         // const tag = <Search ref={this.state.tag}/>;
+        let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
         return (
             <div>
-                <Searchbar/>
+                <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
-                <section className="padding-150 bg-light">
+                <section className={classSwitch}>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
@@ -64,7 +71,6 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-
                 </section>
 
 
@@ -79,7 +85,11 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
+
                 <CarouselTweet/>
+
+                <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
+
         </div>
         );
     }

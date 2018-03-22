@@ -25,7 +25,7 @@ class Example extends Component {
                     caption: '@lemondefr'
                 },
                 {
-                    
+
                     caption: 'Slide 2'
                 },
                 {
