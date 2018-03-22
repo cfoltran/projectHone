@@ -9,7 +9,7 @@ class Map extends Component {
 
     // Source: http://shop.oreilly.com/product/0636920026938.do
 
-    
+
     initMap() {
             // Width and height
             var width = 1000, height = 900;
@@ -131,7 +131,6 @@ class Map extends Component {
 
     render() {
         return (
-
             <div className="" id="map" ref="mapRender"></div>
         )
     }
