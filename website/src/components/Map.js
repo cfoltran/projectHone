@@ -38,8 +38,23 @@ class Map extends Component {
                                                     .attr("class", "tooltip")
                                                     .style("opacity", 0);
 
+          function feeling(num)
+          {
+            if(num >= -1 && num < -0.65)
+                return "Énervé";
+            else if(num >= -0.65 && num < -0.3)
+                return "Pas content";
+            else if(num >= -0.3 && num < 0.3)
+                return "Neutre";
+            else if(num >= 0.3 && num < 0.65)
+                return "Content";
+            else if(num >= 0.65 && num <= 1)
+                return "Trés content";
+          }
+
             // Load in france data
             d3.json('/static/fr-data-test.json', function(data) {
+              console.log(data)
                 // Load in GeoJSON data
                 d3.json('/static/departments.json', function(geojson) {
                   console.log(geojson)
@@ -65,20 +80,8 @@ class Map extends Component {
                             }
                         }
                     }
+                    console.log(geojson)
 
-                    function feeling(num)
-                    {
-                      if(num >= -1 && num < -0.65)
-                          return "Énervé";
-                      else if(num >= -0.65 && num < -0.3)
-                          return "Pas content";
-                      else if(num >= -0.3 && num < 0.3)
-                          return "Neutre";
-                      else if(num >= 0.3 && num < 0.65)
-                          return "Content";
-                      else if(num >= 0.65 && num <= 1)
-                          return "Trés content";
-                    }
                     // Bind data and create one path per GeoJSON feature
                     deps.selectAll("path")
                         .data(geojson.features)
@@ -89,7 +92,6 @@ class Map extends Component {
                         .style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
-                            var humeur
                             if(typeof(value) == "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
@@ -104,24 +106,27 @@ class Map extends Component {
                             }
                         })
                         .on("mouseover", function(d) {
-                            d3.select(this).attr("fill","black");
                             div.transition()
                                 .duration(200)
                                 .style("opacity", .9);
                             div.html("Région : " + d.properties.nom + "<br>"
-                                +  "Humeur : " + feeling(d.properties.value))
+                                +  "Humeur : " + feeling(d.properties.value)+ "<br>"
+                                    +  "nombre de tweet : " + d.properties.value)
                                 .style("left", (d3.event.pageX -350) + "px")
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
                         .on("mouseout", function(d) {
-                            d3.select(this).attr("fill","rgba(98,225,230,0.5)");
                             div.transition()
                                 .duration(0)
                                 .style("opacity", 0);
                             div.html("")
                                 .style("left", "0px")
                                 .style("top", "0px");
-                        });
+                        })
+                        .on("click",function(d){
+                          console.log(d.properties.nom);
+
+                      });
                 })
 
             });
