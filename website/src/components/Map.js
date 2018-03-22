@@ -81,7 +81,6 @@ class Map extends Component {
                         }
                     }
                     console.log(geojson)
-
                     // Bind data and create one path per GeoJSON feature
                     deps.selectAll("path")
                         .data(geojson.features)
