@@ -25,9 +25,6 @@ class Searchbar extends Component
             this.state = {
                 modal: false
             };
-
-            this.toggle = this.toggle.bind(this);
-            this.toggleSwitch = this.toggleSwitch.bind(this);
     }
 
     toggle()
@@ -66,14 +63,10 @@ class Searchbar extends Component
 
     };
 
-    toggleSwitch = checked => {
-        this.setState( { checked: checked} );
-        this.props.onSwitchHome(this.state.checked);
-    };
 
     render()
     {
-        let styleNav=(this.state.checked)?"navbar navbar-expand-md navbar-light bg-light fixed-top ":"navbar navbar-expand-md bg-dark navbar-dark fixed-top ";
+        let styleNav=(this.props.checked)?"navbar navbar-expand-md navbar-dark bg-dark fixed-top ":"navbar navbar-expand-md bg-light navbar-light fixed-top ";
         return (
             <div>
 
@@ -103,7 +96,7 @@ class Searchbar extends Component
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
                             {/*<!-- Bouton switch -->*/}
-                            <Switch checked={false} onToggleSwitch={this.toggleSwitch}/>
+                            <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}

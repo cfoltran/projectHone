@@ -14,22 +14,9 @@ import '../style/css/style.css';
 export default class Switch extends Component
 {
 
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            checked : false,
-        };
-
-    }
-    componentWillMount () {
-        this.setState( { checked: this.props.checked } );
-
-    }
 
     toggle = event => {
-        this.setState( { checked: !this.state.checked} );
-        this.props.onToggleSwitch(this.state.checked);
+        this.props.onSwitchHome(!this.props.checked);
     };
     
 
@@ -47,7 +34,7 @@ export default class Switch extends Component
                         </div>
                         <div className="toggle-switch">
                             <label className="switch">
-                                <input type="checkbox" checked={this.state.checked} onChange={e => this.toggle(e)} id="switch-style"/>
+                                <input type="checkbox" checked={this.props.checked} onChange={e => this.toggle(e)} id="switch-style"/>
 
                                 <div className="slider round"></div>
                             </label>

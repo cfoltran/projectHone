@@ -25,9 +25,10 @@ export default class Tweets extends React.Component {
     }
 
     render() {
+        let styleBg=(this.props.checked)?"bg-dark":"bg-light";
         return (
             <div>
-                <section className="bg-dark" id="home">
+                <section className={styleBg} id="home">
                     <div className="container padding-150" >
                         <div className="row text-center">
                             <div className="col-md-12" id="tweets">
@@ -52,7 +53,7 @@ export default class Tweets extends React.Component {
                     </div>
                 </section>
 
-                <section className="bg-dark" id="presentation">
+                <section className={styleBg} id="presentation">
                     <div className="container padding-150">
                         <div className="row text-center">
                             <div className="col-md-12">

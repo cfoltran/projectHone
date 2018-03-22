@@ -26,7 +26,8 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            checked: false
         };
 
         this.toggleFloating = this.toggleFloating.bind(this);
@@ -59,7 +60,7 @@ class Home extends Component {
         let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
         return (
             <div>
-                <Searchbar onSwitchHome={this.switchHome}/>
+                <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
                 <section className={classSwitch}>
                     <div className="container">
@@ -84,7 +85,7 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-                <Tweets/>
+                <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
         </div>
         );
     }
