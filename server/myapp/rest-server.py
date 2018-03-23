@@ -47,7 +47,7 @@ def getStatistics(hashtagSearched):
 @app.route('/statistics/region/<codeRegion>')
 @cross_origin()
 def regionRouting(codeRegion):
-    statistics = Statistics(None, codeRegion)
+    statistics = StatisticsByRegion(codeRegion)
     df = statistics.retrieveStatistics()
     result = df.to_dict(orient='index')
     # fix key error string

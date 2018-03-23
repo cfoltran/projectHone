@@ -24,11 +24,7 @@ class Connect:
                     l = line.split("=")
                     self.access_token_secret = str(l[1]).strip()
 
-    def authentication(self):
-        print(self.consumer_key)
-        print(self.consumer_secret)
-        print(self.access_token_secret)
-        print(self.access_token)
+    def authentification(self):
         self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         self.auth.set_access_token(self.access_token, self.access_token_secret)
         self.api = tweepy.API(self.auth)
