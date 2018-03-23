@@ -3,7 +3,7 @@ import six
 
 from Tweet import Tweet
 from SentimentAnalyze import Sentiment
-from Statistics import Statistics
+from StatisticsByRegion import StatisticsByRegion
 
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_cors import CORS, cross_origin
@@ -48,7 +48,9 @@ def getStatistics(hashtagSearched):
 @cross_origin()
 def regionRouting(codeRegion):
     statistics = StatisticsByRegion(codeRegion)
-    df = statistics.retrieveStatistics()
+    df = statistics.getStats()
+    df.reset_index(inplace=True, drop=True)
+    df.sort_index(ascending=True)
     result = df.to_dict(orient='index')
     # fix key error string
     result = {str(k):v for k,v in result.items()}
