@@ -28,7 +28,7 @@ class BarChart extends Component {
           // append the svg object to the body of the page
           // append a 'group' element to 'svg'
           // moves the 'group' element to the top left margin
-          var svg = d3.select("body").append("svg")
+          var svg = d3.select(this.refs.bar).append("svg")
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -75,7 +75,7 @@ class BarChart extends Component {
     }
   render() {
     return (
-        <div className="col-md-12" id="bar"></div>
+        <div className="ml-auto bar" ref="bar"></div>
     );
   }
 }

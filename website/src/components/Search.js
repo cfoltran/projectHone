@@ -20,10 +20,10 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 <section className="bg-white text-center">
                     <div className="container">
-                        <h2 className="font-60 text-dark">Recherche:</h2>
+                        <h2 className="font-70 text-dark">Recherche:</h2>
                         <div className="row text-center">
                             <div className="col-md-12  padding-150">
-                                 <p className="text-dark"> Vous avez recherchez: {this.props.match.params.tag} <br/>
+                                 <p className="text-dark font-40"> Vous avez recherchez: {this.props.match.params.tag} <br/>
                         Avec le sentiment: {this.props.match.params.sementic}
                         {/*Todo get the sementic*/}
                                 </p>
@@ -38,9 +38,9 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 <section className="bg-dark">
                     <div className="container">
-                        <h2 className="font-60 text-center text-cloud">Dash Board :</h2>
+                        <h2 className="font-70 text-center text-cloud">Dash Board :</h2>
                         <div className="row">
-                    <DashBoard/>
+                            <DashBoard/>
                         </div>
                     </div>
                 </section>
@@ -49,14 +49,14 @@ class Search extends React.Component{
                 {/*-----------Bar Chart------------*/}
                 {/*--------------------------------*/}
                 <div>
-                    <div className="bg-white">
-                        <h2 className="font-60 text-center">Bar chart:</h2>
+                    <section className="bg-white">
                             <div className="container">
+                                <h2 className="font-70 text-center padding-10">Bar chart:</h2>
                                 <div className="row">
-                                    <BarChart/>
+                                     <BarChart/>
                                 </div>
                             </div>
-                    </div>
+                    </section >
                 </div>
             </div>
         )
