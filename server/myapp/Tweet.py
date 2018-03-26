@@ -16,6 +16,7 @@ TWEETS_PER_SEARCH = 10 # Max Value = 100
 
 textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
+
 class Tweet:
 
     """
