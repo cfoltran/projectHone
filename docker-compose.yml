@@ -25,10 +25,12 @@ services:
       - http_proxy
       - https_proxy
       - no_proxy
-    ports:
-        - "8081:8081"
     volumes:
       - ./bot/:/bot/
+    depends_on:
+      - restfull-app
+    links:
+      - restfull-app
   react_demo:
     container_name: "client-side2"
     restart: always

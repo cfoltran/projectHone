@@ -3,7 +3,7 @@
 
 console.log("debut");
 
-var superA = require('superagent')
+var request = require('superagent')
 
 
 var Twit = require('twit') //necessité de l'API twitter
@@ -30,7 +30,7 @@ function init(){
 
 function searchAllTweets (){
 	// cette fonctionn appelle la fonction search pour tous les mots cle souhaites et renvoie le resultat comme une seuleliste de tweets
-	return search_tweet("2018") //faire attention à mettre les guillemets
+	return search_tweet("Jeux Olympiques") //faire attention à mettre les guillemets
 }
 
 /////////----RECHERCHE DE TWEET PAR MOTS-CLES----///////////
@@ -79,18 +79,19 @@ function search_tweet(search_content){
 }
 
 function analyseTweets(msgToAnalyze){
+	console.log(msgToAnalyze);
 	request
-  	.post('http://localhost:5001/polarity')
-  	.send({ tweet: msgToAnalyze })
-  	.set('X-API-Key', 'foobar')
+  	.post('http://restfull-app:5001/sentiment/analyze')
+  	.send({ text: msgToAnalyze })
   	.set('Accept', 'application/json')
   	.end(function(err, sentiment){
-    	console.log("sentiment")
+    	console.log(err);
+			console.log(sentiment);
   	});
 
 	/*
-	fetch('http://localhost:5001/polarity', { 
-			method: 'POST', 
+	fetch('http://localhost:5001/polarity', {
+			method: 'POST',
 =======
 	fetch('http://localhost:5001/polarity', {
 			method: 'POST',
