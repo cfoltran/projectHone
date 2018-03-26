@@ -4,6 +4,7 @@
 console.log("debut");
 
 var fetch = require('node-fetch')
+var ajax = require('ajax')
 
 
 var Twit = require('twit') //necessité de l'API twitter
@@ -79,6 +80,11 @@ function search_tweet(search_content){
 }
 
 function analyseTweets(msgToAnalyze){
+	return $().load('http://localhost:5001/polarity', { // N'oubliez pas l'ouverture des accolades !
+    tweet : (msgToAnalyze).val()
+	});
+
+	/*
 	fetch('http://localhost:5001/polarity', { 
 			method: 'POST', 
 			tweet: msgToAnalyze
@@ -93,7 +99,7 @@ function analyseTweets(msgToAnalyze){
             .catch(error => console.error('Error:', error))
 
 
-
+		*/
 }
 
 function reactTweet(name, polarity){
