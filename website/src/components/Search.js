@@ -18,12 +18,12 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*----------Get the search--------*/}
                 {/*--------------------------------*/}
-                <section className="bg-dark text-center">
+                <section className="bg-white text-center">
                     <div className="container">
-                        <h2 className="font-60">Recherche:</h2>
+                        <h2 className="font-60 text-dark">Recherche:</h2>
                         <div className="row text-center">
                             <div className="col-md-12  padding-150">
-                                 <p className="text-cloud"> Vous avez recherchez: {this.props.match.params.tag} <br/>
+                                 <p className="text-dark"> Vous avez recherchez: {this.props.match.params.tag} <br/>
                         Avec le sentiment: {this.props.match.params.sementic}
                         {/*Todo get the sementic*/}
                                 </p>
@@ -36,9 +36,9 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*----------Dash Board------------*/}
                 {/*--------------------------------*/}
-                <section>
+                <section className="bg-dark">
                     <div className="container">
-                        <h2 className="font-60 text-center">Dash Board :</h2>
+                        <h2 className="font-60 text-center text-cloud">Dash Board :</h2>
                         <div className="row">
                     <DashBoard/>
                         </div>
@@ -48,14 +48,16 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*-----------Bar Chart------------*/}
                 {/*--------------------------------*/}
-                <section className="bg-dark">
-                    <div className="container">
-                        <h2 className="font-60 text-center padding-150">Bar chart</h2>
-                        <div className="row">
-                            <BarChart/>
-                        </div>
+                <div>
+                    <div className="bg-white">
+                        <h2 className="font-60 text-center">Bar chart:</h2>
+                            <div className="container">
+                                <div className="row">
+                                    <BarChart/>
+                                </div>
+                            </div>
                     </div>
-                </section>
+                </div>
             </div>
         )
     }
