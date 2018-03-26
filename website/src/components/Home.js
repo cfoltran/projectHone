@@ -4,10 +4,9 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import Searchbar from './Searchbar'
+import Searchbar from './NavbarSearch';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
-
 
 //Config
 import { ThemeProvider } from 'styled-components';

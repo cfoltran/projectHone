@@ -1,6 +1,6 @@
 /*
 ///////////////////////////////////////////////////////////////
-                Modal & search bar
+                Modal
 ///////////////////////////////////////////////////////////////
  */
 //React
@@ -16,7 +16,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 
 
-class Modal extends Component {
+class ModalSearch extends Component {
 
     constructor(props) {
         super(props);
@@ -64,15 +64,18 @@ class Modal extends Component {
     };
 
 
-    render() {
+    render()
+    {
+        let styleNav=(this.props.checked)?"navbar navbar-expand-md navbar-dark bg-dark fixed-top ":"navbar navbar-expand-md bg-light navbar-light fixed-top ";
         return (
             <div>
                 {/*<!--===========================================-->*/}
                 {/*                 <!--Modal-->                     */}
                 {/*<!--===========================================-->*/}
                 {/*<!-- Bouton switch -->*/}
-                <Switch isChecked={false}/>
-                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
+                <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
+                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search">
+                    Rechercher</i></Button>
                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
                        backdropTransition={{timeout: 10}}
                        toggle={this.toggle} className={this.props.className}>
@@ -101,7 +104,8 @@ class Modal extends Component {
                                                this.both_checked = input
                                            }}/>Les deux
                                 </label>
-                                <button className="btn btn-primary" ref="both_checked" type="onSubmit">Rechercher
+                                <button className="btn btn-primary" ref="both_checked" type="onSubmit">
+                                    Rechercher
                                 </button>
                             </form>
                         </div>
@@ -114,4 +118,4 @@ class Modal extends Component {
     }
 }
 
-export default withRouter(Modal);
+export default withRouter(ModalSearch);
