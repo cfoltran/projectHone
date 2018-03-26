@@ -16,7 +16,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 
 
-class Modal extends Component {
+class ModalSearch extends Component {
 
     constructor(props) {
         super(props);
@@ -114,4 +114,4 @@ class Modal extends Component {
     }
 }
 
-export default withRouter(Modal);
+export default withRouter(ModalSearch);
