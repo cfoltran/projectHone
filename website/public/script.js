@@ -6,19 +6,6 @@
 
 $(document).ready(function(){
 
-    /* site color change by clicking on the day/night switch */
-    let switchDayNight = function(){
-        /*get the checkbox */
-        var checkBox = document.getElementById('switch-style');
-        /*get the style */
-        var bdy=document.getElementsByName("body");
-        if(checkBox.checked==true){
-            bdy.style.backgroundColor="white";
-        }
-        else{
-            bdy.style.backgroundColor="black";
-        }
-    }
 
     /* navigation bar color change
     let changeColor = function() {
