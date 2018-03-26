@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
 import '../style/css/map.css';
+import { withRouter } from "react-router-dom";
+
+
 
 class Map extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         this.initMap()
     }
@@ -12,6 +20,7 @@ class Map extends Component {
 
     initMap() {
             // Width and height
+            var propsForD3 = this.props;
             var width = 1000, height = 900;
 
             // Define map projection
@@ -117,7 +126,7 @@ class Map extends Component {
                         })
 
                         .on("click", function(d) {
-                            
+                            propsForD3.history.push(`/map/${d.properties.nom}`);
                         })
 
                         .on("mouseout", function(d) {
@@ -141,4 +150,4 @@ class Map extends Component {
     }
 }
 
-export default Map;
+export default withRouter(Map);
