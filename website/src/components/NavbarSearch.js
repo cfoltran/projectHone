@@ -26,22 +26,22 @@ class NavbarSearch extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem eventKey={1} href="#">
+                    <NavItem eventKey={1} href="#"> <i className="fas fa-map"/>
                         Map
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={2} href="#">
+                    <NavItem eventKey={2} href="#"> <i className="fas fa-home"/>
                         Accueil
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={3} href="#">
+                    <NavItem eventKey={3} href="#"> <i className="fas fa-home"/>
                         Présentation
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={4} href="#">
+                    <NavItem eventKey={4} href="#"> <i className="fas fa-chart-line"/>
                         Statistique
                     </NavItem>
                 </Nav>
