@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #map { background: #444; color: #eee; height: 100vh; }
+=======
+#map {
+    background: transparent;
+    color: #eee;
+    height: 100vh;
+}
+>>>>>>> b7b5fd2ab802298305d37ce61e88e5f619be60af
 
 div.tooltip {
     position: absolute;
