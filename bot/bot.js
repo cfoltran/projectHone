@@ -3,8 +3,7 @@
 
 console.log("debut");
 
-var fetch = require('node-fetch')
-var ajax = require('ajax')
+var superA = require('superagent')
 
 
 var Twit = require('twit') //necessité de l'API twitter
@@ -80,10 +79,14 @@ function search_tweet(search_content){
 }
 
 function analyseTweets(msgToAnalyze){
-<<<<<<< HEAD
-	return $().load('http://localhost:5001/polarity', { // N'oubliez pas l'ouverture des accolades !
-    tweet : (msgToAnalyze).val()
-	});
+	request
+  	.post('http://localhost:5001/polarity')
+  	.send({ tweet: msgToAnalyze })
+  	.set('X-API-Key', 'foobar')
+  	.set('Accept', 'application/json')
+  	.end(function(err, sentiment){
+    	console.log("sentiment")
+  	});
 
 	/*
 	fetch('http://localhost:5001/polarity', { 
