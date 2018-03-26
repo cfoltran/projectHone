@@ -36,7 +36,7 @@ class NavbarSearch extends Component {
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={3} href="#"> <i className="fas fa-home"/>
+                    <NavItem eventKey={3} href="#"> <i className="far fa-hand-pointer"/>
                         Présentation
                     </NavItem>
                 </Nav>
