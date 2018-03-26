@@ -20,6 +20,7 @@ class Map extends Component {
 
     initMap() {
             // Width and height
+            var propsForD3 = this.props;
             var width = 1000, height = 900;
 
             // Define map projection
@@ -125,9 +126,8 @@ class Map extends Component {
                         })
 
                         .on("click", function(d) {
-                            console.log(this.props)
                             var fesse = 1;
-                            this.props.history.push(`/map/${fesse}`);
+                            propsForD3.history.push(`/map/${fesse}`);
                         })
 
                         .on("mouseout", function(d) {
