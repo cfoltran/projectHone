@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
 import '../style/css/map.css';
+import { withRouter } from "react-router-dom";
+
+
 
 class Map extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         this.initMap()
     }
@@ -117,7 +125,9 @@ class Map extends Component {
                         })
 
                         .on("click", function(d) {
-                            
+                            console.log(this.props)
+                            var fesse = 1;
+                            this.props.history.push(`/map/${fesse}`);
                         })
 
                         .on("mouseout", function(d) {
@@ -141,4 +151,4 @@ class Map extends Component {
     }
 }
 
-export default Map;
+export default withRouter(Map);
