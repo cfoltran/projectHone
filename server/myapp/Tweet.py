@@ -10,6 +10,8 @@ from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
 from Credentials import *
 
+textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
+
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 MAX_TWEETS = 4
 TWEETS_PER_SEARCH = 2 # Max Value = 100
@@ -67,6 +69,10 @@ class Tweet:
         newTweets = api.search(q=self.hashtag, lang="fr", count=3,
                                start_time=str(today) + "T00:00:00Z", end_time=str(today) + "T12:00:00Z")
 
+        for tweet.text in newTweets:
+            polarity = textblob(tweet.text).sentiment
+            newTweets[tweet.text] = polarity[0]
+
         return newTweets
 
     def initializeAPI(self):
@@ -80,5 +86,6 @@ class Tweet:
 
 myTweet = Tweet("#jo")
 
+print(myTweet.getTweetWithTime())
 # j'ai analysé son sentiment
-tweets = myTweet.getTweetWithTime()
+# tweets = myTweet.getTweetWithTime()
