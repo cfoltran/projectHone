@@ -95,7 +95,7 @@ class Searchbar extends Component
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
-                            {/*<!-- Bouton switch -->*/}
+                            {/*<!-- Switch button -->*/}
                             <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
