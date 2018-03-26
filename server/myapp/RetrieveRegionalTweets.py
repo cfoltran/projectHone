@@ -13,7 +13,7 @@ class RetrieveRegionalTweets(Thread):
     def run(self):
         FILENAME = "regionalStats.json"
         while True:
-            if time.time() - os.path.getmtime(FILENAME) > 35:
+            if time.time() - os.path.getmtime(FILENAME) > 12*60*60:
                 statistics = StatisticsByRegion("all")
                 df = statistics.getStats()
                 df.reset_index(inplace=True, drop=True)
@@ -21,6 +21,6 @@ class RetrieveRegionalTweets(Thread):
                 with open(FILENAME, 'w') as f:
                     json.dump(result, f)
                 print("Regional Stats Updated")
-                time.sleep(30)
+                time.sleep(60)
 
 
