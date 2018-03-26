@@ -13,7 +13,7 @@ var T = new Twit({		//liaison au compte twitter du bot
 	consumer_secret:      'xci297OYqxyjCR0hu2jiTJoel5AxUM2ktkYdO4e6sZHamr6JCM',
 	access_token:         '959135997836644352-ZZNQJRW3HY6iWfJ7XWyYneOHS8cOuTg',
 	access_token_secret:  'Bi7DBcOLWDYJS6E0OoVVygtDREcaRcj68i0bzvED1lMAT',
-	//timeout_ms:          60*1000,  // optional HTTP request timeout to apply to all requests. 
+	//timeout_ms:          60*1000,  // optional HTTP request timeout to apply to all requests.
 
 })
 
@@ -46,7 +46,7 @@ function search_tweet(search_content){
 		/* Cherchant exclusivement le texte des tweets recherchés
 		nous n'affichons que le texte en créant une variable tweet contenant
 		le status du data, puis on affiche que la partie '.text' */
-  		
+
   		console.log("bonjour3")
 
   		var tweetStatus = data.statuses;
@@ -72,15 +72,15 @@ function search_tweet(search_content){
 
 	}
 
-	T.get('search/tweets', params1, gotData); 
+	T.get('search/tweets', params1, gotData);
 	/* search/tweets : nom de la fonction de recherche de tweet par mots clé
 	params : objet tweet recherché
 	gotData: fonction appelée affichant les data recupéré */
 }
 
 function analyseTweets(msgToAnalyze){
-	fetch('http://localhost:5001/polarity', { 
-			method: 'POST', 
+	fetch('http://localhost:5001/polarity', {
+			method: 'POST',
 			tweet: msgToAnalyze
 			}).then(res => {
                 console.log(res);
@@ -97,7 +97,7 @@ function analyseTweets(msgToAnalyze){
 }
 
 function reactTweet(name, polarity){
-	
+
 
 		//NEGATIF
 		if (polarity<-0.25 ) {
@@ -117,14 +117,14 @@ function reactTweet(name, polarity){
 
 		console.log("bonjour7")
 
-	
+
 }
 
 function tweetIT(tweet_contents){
 	var params2 ={ //definition du contenue du tweet
 		status: tweet_contents
 	}
-	
+
 	T.post('statuses/update', params2, post);
 
 	function post(err, data, response) {
