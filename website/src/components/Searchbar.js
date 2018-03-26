@@ -99,7 +99,7 @@ class Searchbar extends Component
                             {/*<!-- Switch button -->*/}
                             <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
-                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
+                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
                                        backdropTransition={{timeout: 10}}
                                        toggle={this.toggle} className={this.props.className}>
