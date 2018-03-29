@@ -41,8 +41,12 @@ class Map extends Component {
                                                     .style("opacity", 0);
 
             // Load in france data
-            d3.json('/static/fr-data-test.json', function(data) {
+            d3.json('http://localhost:5001/statistics/region/all', function(data) {
                 // Load in GeoJSON data
+
+                // relation between map's json and tweets json
+                var frStatesMap={}
+
                 d3.json('/static/departments.json', function(geojson) {
                   console.log(geojson)
                     // Merge the fr. data and GeoJSON
@@ -66,6 +70,27 @@ class Map extends Component {
                                 break;
                             }
                         }
+                    }
+
+                    ////
+
+                    function pure(str){
+                        var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+                        var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+                        str = str.split('');
+                        var strLen = str.length;
+                        var i, x;
+                        for (i = 0; i < strLen; i++) {
+                          if ((x = accents.indexOf(str[i])) != -1) {
+                            str[i] = accentsOut[x];
+                          }
+                        }
+                        return str.join('');
+                    }
+
+                    for(var i = 0; i < geojson.features.length; i++) {
+                      geojson.features[i].properties.value = data.statistics[frStatesMap[pure(geojson.features[j].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
+                          ['AveragePolarity'] || 0
                     }
 
                     function feeling(num)
