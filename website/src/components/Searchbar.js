@@ -14,6 +14,8 @@ import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
+import '../style/scss/style.css';
+
 
 
 class Searchbar extends Component
@@ -25,6 +27,7 @@ class Searchbar extends Component
             this.state = {
                 modal: false
             };
+        this.toggle = this.toggle.bind(this);
     }
 
     toggle()
@@ -37,15 +40,16 @@ class Searchbar extends Component
 
         let sementic = "";
             if(this.good_checked.checked){
-               sementic="positif";
+               sementic="Positif";
             }
             else if(this.bad_checked.checked){
-                 sementic="negative";
+                 sementic="Negatif";
             }
             else{
-                 sementic="positif et negatif"
+                 sementic="Positif&Negatif"
             }
             console.log(this.bad_checked.checked);
+
         return sementic;
     }
 
@@ -54,10 +58,10 @@ class Searchbar extends Component
         event.preventDefault();
 
         console.log(this.getValueChecked());
-
         const tagSementic = {
             tag: this.tag.value,
             sementic: this.getValueChecked()
+        
     };
         this.props.history.push(`/search/${tagSementic.tag}/${tagSementic.sementic}`);
 
@@ -74,18 +78,18 @@ class Searchbar extends Component
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
                 <nav className={styleNav} id="navbar">
-                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
+                    <a className="navbar-brand abs" href="/">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>
                     <div className="navbar-collapse collapse" id="menu">
                         <ul className="navbar-nav">
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"> <i className="fas fa-map"><span>Map</span></i></a>
+                                <a className="nav-link"> <i className="fas fa-map"><span> Map</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link" > <i
-                                    className="fas fa-home"><span> Accueil </span></i></a>
+                                    className="fas fa-home"><span> Accueil</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link"><i className="fas fa-question-circle"><span> Présentation</span></i> </a>
@@ -95,10 +99,10 @@ class Searchbar extends Component
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
-                            {/*<!-- Bouton switch -->*/}
+                            {/*<!-- Switch button -->*/}
                             <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
-                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"> Rechercher</i></Button>
+                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
                                        backdropTransition={{timeout: 10}}
                                        toggle={this.toggle} className={this.props.className}>
