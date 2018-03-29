@@ -14,22 +14,11 @@ import '../style/css/style.css';
 export default class Switch extends Component
 {
 
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            isChecked : null,
-        };
-
-    }
-    componentWillMount () {
-        this.setState( { isChecked: this.props.isChecked } );
-    }
 
     toggle = event => {
-        this.setState( { isChecked: !this.state.isChecked } );
+        this.props.onSwitchHome(!this.props.checked);
     };
-
+    
 
     render()
     {
@@ -45,7 +34,8 @@ export default class Switch extends Component
                         </div>
                         <div className="toggle-switch">
                             <label className="switch">
-                                <input type="checkbox" checked={this.state.isChecked} onChange={e => this.toggle(e)} id="switch-style"/>
+                                <input type="checkbox" checked={this.props.checked} onChange={e => this.toggle(e)} id="switch-style"/>
+
                                 <div className="slider round"></div>
                             </label>
                         </div>
@@ -57,6 +47,4 @@ export default class Switch extends Component
             </div>
         );
     }
-
-
 }

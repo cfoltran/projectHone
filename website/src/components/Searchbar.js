@@ -25,8 +25,7 @@ class Searchbar extends Component
             this.state = {
                 modal: false
             };
-
-            this.toggle = this.toggle.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     toggle()
@@ -68,14 +67,15 @@ class Searchbar extends Component
 
     render()
     {
+        let styleNav=(this.props.checked)?"navbar navbar-expand-md navbar-dark bg-dark fixed-top ":"navbar navbar-expand-md bg-light navbar-light fixed-top ";
         return (
             <div>
 
                 {/*<!--===========================================-->*/}
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
-                <nav className="navbar navbar-expand-md navbar-light fixed-top " id="navbar">
-                    <a className="navbar-brand abs" href="">JoAnalytweet</a>
+                <nav className={styleNav} id="navbar">
+                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>
@@ -97,7 +97,7 @@ class Searchbar extends Component
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
                             {/*<!-- Bouton switch -->*/}
-                            <Switch isChecked={false}/>
+                            <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
                                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
