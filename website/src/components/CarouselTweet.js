@@ -7,6 +7,8 @@ import {
     CarouselCaption
 } from 'reactstrap';
 
+import '../style/css/style.css'
+
 
 class Example extends Component {
     constructor(props) {
@@ -22,15 +24,20 @@ class Example extends Component {
                 {
 
                     text: '#JO Trente-deux Russes non-invités font appel pour participer aux Jeux d’hiver à #Pyeongchang2018 http://lemde.fr/2C03lpF',
-                    caption: '@lemondefr'
+                    caption: '@lemondefr',
+                    date:'20/02/2018',
+                    nbretweets: '25'
+                },
+                {
+                    caption: 'Beyonce'
                 },
                 {
 
-                    caption: 'Slide 2'
+                    caption: 'Oprah'
                 },
                 {
 
-                    caption: 'Slide 3'
+                    caption: 'Myrell Streep'
                 }
             ]
 
@@ -80,18 +87,16 @@ class Example extends Component {
         const { activeIndex } = this.state;
 
         const slides = items.map((item) => {
+            const caption =  item.date + " - " + item.caption + " - " + item.nbretweets + " retweets - "
             return (
-
-
                             <CarouselItem
-
-                                className="bg-light padding-150"
+                                className="bg-light padding-150 h-500 "
                                 onExiting={this.onExiting}
                                 onExited={this.onExited}
                                 key={item.src}
                             >
-                                <img src={item.src} alt={item.altText} />
-                                <CarouselCaption  captionText={item.caption} captionHeader={item.text} />
+                                <img date={item.date} src={item.src} alt={item.altText} />
+                                <CarouselCaption  className="text-cloud " captionText={caption} captionHeader={item.text} ></CarouselCaption>
                             </CarouselItem>
 
             );
@@ -99,18 +104,6 @@ class Example extends Component {
 
         return (
             <div>
-                <style>
-                {
-                    `.custom-tag {
-                max-width: 100%;
-                height: 500px;
-
-              }
-              .carousel-caption {
-                color: red;
-              }`
-                }
-                </style>
                 <Carousel
                     activeIndex={activeIndex}
                     next={this.next}
@@ -118,8 +111,8 @@ class Example extends Component {
                 >
                     <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                     {slides}
-                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+                    <CarouselControl  className="text-dark " direction="prev" directionText="Previous" onClickHandler={this.previous} />
+                    <CarouselControl className="text-dark "  direction="next" directionText="Next" onClickHandler={this.next}  />
                 </Carousel>
             </div>
         );
