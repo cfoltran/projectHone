@@ -5,12 +5,15 @@
  */
 
 //React
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+
 //React-Bootstrap
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
+
 //ModalSearch
 import ModalSearch from './ModalSearch';
 import Switch from './Switch.js';
+
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
