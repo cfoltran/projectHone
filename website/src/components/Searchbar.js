@@ -14,6 +14,8 @@ import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
+import '../style/scss/style.css';
+
 
 
 class Searchbar extends Component
@@ -47,6 +49,7 @@ class Searchbar extends Component
                  sementic="Positif&Negatif"
             }
             console.log(this.bad_checked.checked);
+
         return sementic;
     }
 
@@ -55,10 +58,10 @@ class Searchbar extends Component
         event.preventDefault();
 
         console.log(this.getValueChecked());
-
         const tagSementic = {
             tag: this.tag.value,
             sementic: this.getValueChecked()
+        
     };
         this.props.history.push(`/search/${tagSementic.tag}/${tagSementic.sementic}`);
 
@@ -75,7 +78,7 @@ class Searchbar extends Component
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
                 <nav className={styleNav} id="navbar">
-                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
+                    <a className="navbar-brand abs" href="/">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>
@@ -96,7 +99,7 @@ class Searchbar extends Component
                         {/*                 <!--Modal-->                     */}
                         {/*<!--===========================================-->*/}
                         <ul className="navbar-nav ml-auto">
-                            {/*<!-- Bouton switch -->*/}
+                            {/*<!-- Switch button -->*/}
                             <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             <li className="nav-item page-scroll">
                                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
