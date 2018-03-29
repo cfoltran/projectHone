@@ -38,13 +38,13 @@ class Searchbar extends Component
 
         let sementic = "";
             if(this.good_checked.checked){
-               sementic="positif";
+               sementic="Positif";
             }
             else if(this.bad_checked.checked){
-                 sementic="negative";
+                 sementic="Negatif";
             }
             else{
-                 sementic="positif et negatif"
+                 sementic="Positif&Negatif"
             }
             console.log(this.bad_checked.checked);
         return sementic;
@@ -82,11 +82,11 @@ class Searchbar extends Component
                     <div className="navbar-collapse collapse" id="menu">
                         <ul className="navbar-nav">
                             <li className="nav-item page-scroll">
-                                <a className="nav-link"> <i className="fas fa-map"><span>Map</span></i></a>
+                                <a className="nav-link"> <i className="fas fa-map"><span> Map</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link" > <i
-                                    className="fas fa-home"><span> Accueil </span></i></a>
+                                    className="fas fa-home"><span> Accueil</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link"><i className="fas fa-question-circle"><span> Présentation</span></i> </a>
