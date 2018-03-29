@@ -54,5 +54,4 @@ class NavbarSearch extends Component {
         );
     }
 }
-
 export default NavbarSearch;
