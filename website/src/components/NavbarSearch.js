@@ -45,7 +45,9 @@ class NavbarSearch extends Component {
                     <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
                         Statistique
                     </NavItem>
-                    <NavItem eventKey={5} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
+                </Nav>
+                <Nav>
+                    <NavItem eventKey={5} href="#"> <i className="fas fa-chart-line"/>
                         <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                     </NavItem>
                 </Nav>

@@ -73,7 +73,6 @@ class ModalSearch extends Component {
                 {/*<!--===========================================-->*/}
                 {/*                 <!--Modal-->                     */}
                 {/*<!--===========================================-->*/}
-                {/*<!-- Bouton switch -->*/}
                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search">
                     Rechercher</i></Button>
                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
