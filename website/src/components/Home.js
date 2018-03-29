@@ -7,8 +7,6 @@ import Map from './Map';
 import Searchbar from './Searchbar'
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
-import CarouselTweet from "./CarouselTweet";
-
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -58,9 +56,8 @@ class Home extends Component {
     render() {
         // const tag = <Search ref={this.state.tag}/>;
         let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
-        let switchCaroussel=(this.state.checked)?"bg-dark":"bg-light";
         return (
-            <div className={switchCaroussel}>
+            <div>
                 <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
                 <section className={classSwitch}>
@@ -85,11 +82,7 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-
-                <CarouselTweet/>
-
                 <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
-
         </div>
         );
     }
