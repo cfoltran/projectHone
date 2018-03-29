@@ -7,6 +7,7 @@ import Map from './Map';
 import NavbarSearch from './NavbarSearch';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
+import CarouselTweet from "./CarouselTweet";
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -16,9 +17,6 @@ import bot from '../config/bot';
 //Style
 import '../style/css/App.css';
 import '../style/css/bot.css'
-
-
-
 
 
 class Home extends Component {
@@ -54,9 +52,11 @@ class Home extends Component {
     switchHome = checked => {
         this.setState( { checked: checked} );
     };
+
     render() {
         // const tag = <Search ref={this.state.tag}/>;
         let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
+        let switchCaroussel=(this.state.checked)?"bg-dark":"bg-light";
         return (
             <div>
                 <NavbarSearch checked={this.state.checked} onSwitchHome={this.switchHome}/>
@@ -71,7 +71,6 @@ class Home extends Component {
                     </div>
                 </section>
 
-
                 <ThemeProvider theme={bot}>
                 <ChatBot
                 steps={steps}
@@ -83,11 +82,14 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
+
+                <CarouselTweet/>
+
                 <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
+
         </div>
         );
     }
-
 }
 
 export default Home;
