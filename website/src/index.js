@@ -14,7 +14,6 @@ import App from './App';
 //config
 import registerServiceWorker from './registerServiceWorker';
 
-
 const Root = () =>{
     return(
         <App/>

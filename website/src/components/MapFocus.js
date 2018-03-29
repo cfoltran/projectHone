@@ -29,9 +29,6 @@ class MapFocus extends Component {
                     </div>
                 </section>   
         )
-
-        home = document.getElementById('navbar-brand abs')
-        home.add
     }
 }
 
