@@ -5,11 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "d3": "^4.13.0",
-<<<<<<< HEAD
     "npm": "^5.8.0",
-=======
-    "npm": "^5.7.1",
->>>>>>> 02890237661defddb8a6022ca9e6dfd97a88eb79
     "react": "^16.0.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.0.0",
