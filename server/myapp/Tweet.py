@@ -24,13 +24,8 @@ TWEETS_PER_SEARCH = 2 # Max Value = 100
 """
 
 
-<<<<<<< HEAD
-class Tweet():
-    
-=======
 class Tweet:
 
->>>>>>> e26480f4c4805057f7e4f5535240eedb2624a066
     """
     Constructor
     """

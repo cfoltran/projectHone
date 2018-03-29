@@ -9,10 +9,6 @@ from Credentials import *
 
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
-<<<<<<< HEAD
-MAX_TWEETS = 4
-TWEETS_PER_SEARCH = 10 # Max Value = 100
-=======
 MAX_TWEETS = 10
 TWEETS_PER_SEARCH = 5 # Max Value = 100
 
@@ -31,7 +27,6 @@ regions = {
     24 : "47.55324,1.010529,75km", #VALDELOIRE
     94 : "42.039604,9.012893,110km" #CORSE
 }
->>>>>>> e26480f4c4805057f7e4f5535240eedb2624a066
 
 
 class Statistics:

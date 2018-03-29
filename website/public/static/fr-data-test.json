@@ -16,5 +16,6 @@
 		{"state" : "Nouvelle-Aquitaine", "value" : 0.8},
 		{"state" : "Occitanie", "value" : 0.9},
 		{"state" : "Pays de la Loire", "value" : 1},
-		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1}
+		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1},
+		{"state" : "Dark-Zone", "value" : 1}
 ]}
