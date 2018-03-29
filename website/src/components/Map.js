@@ -90,7 +90,9 @@ class Map extends Component {
                         .append("path")
                         .attr("d", path)
                         .attr("stroke","black")
-                        .style("fill", function(d) {
+                        
+                        .on("mouseover", function(d) {
+				d3.select(this).style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
                             if(typeof(value) == "number") {
@@ -104,9 +106,7 @@ class Map extends Component {
                                     return color[3];
                                 else if(value >= 0.65 && value <= 1)
                                     return color[4];
-                            }
-                        })
-                        .on("mouseover", function(d) {
+                            }});
                             div.transition()
                                 .duration(200)
                                 .style("opacity", .9);
@@ -117,6 +117,7 @@ class Map extends Component {
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
                         .on("mouseout", function(d) {
+				d3.select(this).style("fill"," #212529");
                             div.transition()
                                 .duration(0)
                                 .style("opacity", 0);
