@@ -13,6 +13,9 @@ class Map extends Component {
     initMap() {
             // Width and height
             var width = 1000, height = 900;
+		var val = Math.floor(Math.random() * Math.floor(2));
+		
+		var colorfond = ["#212529","#EFE4B1"]
 
             // Define map projection
             var projection = d3.geoConicConformal()
@@ -90,6 +93,7 @@ class Map extends Component {
                         .append("path")
                         .attr("d", path)
                         .attr("stroke","black")
+			.attr("fill", "#212529")
                         
                         .on("mouseover", function(d) {
 				d3.select(this).style("fill", function(d) {
@@ -117,7 +121,7 @@ class Map extends Component {
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
                         .on("mouseout", function(d) {
-				d3.select(this).style("fill"," #212529");
+				d3.select(this).style("fill","#212529")
                             div.transition()
                                 .duration(0)
                                 .style("opacity", 0);
