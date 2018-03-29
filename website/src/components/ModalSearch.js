@@ -10,7 +10,8 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {withRouter} from "react-router-dom";
 //Component
 import Switch from './Switch';
-
+//
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
@@ -73,7 +74,6 @@ class ModalSearch extends Component {
                 {/*                 <!--Modal-->                     */}
                 {/*<!--===========================================-->*/}
                 {/*<!-- Bouton switch -->*/}
-                <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                 <Button color="primary" onClick={this.toggle}> <i className="fas fa-search">
                     Rechercher</i></Button>
                 <Modal contentclassName="padding-150x" isOpen={this.state.modal} modalTransition={{timeout: 20}}
@@ -85,28 +85,32 @@ class ModalSearch extends Component {
                     <ModalBody>
                         <div className="container padding-10">
                             <form onSubmit={e => this.searchTag(e)}>
-                                <input type="text" required="required" ref={input => {
-                                    this.tag = input
-                                }}/>
-                                <label className="radio-inline padding-10">
-                                    <input type="radio" ref={(input) => {
-                                        this.good_checked = input
-                                    }} name="optradio"/>Positif
-                                </label>
-                                <label className="radio-inline padding-10">
-                                    <input type="radio" ref={(input) => {
-                                        this.bad_checked = input
-                                    }} name="optradio"/>Négatif
-                                </label>
-                                <label className="radio-inline padding-10">
-                                    <input type="radio" name="optradio" defaultChecked="defaultChecked"
-                                           ref={(input) => {
-                                               this.both_checked = input
-                                           }}/>Les deux
-                                </label>
-                                <button className="btn btn-primary" ref="both_checked" type="onSubmit">
-                                    Rechercher
-                                </button>
+                                <Nav>
+                                    <input type="text" required="required" ref={input => {
+                                        this.tag = input
+                                    }}/>
+                                    <label className="radio-inline padding-10">
+                                        <input type="radio" ref={(input) => {
+                                            this.good_checked = input
+                                        }} name="optradio"/>Positif
+                                    </label>
+                                    <label className="radio-inline padding-10">
+                                        <input type="radio" ref={(input) => {
+                                            this.bad_checked = input
+                                        }} name="optradio"/>Négatif
+                                    </label>
+                                    <label className="radio-inline padding-10">
+                                        <input type="radio" name="optradio" defaultChecked="defaultChecked"
+                                               ref={(input) => {
+                                                   this.both_checked = input
+                                               }}/>Les deux
+                                    </label>
+                                </Nav>
+                                <Nav>
+                                    <button className="btn btn-primary" ref="both_checked" type="onSubmit">
+                                        Rechercher
+                                    </button>
+                                </Nav>
                             </form>
                         </div>
                     </ModalBody>

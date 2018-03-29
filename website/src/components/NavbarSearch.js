@@ -7,9 +7,10 @@
 //React
 import React, {Component} from 'react';
 //React-Bootstrap
-import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 //ModalSearch
 import ModalSearch from './ModalSearch';
+import Switch from './Switch.js';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
@@ -43,6 +44,9 @@ class NavbarSearch extends Component {
                 <Nav>
                     <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
                         Statistique
+                    </NavItem>
+                    <NavItem eventKey={5} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
+                        <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                     </NavItem>
                 </Nav>
                 <Nav pullRight>
