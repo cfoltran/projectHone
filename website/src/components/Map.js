@@ -45,34 +45,31 @@ class Map extends Component {
                 // Load in GeoJSON data
 
                 // relation between map's json and tweets json
-                var frStatesMap={}
+                var frStatesMap={'Ile-de-France': '0'
+                'Auvergne-Rhone-Alpes': '1'
+                'Occitanie': '10'
+                'Pays_de_la_Loire': '11'
+                'Provence-Alpes-Cote_dAzur': '12'
+                'La_Reunion': '13'
+                'Martinique': '14'
+                'Guyane': '15'
+                'Guadeloupe': '16'
+                'Mayotte': '17',
+                'Bourgogne-Franche-Comte': '2',
+                'Bretagne': '3',
+                'Centre-Val_de_Loire': '4',
+                'Corse': '5',
+                'Grand_Est': '6',
+                'Hauts-de-France': '7',
+                'Normandie': '8',
+                'Nouvelle-Aquitaine': '9'}
 
                 d3.json('/static/departments.json', function(geojson) {
                   console.log(geojson)
                     // Merge the fr. data and GeoJSON
                     // Loop through once for each fr. data value
-                    for(var i = 0; i < data.states.length; i++) {
-                        // Grab state name
-                        var dataState = data.states[i].state;
 
-                        // Grab data value, and convert form string to float
-                        var dataValue = parseFloat(data.states[i].value);
-
-                        // Find the corresponding state inside the GeoJSON
-                        for(var j = 0; j < geojson.features.length; j++){
-                            var jsonState = geojson.features[j].properties.nom;
-
-                            if(dataState == jsonState){
-                                // Copy the data value into the JSON
-                                geojson.features[j].properties.value = dataValue;
-
-                                // Stop looking through the JSON
-                                break;
-                            }
-                        }
-                    }
-
-                    ////
+                    //// removes the unformal chars
 
                     function pure(str){
                         var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
@@ -88,6 +85,7 @@ class Map extends Component {
                         return str.join('');
                     }
 
+                    // makes map.json and data from python relatable
                     for(var i = 0; i < geojson.features.length; i++) {
                       geojson.features[i].properties.value = data.statistics[frStatesMap[pure(geojson.features[j].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
                           ['AveragePolarity'] || 0
