@@ -14,6 +14,8 @@ import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
+import '../style/scss/style.css';
+
 
 
 class Searchbar extends Component
@@ -76,7 +78,7 @@ class Searchbar extends Component
                 {               /*<!--Header-->*/}
                 {/*<!--===========================================-->*/}
                 <nav className={styleNav} id="navbar">
-                    <a className="navbar-brand abs" href="#">JoAnalytweet</a>
+                    <a className="navbar-brand abs" href="/">JoAnalytweet</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     </button>
