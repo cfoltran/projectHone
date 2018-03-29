@@ -6,6 +6,7 @@ from Tweet import Tweet
 from SentimentAnalyze import Sentiment
 from RetrieveRegionalTweets import RetrieveRegionalTweets
 from StatisticsByRegion import StatisticsByRegion
+from StatisticsByHashtag import StatisticsByHashtag
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_cors import CORS, cross_origin
 
@@ -42,7 +43,7 @@ def analyze_text():
 @app.route('/statistics/hashtag/<hashtagSearched>')
 @cross_origin()
 def getStatistics(hashtagSearched):
-    statistics = Statistics(hashtagSearched)
+    statistics = StatisticsByHashtag(hashtagSearched)
     df = statistics.retrieveStatistics()
     result = df.to_dict(orient='index')
     # fix key error string
@@ -83,6 +84,7 @@ def get_tweet_with_time(hashtagSearched):
 
 @app.before_first_request
 def active_job():
+    # Start the thread
     retrieve = RetrieveRegionalTweets()
     retrieve.start()
 
