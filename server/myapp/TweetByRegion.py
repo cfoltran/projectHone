@@ -142,6 +142,6 @@ class TweetByRegion:
         return api
 
 
-tweet = TweetByRegion("IDF","#MartinFourcade")
+tweet = TweetByRegion("NORMANDIE","#JO2018")
 tweet.retrieveTweets()
 tweet.displayTweetsByRegion()
