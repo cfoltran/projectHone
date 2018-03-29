@@ -26,22 +26,22 @@ class NavbarSearch extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem eventKey={1} href="#"> <i className="fas fa-map"/>
+                    <NavItem eventKey={1} href="Map.js#map"> <i className="fas fa-map"/>
                         Map
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={2} href="#"> <i className="fas fa-home"/>
+                    <NavItem eventKey={2} href="Tweets.js#home"> <i className="fas fa-home"/>
                         Accueil
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={3} href="#"> <i className="far fa-hand-pointer"/>
+                    <NavItem eventKey={3} href="Tweets.js#presentation"> <i className="far fa-hand-pointer"/>
                         Présentation
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={4} href="#"> <i className="fas fa-chart-line"/>
+                    <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
                         Statistique
                     </NavItem>
                 </Nav>
