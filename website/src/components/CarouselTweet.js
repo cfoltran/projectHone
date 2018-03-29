@@ -90,7 +90,7 @@ class Example extends Component {
             const caption =  item.date + " - " + item.caption + " - " + item.nbretweets + " retweets - "
             return (
                             <CarouselItem
-                                className="bg-light padding-150 h-500 "
+                                className="padding-150 h-500 "
                                 onExiting={this.onExiting}
                                 onExited={this.onExited}
                                 key={item.src}

@@ -200,7 +200,7 @@ input:checked+.slider:before{
 
 /* Carousel */
 .carousel-caption {
-    bottom: 200px;
+    bottom: 150px;
 }
 .text-cloud{
     color: black;
