@@ -40,12 +40,12 @@ class NavbarSearch extends Component {
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={3} href="Tweets.js#presentation"> <i className="far fa-hand-pointer"/>
+                    <NavItem eventKey={3} href="Tweets.js#presentation"> <i className="fas fa-hand-pointer-o"/>
                         Présentation
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-chart-line"/>
+                    <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i class="fas fa-line-chart"/>
                         Statistique
                     </NavItem>
                 </Nav>
