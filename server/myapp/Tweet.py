@@ -107,4 +107,4 @@ class Tweet:
 
     def initializeAPI(self):
         co = Connect()
-        return co.authentication()
+        return co.authentification()
