@@ -22,9 +22,6 @@ class Map extends Component {
             // Width and height
             var propsForD3 = this.props;
             var width = 1000, height = 900;
-		var val = Math.floor(Math.random() * Math.floor(2));
-		
-		var colorfond = ["#212529","#EFE4B1"]
 
             // Define map projection
             var projection = d3.geoConicConformal()
@@ -142,11 +139,8 @@ class Map extends Component {
                             div.html("")
                                 .style("left", "0px")
                                 .style("top", "0px");
-                        })
-                        .on("click",function(d){
-                          console.log(d.properties.nom);
-
-                      });
+                        });
+                        
                 })
 
             });
