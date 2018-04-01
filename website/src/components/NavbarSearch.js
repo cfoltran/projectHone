@@ -50,9 +50,7 @@ class NavbarSearch extends Component {
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={5} href="#"> <i className="fas fa-chart-line"/>
-                        <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
-                    </NavItem>
+                    <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                 </Nav>
                 <Nav pullRight>
                     <NavItem eventKey={1} href="#">
