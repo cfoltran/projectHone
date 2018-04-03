@@ -30,13 +30,10 @@ REGIONS = {
     "Mayotte" : "2e1db4ccd414851e"
 }
 
-<<<<<<< HEAD
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
 
 TWEETS_PER_SEARCH = 10 # Max Value = 100
 #https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search
-=======
->>>>>>> 7248061469bc8e8cb0b3159e219f4e8d927e03c2
 class TweetByRegion:
     region = ""
     hashtag = "#"
@@ -59,7 +56,6 @@ class TweetByRegion:
 #https://developers.google.com/maps/documentation/geocoding/intro?hl=fr
 #https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder?hl=fr
 
-<<<<<<< HEAD
     def retrieveTweets(self): 
         # Get today date
         today = datetime.date.today()
@@ -179,18 +175,3 @@ class TweetByRegion:
 tweet = TweetByRegion("BRETAGNE","bretagne")
 tweet.retrieveTweets()
 tweet.displayTweetsByRegion()
-=======
-
-    def retrieveTweets(self):
-        if self.region == 'Dark-Zone':
-            self.newTweets = self.api.search(q="*", lang="fr", count=TWEETS_PER_SEARCH)
-        else:
-            if self.region in REGIONS:
-                self.newTweets = self.api.search(q="place:%s" % REGIONS[self.region], lang="fr", count=TWEETS_PER_SEARCH)
-        return self.newTweets
-
-
-    def initializeAPI(self):
-        co = Connect()
-        return co.authentification()
->>>>>>> 7248061469bc8e8cb0b3159e219f4e8d927e03c2
