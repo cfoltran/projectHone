@@ -71,6 +71,7 @@ def regionRouting(codeRegion):
         result = {str(k):v for k,v in result.items()}
         return jsonify({'statistics':result})
 
+#localhost:5001/tweets/getTweetWithTime/JO2024
 @app.route('/tweets/getTweetWithTime/<hashtagSearched>')
 @cross_origin()
 def get_tweet_with_time(hashtagSearched):
@@ -79,7 +80,11 @@ def get_tweet_with_time(hashtagSearched):
     tweets = myTweet.getTweetWithTime()
     result = tweets.to_dict(orient='index')
     result = {str(k):v for k,v in result.items()}
-    return jsonify({'tweets': result})
+    listTweet = []
+    for tweet in result.keys():
+        listTweet.append(result[tweet])
+
+    return jsonify({'tweets': listTweet})
 
 
 @app.before_first_request
@@ -91,4 +96,3 @@ def active_job():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
-
