@@ -16,13 +16,9 @@ import bot from '../config/bot';
 
 //Style
 import '../style/css/App.css';
-<<<<<<< HEAD
-import '../style/css/bot.css'
-=======
+
 import '../style/css/bot.css';
 import Statistique from "./Statistic";
-
->>>>>>> 7248061469bc8e8cb0b3159e219f4e8d927e03c2
 
 
 class Home extends Component {
