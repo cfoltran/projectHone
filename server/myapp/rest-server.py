@@ -4,7 +4,7 @@ import json
 import os
 from Tweet import Tweet
 from SentimentAnalyze import Sentiment
-from RetrieveRegionalTweets import RetrieveRegionalTweets
+from ThreadStatsDZ import ThreadStatsDZ
 from StatisticsByRegion import StatisticsByRegion
 from StatisticsByHashtag import StatisticsByHashtag
 from flask import Flask, jsonify, abort, request, make_response, url_for
@@ -56,8 +56,8 @@ def getStatistics(hashtagSearched):
 @cross_origin()
 def regionRouting(codeRegion):
 
-    if(codeRegion == "all"):
-        FILENAME = "regionalStats.json"
+    if codeRegion == "Dark-Zone":
+        FILENAME = "dzStats.json"
         if os.path.exists(FILENAME) and os.path.isfile(FILENAME) and os.path.getsize(FILENAME) > 0:
             with open(FILENAME, 'r') as f:
                 data = json.load(f)
@@ -70,6 +70,19 @@ def regionRouting(codeRegion):
         # fix key error string
         result = {str(k):v for k,v in result.items()}
         return jsonify({'statistics':result})
+
+
+@app.route('/statistics/region/<region>/<hashtag>')
+@cross_origin()
+def displaystats(region, hashtag):
+    statistics = StatisticsByRegion(region, hashtag)
+    df = statistics.getStats()
+    df.reset_index(inplace=True, drop=True)
+    result = df.to_dict(orient='index')
+    # fix key error string
+    result = {str(k):v for k,v in result.items()}
+    return jsonify({'statistics':result})
+
 
 #localhost:5001/tweets/getTweetWithTime/JO2024
 @app.route('/tweets/getTweetWithTime/<hashtagSearched>')
@@ -86,7 +99,7 @@ def get_tweet_with_time(hashtagSearched):
 @app.before_first_request
 def active_job():
     # Start the thread
-    retrieve = RetrieveRegionalTweets()
+    retrieve = ThreadStatsDZ()
     retrieve.start()
 
 
