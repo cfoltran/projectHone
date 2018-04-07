@@ -4,7 +4,7 @@ from StatisticsByRegion import StatisticsByRegion
 import os
 import time
 import json
-
+import Credentials
 
 class RetrieveRegionalTweets(Thread):
     def __init__(self):

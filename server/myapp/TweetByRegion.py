@@ -6,8 +6,7 @@ from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
 from Connect import Connect
 
-TWEETS_PER_SEARCH = 100 # Max Value = 100
-#https://developer.twitter.com/en/docs/geo/places-near-location/self.api-reference/get-geo-search
+
 
 REGIONS = {
     "Ile-de-France" : "f9c4cad0af2337fa",
@@ -30,31 +29,26 @@ REGIONS = {
     "Mayotte" : "2e1db4ccd414851e"
 }
 
-MARGIN_DAY = 1  # Value used to retrieve all tweets below it
+MARGIN_DAY = 100  # Value used to retrieve all tweets below it
 
-TWEETS_PER_SEARCH = 10 # Max Value = 100
-#https://developer.twitter.com/en/docs/geo/places-near-location/api-reference/get-geo-search
+TWEETS_PER_SEARCH = 1 # Max Value = 100
+
 class TweetByRegion:
+   
     region = ""
     hashtag = "#"
     newTweets = ""
-<<<<<<< HEAD
     def __init__(self, regionSearched,hashtagSearched):
-       
-=======
-    def __init__(self, regionSearched,hashtagSearched=None):
->>>>>>> 7248061469bc8e8cb0b3159e219f4e8d927e03c2
         self.region = regionSearched
-        if hashtagSearched == None:
-            self.hashtag = "*"
-        else:
-            self.hashtag = hashtagSearched
+        
+        self.hashtag = hashtagSearched
+
+        
         # self.API Authentification
         self.api = self.initializeAPI()
 
 
-#https://developers.google.com/maps/documentation/geocoding/intro?hl=fr
-#https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder?hl=fr
+
 
     def retrieveTweets(self): 
         # Get today date
@@ -158,20 +152,24 @@ class TweetByRegion:
 
         for tweet in self.newTweets:
             print(tweet.text)
-            print("----------------------------------------------------------------------")
+            print("-----------------------------date-----------------------------------------")
+            print(tweet.created_at)
+            print("-----------------------------Emetteur-----------------------------------------")
+            print(tweet.user.name)
+            print("---------------------------------place------------------------------")
+            print(tweet.place.name)
           
-        
+          
+        #date : tweet.created_at
+        #tweet.user.location : localisation
+        #tweet.user.name : nom de l'utilisateur
 
     def initializeAPI(self):
-        # Authentication and access using keys
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-        auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-        # Return API with authentication
-        api = tweepy.API(auth)
-        return api
+       co = Connect()
+       co.authentification()
+       return co.authentification()
 
 
-tweet = TweetByRegion("BRETAGNE","bretagne")
+tweet = TweetByRegion("IDF","bonjour")
 tweet.retrieveTweets()
 tweet.displayTweetsByRegion()
