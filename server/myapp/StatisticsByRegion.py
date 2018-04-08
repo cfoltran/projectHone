@@ -1,7 +1,11 @@
+import os
+import json
 import pandas
 import numpy as np
 from TweetByRegion import TweetByRegion
 from SentimentAnalyze import Sentiment
+
+REGIONS = ["Ile-de-France", "Auvergne-Rhone-Alpes", "Bourgogne-Franche-Comte", "Bretagne", "Centre-Val_de_Loire", "Corse", "Grand_Est", "Hauts-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays_de_la_Loire", "Provence-Alpes-Cote_dAzur", "La_Reunion", "Martinique", "Guyane", "Guadeloupe", "Mayotte"]
 
 
 class StatisticsByRegion:
@@ -11,13 +15,27 @@ class StatisticsByRegion:
 
     def getStats(self):
         if self.region == "Dark-Zone":
-
-            data = pandas.DataFrame()
-
             t = TweetByRegion("Dark-Zone", self.hashtag)
             res = t.retrieveTweets()
-            df = self.resultToFrame(res, "Dark-Zone")
-            data = data.append(df)
+            return self.resultToFrame(res, "Dark-Zone")
+
+        elif self.region == "all":
+            # We search if a json with this hashtag exists, to avoid an API request
+            filename = "data/" + self.hashtag + ".json"
+            if os.path.exists(filename) and os.path.isfile(filename) and os.path.getsize(filename) > 0:
+                # If he exists we display all his data
+                with open(filename, 'r') as f:
+                    return json.load(f)
+            # Else we made a request to the API
+            data = pandas.DataFrame()
+            for region in REGIONS:
+                t = TweetByRegion(region, self.hashtag)
+                res = t.retrieveTweets()
+                df = self.resultToFrame(res, region)
+                data = data.append(df)
+            # And we create a new file in data/ with the name of the hashtag
+
+            # We store the data form the API request inside
 
             return data
 
