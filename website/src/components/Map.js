@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
 import '../style/css/map.css';
+import { withRouter } from "react-router-dom";
+
+
 
 class Map extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
         this.initMap()
     }
@@ -12,6 +20,7 @@ class Map extends Component {
 
     initMap() {
             // Width and height
+            var propsForD3 = this.props;
             var width = 1000, height = 900;
 
             // Define map projection
@@ -40,8 +49,23 @@ class Map extends Component {
                                                     .attr("class", "tooltip")
                                                     .style("opacity", 0);
 
+          function feeling(num)
+          {
+            if(num >= -1 && num < -0.65)
+                return "Énervé";
+            else if(num >= -0.65 && num < -0.3)
+                return "Pas content";
+            else if(num >= -0.3 && num < 0.3)
+                return "Neutre";
+            else if(num >= 0.3 && num < 0.65)
+                return "Content";
+            else if(num >= 0.65 && num <= 1)
+                return "Trés content";
+          }
+
             // Load in france data
             d3.json('/static/fr-data-test.json', function(data) {
+              console.log(data)
                 // Load in GeoJSON data
                 d3.json('/static/departments.json', function(geojson) {
                   console.log(geojson)
@@ -67,20 +91,7 @@ class Map extends Component {
                             }
                         }
                     }
-
-                    function feeling(num)
-                    {
-                      if(num >= -1 && num < -0.65)
-                          return "Énervé";
-                      else if(num >= -0.65 && num < -0.3)
-                          return "Pas content";
-                      else if(num >= -0.3 && num < 0.3)
-                          return "Neutre";
-                      else if(num >= 0.3 && num < 0.65)
-                          return "Content";
-                      else if(num >= 0.65 && num <= 1)
-                          return "Trés content";
-                    }
+                    console.log(geojson)
                     // Bind data and create one path per GeoJSON feature
                     deps.selectAll("path")
                         .data(geojson.features)
@@ -88,10 +99,12 @@ class Map extends Component {
                         .append("path")
                         .attr("d", path)
                         .attr("stroke","black")
-                        .style("fill", function(d) {
+			.attr("fill", "#212529")
+                        
+                        .on("mouseover", function(d) {
+				d3.select(this).style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
-                            var humeur
                             if(typeof(value) == "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
@@ -103,20 +116,23 @@ class Map extends Component {
                                     return color[3];
                                 else if(value >= 0.65 && value <= 1)
                                     return color[4];
-                            }
-                        })
-                        .on("mouseover", function(d) {
-                            d3.select(this).attr("fill","black");
+                            }});
                             div.transition()
                                 .duration(200)
                                 .style("opacity", .9);
                             div.html("Région : " + d.properties.nom + "<br>"
-                                +  "Humeur : " + feeling(d.properties.value))
+                                +  "Humeur : " + feeling(d.properties.value)+ "<br>"
+                                    +  "nombre de tweet : " + d.properties.value)
                                 .style("left", (d3.event.pageX -350) + "px")
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
+
+                        .on("click", function(d) {
+                            propsForD3.history.push(`/map/${d.properties.nom}`);
+                        })
+
                         .on("mouseout", function(d) {
-                            d3.select(this).attr("fill","rgba(98,225,230,0.5)");
+				d3.select(this).style("fill","#212529")
                             div.transition()
                                 .duration(0)
                                 .style("opacity", 0);
@@ -124,6 +140,7 @@ class Map extends Component {
                                 .style("left", "0px")
                                 .style("top", "0px");
                         });
+                        
                 })
 
             });
@@ -136,4 +153,4 @@ class Map extends Component {
     }
 }
 
-export default Map;
+export default withRouter(Map);
