@@ -33,10 +33,6 @@ class StatisticsByRegion:
                 res = t.retrieveTweets()
                 df = self.resultToFrame(res, region)
                 data = data.append(df)
-            # And we create a new file in data/ with the name of the hashtag
-
-            # We store the data form the API request inside
-
             return data
 
         else:
