@@ -10,7 +10,8 @@
 # production
 /build
 
-# misc
+# misci
+.sass-cache
 .DS_Store
 .env.local
 .env.development.local

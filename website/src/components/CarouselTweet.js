@@ -10,7 +10,7 @@ import {
 import '../style/css/style.css'
 
 
-class Example extends Component {
+class CarouselTweet extends Component {
     constructor(props) {
         super(props);
         this.next = this.next.bind(this);
@@ -23,10 +23,10 @@ class Example extends Component {
             tweets : [
                 {
 
-                    text: '#JO Trente-deux Russes non-invités font appel pour participer aux Jeux d’hiver à #Pyeongchang2018 http://lemde.fr/2C03lpF',
-                    caption: '@lemondefr',
-                    date:'20/02/2018',
-                    nbretweets: '25'
+                    Content: '#JO Trente-deux Russes non-invités font appel pour participer aux Jeux d’hiver à #Pyeongchang2018 http://lemde.fr/2C03lpF',
+                    Author: '@lemondefr',
+                    Date:'20/02/2018',
+                    Retweets: '25'
                 },
                 {
                     caption: 'Beyonce'
@@ -42,17 +42,15 @@ class Example extends Component {
             ]
 
         }
-        /*window.fetch('./data/exemple.json')
+        window.fetch('http://localhost:5001/tweets/getTweetWithTime/Pyeongchang2018')
             .then(res => {
-                console.log(res);
                 return res.json()
             })
-            .then(res => {
+        .then(res => {
                 this.setState( { tweets: res.tweets });
-
             })
-            .catch(error => console.error('Error:', error))
-*/
+        .catch(error => console.error('Error:', error))
+
     }
 
     onExiting() {
@@ -83,20 +81,18 @@ class Example extends Component {
     }
 
     render() {
-        const items= this.state.tweets
-        const { activeIndex } = this.state;
+        const { activeIndex, tweets } = this.state;
 
-        const slides = items.map((item) => {
-            const caption =  item.date + " - " + item.caption + " - " + item.nbretweets + " retweets - "
+        const slides = tweets.map((item,index) => {
             return (
                             <CarouselItem
                                 className="padding-150 h-500 "
                                 onExiting={this.onExiting}
                                 onExited={this.onExited}
-                                key={item.src}
+                                key={'itemcarousel'+index}
                             >
-                                <img date={item.date} src={item.src} alt={item.altText} />
-                                <CarouselCaption  className="text-cloud " captionText={caption} captionHeader={item.text} ></CarouselCaption>
+                                <img src={item.src} alt="" />
+                                <CarouselCaption   key={'captioncarousel'+index} className="text-cloud " captionText={ item.Date + " - " + item.Author + " - " + item.Retweets + " retweets "} captionHeader={item.Content} ></CarouselCaption>
                             </CarouselItem>
 
             );
@@ -109,10 +105,10 @@ class Example extends Component {
                     next={this.next}
                     previous={this.previous}
                 >
-                    <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                    <CarouselIndicators items={tweets} activeIndex={activeIndex} onClickHandler={this.goToIndex} key="test" />
                     {slides}
-                    <CarouselControl  className="text-dark " direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                    <CarouselControl className="text-dark "  direction="next" directionText="Next" onClickHandler={this.next}  />
+                    <CarouselControl  className="text-dark " direction="prev" directionText="Previous" onClickHandler={this.previous} key="carouselprev" />
+                    <CarouselControl className="text-dark "  direction="next" directionText="Next" onClickHandler={this.next} key="carouselnext" />
                 </Carousel>
             </div>
         );
@@ -120,4 +116,4 @@ class Example extends Component {
 }
 
 
-export default Example;
+export default CarouselTweet;
