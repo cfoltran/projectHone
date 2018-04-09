@@ -20,14 +20,14 @@ export default class Switch extends Component
     };
     
 
-    render()
-    {
+    render() {
+        let styleFA=(this.props.checked)?"text-light":"text-dark";
         return (
             <div>
                 {/*<!--===========================================-->*/}
                 {/*          <!-- Switch Day / Night -->             */}
                 {/*<!--===========================================-->*/}
-                <li>
+                <li className={styleFA}>
                     <div className="toggle-mode">
                         <div className="icon">
                             <i className="fa fa-sun-o" aria-hidden="true"></i>

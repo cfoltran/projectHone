@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import NavbarSearch from './NavbarSearch';
+import Searchbar from './Searchbar';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
@@ -60,7 +60,7 @@ class Home extends Component {
         let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
         return (
             <div>
-                <NavbarSearch checked={this.state.checked} onSwitchHome={this.switchHome}/>
+                <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
                 <section className={classSwitch}>
                     <div className="container">
