@@ -1,0 +1,21 @@
+{"type":"StateCollection", "states": [
+		{"state" : "Île-de-France", "value" : -1},
+		{"state" : "Auvergne-Rhône-Alpes", "value" : -0.9},
+		{"state" : "Bourgogne-Franche-Comté", "value" : -0.8},
+		{"state" : "Bretagne", "value" : -0.7},
+		{"state" : "Centre-Val de Loire", "value" : -0.6},
+		{"state" : "Corse", "value" : -0.5},
+		{"state" : "Grand Est", "value" : -0.4},
+		{"state" : "Guadeloupe", "value" : -0.3},
+		{"state" : "Guyane", "value" : 0},
+		{"state" : "Hauts-de-France", "value" : 0.3},
+		{"state" : "La Réunion", "value" : 0.4},
+		{"state" : "Martinique", "value" : 0.5},
+		{"state" : "Mayotte", "value" : 0.6},
+		{"state" : "Normandie", "value" : 0.7},
+		{"state" : "Nouvelle-Aquitaine", "value" : 0.8},
+		{"state" : "Occitanie", "value" : 0.9},
+		{"state" : "Pays de la Loire", "value" : 1},
+		{"state" : "Provence-Alpes-Côte d'Azur", "value" : 1},
+		{"state" : "Dark-Zone", "value" : 1}
+]}

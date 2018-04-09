@@ -39,18 +39,18 @@ export default class Switch extends Component
                 {/*          <!-- Switch Day / Night -->             */}
                 {/*<!--===========================================-->*/}
                 <li>
-                    <div class="toggle-mode">
-                        <div class="icon">
-                            <i class="fa fa-sun-o" aria-hidden="true"></i>
+                    <div className="toggle-mode">
+                        <div className="icon">
+                            <i className="fa fa-sun-o" aria-hidden="true"></i>
                         </div>
-                        <div class="toggle-switch">
-                            <label class="switch">
+                        <div className="toggle-switch">
+                            <label className="switch">
                                 <input type="checkbox" checked={this.state.isChecked} onChange={e => this.toggle(e)} id="switch-style"/>
-                                <div class="slider round"></div>
+                                <div className="slider round"></div>
                             </label>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-moon-o" aria-hidden="true"></i>
+                        <div className="icon">
+                            <i className="fa fa-moon-o" aria-hidden="true"></i>
                         </div>
                     </div>
                 </li>

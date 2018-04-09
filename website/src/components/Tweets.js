@@ -1,5 +1,4 @@
 import React from 'react';
-import Tweet from './Tweet';
 
 export default class Tweets extends React.Component {
 
@@ -12,9 +11,8 @@ export default class Tweets extends React.Component {
     }
 
     loadData(path) {
-        //
+
         window.fetch('http://localhost:5001/tweets/getTweetWithTime')
-        //  window.fetch('./data/exemple.json')
             .then(res => {
                 console.log(res);
                 return res.json()
@@ -35,7 +33,7 @@ export default class Tweets extends React.Component {
                             <div className="col-md-12" id="tweets">
                                 <h1 className="font-70 text-dark">Tweets </h1><br/>
                                 <main>
-                                    {
+                                    {/*
                                         this.state.tweets.map((tweet, i) => {
                                            var analyze="None";
                                            if (tweet.sentiment[0]>0.25){
@@ -47,7 +45,7 @@ export default class Tweets extends React.Component {
                                            }
                                             return <Tweet author={tweet.author} text={tweet.tweet} sentiment={analyze}/>
                                         })
-                                    }
+                                  */  }
                                 </main>
                             </div>
                         </div>

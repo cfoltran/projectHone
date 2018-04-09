@@ -8,22 +8,15 @@ import datetime
 import pandas
 from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
-from Credentials import *
+from Connect import Connect
 
 textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
-MAX_TWEETS = 4
-TWEETS_PER_SEARCH = 2 # Max Value = 100
+MAX_TWEETS = 10
+TWEETS_PER_SEARCH = 10 # Max Value = 100
 
-
-"""Classe definissant une Tweet caractérisee par :
-    tweet
-    author
-    geoloc
-    date
-    sentiment
-"""
+textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
 
 class Tweet:
@@ -36,18 +29,24 @@ class Tweet:
         self.author = "@lemondefr"
         self.geoloc = np.array([48.864716, 2.349014])
         self.date = "2014-09-26"
-        self.hashtag = "#" + hashtagSearched
+        if hashtagSearched == "*":
+            self.hashtag = hashtagSearched
+        else:
+            self.hashtag = "#" + hashtagSearched
+
 
 
     """
-    Method pour analyzer le sentiment d'un tweet
+    Method to analyze a sentiment
     """
     def sentiment_analyze_tweet(self):
         analyze = Sentiment(self.tweet)
         self.sentiment = analyze.analyze_text()
 
+
+
     """
-    methode pour mettre le tweet dans la conformite du fichier json
+    Method to serialize
     """
     def serialize(self):
         return {
@@ -58,34 +57,56 @@ class Tweet:
             'sentiment': json.loads(json.dumps(self.sentiment))
         }
 
+
     def getTweetWithTime(self):
         # API Authentification
         api = self.initializeAPI()
         # Get today date
         today = datetime.date.today()
-        # Create the margin
-        margin = datetime.timedelta(days=MARGIN_DAY)
 
-        newTweets = api.search(q=self.hashtag, lang="fr", count=3,
+        newTweets = api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH,
                                start_time=str(today) + "T00:00:00Z", end_time=str(today) + "T12:00:00Z")
 
-        for tweet.text in newTweets:
-            polarity = textblob(tweet.text).sentiment
-            newTweets[tweet.text] = polarity[0]
+        data = pandas.DataFrame()
+        data['Content'] = np.array([tweet.text for tweet in newTweets])
+        data['Date'] = np.array([tweet.created_at for tweet in newTweets])
+        data['Retweets'] = np.array([tweet.retweet_count for tweet in newTweets])
+        data['Likes'] = np.array([tweet.favorite_count for tweet in newTweets])
+        data['Author'] = np.array([self.getAuthor(tweet) for tweet in newTweets])
+        data['Polarity'] = np.array([self.getPolarity(tweet.text) for tweet in newTweets])
+        data['Location'] = np.array([self.getLocation(tweet) for tweet in newTweets])
+        data['Coordinates'] = np.array([self.getCoordinates(tweet) for tweet in newTweets])
+        return data
 
-        return newTweets
+
+    def getAuthor(self, tweet):
+        file = tweet.author._json
+        decodedfile = json.dumps(file)
+        decodedfile = json.loads(decodedfile)
+        return str(decodedfile['screen_name'])
+
+
+    def getPolarity(self, tweet):
+        pol = textblob(tweet).sentiment
+        return pol[0]
+
+
+    def getLocation(self, tweet):
+        file = tweet.author._json
+        decodedfile = json.dumps(file)
+        decodedfile = json.loads(decodedfile)
+        return str(decodedfile['location'])
+
+
+    def getCoordinates(self, tweet):
+        file = tweet._json
+        decodedfile = json.dumps(file)
+        decodedfile = json.loads(decodedfile)
+        if decodedfile['coordinates']:
+            return str(decodedfile['coordinates'].get("coordinates"))
+        else:
+            return decodedfile['coordinates']
 
     def initializeAPI(self):
-        # Authentication and access using keys
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-        auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-        # Return API with authentication
-        api = tweepy.API(auth)
-        return api
-
-myTweet = Tweet("#jo")
-
-print(myTweet.getTweetWithTime())
-# j'ai analysé son sentiment
-# tweets = myTweet.getTweetWithTime()
+        co = Connect()
+        return co.authentication()
