@@ -1,7 +1,7 @@
 //todo collect input value from searchBar.js
 import React from 'react';
 
-import NavbarFeatures from './fesse';
+import NavbarFeatures from './NavbarFeatures';
 import DashBoard from "./DashBoard";
 import BarChart from './BarChart';
 import FooterPage from "./Footer";

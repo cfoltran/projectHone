@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import NavbarFeatures from './fesse';
+import NavbarFeatures from './NavbarFeatures';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
