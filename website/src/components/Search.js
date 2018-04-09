@@ -4,6 +4,8 @@ import React from 'react';
 import Searchbar from './Searchbar';
 import DashBoard from "./DashBoard"
 import BarChart from './BarChart';
+import NavbarFeatures from "./NavbarFeatures";
+import FooterPage from "./Footer";
 
 
 class Search extends React.Component{
@@ -14,7 +16,7 @@ class Search extends React.Component{
         return (
             <div>
 
-                <Searchbar/>
+                <NavbarFeatures/>
                 {/*--------------------------------*/}
                 {/*----------Get the search--------*/}
                 {/*--------------------------------*/}
@@ -58,7 +60,10 @@ class Search extends React.Component{
                         </div>
                     </section >
                 </div>
+                <FooterPage/>
             </div>
+
+
         )
     }
 
