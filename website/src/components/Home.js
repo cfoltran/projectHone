@@ -26,7 +26,7 @@ class Home extends Component {
         super(props);
         this.state = {
             open: false,
-            checked: false
+            checked: true
         };
 
         this.toggleFloating = this.toggleFloating.bind(this);
