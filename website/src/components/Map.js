@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
-import '../style/css/map.css';
+import '../style/scss/style.css';
 import { withRouter } from "react-router-dom";
 
 
@@ -21,7 +21,7 @@ class Map extends Component {
     initMap() {
             // Width and height
             var propsForD3 = this.props;
-            var width = 1000, height = 900;
+            var width = 1000, height = 1000;
 
             // Define map projection
             var projection = d3.geoConicConformal()
@@ -37,11 +37,11 @@ class Map extends Component {
             var color = ["#FF453E","#E87B31","#FFEEC8","#E8E23D","#6CFF3A"];
 
             // Create SVG element
-            var svgMap = d3.select(this.refs.mapRender).append("svg")
-                                          .attr("id", "svg")
-                                          .attr("width", width)
-                                          .attr("height", height)
-                                          .attr("fill","#212529");
+            var svgMap = d3.select(this.refs.mapRender).append("svg");
+                                        svgMap.attr("id", "svg")
+                                        .attr("role", "img") // un peu d’a11y
+                                        .attr("viewBox", "0 0 "+ width + " " + height)
+                                        .attr("fill","#212529");
 
             var deps = svgMap.append("g");
 
@@ -98,7 +98,7 @@ class Map extends Component {
                         .enter()
                         .append("path")
                         .attr("d", path)
-                        .attr("stroke","black")
+                        .attr("stroke","#CECECE")
 			.attr("fill", "#212529")
                         
                         .on("mouseover", function(d) {

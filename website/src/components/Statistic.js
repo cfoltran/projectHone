@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DashBoard from "./DashBoard";
-import '../style/css/map.css';
+import '../style/scss/style.css';
 
 class Statistic extends Component {
   render() {

@@ -19,7 +19,9 @@ class MapFocus extends Component {
                     <div className="container">
                         <div className="row text-center">
                             <div className="col-md-12">
-                                <img src={`/img/regions/${this.props.match.params.region}.png`}/>
+                                <div class="opacity">
+                                    <img src={`/img/regions/${this.props.match.params.region}.png`}/>
+                                </div>
                             </div>
                             <div className="col-md-12">
                                 <h2 className="font-60 bg-white">{ this.props.match.params.region }</h2>
