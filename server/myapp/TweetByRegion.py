@@ -1,9 +1,3 @@
-import tweepy
-import json
-import datetime
-import numpy as np
-from textblob import Blobber
-from textblob_fr import PatternTagger, PatternAnalyzer
 from Connect import Connect
 
 TWEETS_PER_SEARCH = 100 # Max Value = 100
@@ -30,16 +24,18 @@ REGIONS = {
     "Mayotte" : "2e1db4ccd414851e"
 }
 
+
 class TweetByRegion:
     region = ""
     hashtag = "#"
     newTweets = ""
-    def __init__(self, regionSearched,hashtagSearched=None):
+
+    def __init__(self, regionSearched, hashtagSearched=None):
         self.region = regionSearched
         if hashtagSearched == None:
             self.hashtag = "*"
         else:
-            self.hashtag = hashtagSearched
+            self.hashtag = "#" + str(hashtagSearched)
         # self.API Authentification
         self.api = self.initializeAPI()
 
@@ -50,10 +46,10 @@ class TweetByRegion:
 
     def retrieveTweets(self):
         if self.region == 'Dark-Zone':
-            self.newTweets = self.api.search(q="*", lang="fr", count=TWEETS_PER_SEARCH)
+            self.newTweets = self.api.search(q=self.hashtag, lang="fr", count=TWEETS_PER_SEARCH)
         else:
             if self.region in REGIONS:
-                self.newTweets = self.api.search(q="place:%s" % REGIONS[self.region], lang="fr", count=TWEETS_PER_SEARCH)
+                self.newTweets = self.api.search(q="place:%s %s" % (REGIONS[self.region], self.hashtag), lang="fr", count=TWEETS_PER_SEARCH)
         return self.newTweets
 
 
