@@ -88,11 +88,14 @@ class Searchbar extends Component
                                 <a className="nav-link"> <i className="fas fa-map"><span> Map</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
-                                <a className="nav-link" > <i
+                                <a className="nav-link" href="/"> <i
                                     className="fas fa-home"><span> Accueil</span></i></a>
                             </li>
                             <li className="nav-item page-scroll">
                                 <a className="nav-link"><i className="fas fa-question-circle"><span> Présentation</span></i> </a>
+                            </li>
+                            <li className="nav-item page-scroll">
+                                <a className="nav-link"><i className="fas fa-question-circle"><span> Statistiques</span></i> </a>
                             </li>
                         </ul>
                         {/*<!--===========================================-->*/}
