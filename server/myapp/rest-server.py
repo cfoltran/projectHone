@@ -112,7 +112,7 @@ def get_tweet_with_time(hashtagSearched):
 @cross_origin()
 def getTopHashtag():
     tophashtag = TopHashtag()
-    return jsonify({tophashtag.defaultSearch()})
+    return jsonify({'tophashtag' : tophashtag.defaultSearch()})
 
 
 @app.before_first_request

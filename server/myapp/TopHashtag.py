@@ -15,7 +15,7 @@ class TopHashtag:
 
         for hashtag in self.hashtags:
             cpt = 0
-            self.tweethashtag = self.api.search(q=hashtag, count = 5, lang="fr", start_time=str(today) + "T00:00:00Z", end_time=str(today) + "T01:00:00Z")
+            self.tweethashtag = self.api.search(q=hashtag, count = 100, lang="fr", start_time=str(today) + "T00:00:00Z", end_time=str(today) + "T01:00:00Z")
             for tweet in self.tweethashtag:
                 cpt = cpt + 1
             self.hashtags[hashtag] = cpt
