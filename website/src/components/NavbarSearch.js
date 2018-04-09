@@ -24,6 +24,7 @@ class NavbarSearch extends Component {
     render() {
         let styleNav=(this.props.checked)?"navbar-dark bg-dark":"navbar-light bg-light";
         let styleBtn=(this.props.checked)?"text-light":"text-dark";
+        let styleTxt=(this.props.checked)?"text-light":"text-dark";
         return (
             <Navbar inverse collapseOnSelect expanded className={styleNav}>
                 <Navbar.Header>
@@ -46,7 +47,7 @@ class NavbarSearch extends Component {
                         Présentation
                     </NavItem>
                 </Nav>
-                <Nav>
+                <Nav >
                     <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i class="fas fa-line-chart"/>
                         Statistique
                     </NavItem>
