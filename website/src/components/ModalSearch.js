@@ -4,12 +4,10 @@
 ///////////////////////////////////////////////////////////////
  */
 //React
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 //config
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {withRouter} from "react-router-dom";
-//Component
-import Switch from './Switch';
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
@@ -62,7 +60,7 @@ class ModalSearch extends Component {
     }
 
     render() {
-        let styleNav = (this.props.checked) ? "navbar navbar-expand-md navbar-dark bg-dark fixed-top " : "navbar navbar-expand-md bg-light navbar-light fixed-top ";
+        // let styleNav = (this.props.checked) ? "navbar navbar-expand-md navbar-dark bg-dark fixed-top " : "navbar navbar-expand-md bg-light navbar-light fixed-top ";
         return (
             <div>
                 {/*<!--===========================================-->*/}

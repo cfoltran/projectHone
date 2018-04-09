@@ -8,6 +8,8 @@ import NavbarFeatures from './NavbarFeatures';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
+import FooterPage from "./Footer";
+
 //Config
 import { ThemeProvider } from 'styled-components';
 import steps from '../config/steps';
@@ -17,8 +19,6 @@ import bot from '../config/bot';
 import '../style/css/App.css';
 
 import '../style/css/bot.css';
-import Statistique from "./Statistic";
-import FooterPage from "./Footer";
 
 
 class Home extends Component {

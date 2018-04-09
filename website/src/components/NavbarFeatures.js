@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ModalSearch from './ModalSearch';
 import Switch from './Switch.js';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem} from 'mdbreact';
@@ -36,7 +36,7 @@ class NavbarFeatures extends React.Component {
 
             <Router>
                 <Navbar color="unique-color-dark" dark expand="md" scrolling fixed="top" >
-                    <NavbarBrand left href="/">
+                    <NavbarBrand href="/">
                         <img src="/img/logo.svg" alt="" height="100" width="100"/>
                         <strong className="font-30 padding-right-100">JoAnalytweet</strong>
                     </NavbarBrand>
