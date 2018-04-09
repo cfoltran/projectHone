@@ -10,9 +10,10 @@ from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
 from Connect import Connect
 
+textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
+
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
-MAX_TWEETS = 10
-TWEETS_PER_SEARCH = 10 # Max Value = 100
+TWEETS_PER_SEARCH = 100 # Max Value = 100
 
 textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
@@ -102,9 +103,9 @@ class Tweet:
         decodedfile = json.loads(decodedfile)
         if decodedfile['coordinates']:
             return str(decodedfile['coordinates'].get("coordinates"))
-        else: 
+        else:
             return decodedfile['coordinates']
 
     def initializeAPI(self):
         co = Connect()
-        return co.authentication()
+        return co.authentification()
