@@ -1,12 +1,12 @@
-//GOMEZ MATIAS - MHD TPH2
+//GOMEZ MATIAS - ASFAR MOHAMED RAFFIQUE TPH2
 //require(codePython.py)
 
 console.log("debut");
 
-var request = require('superagent')
+var request = require('superagent');
+const assert = require('assert').strict;
 
-
-var Twit = require('twit') //necessité de l'API twitter
+var Twit = require('twit'); //necessité de l'API twitter
 
 var T = new Twit({		//liaison au compte twitter du bot
 	consumer_key:         'sIklgXwMbZZK5cL6hSRs6Vm4O',
@@ -39,7 +39,7 @@ function search_tweet(search_content){
 	// retourne une liste de tweets
 	var params1 = {
  		q: search_content, //tweet contenant ce mots, hashtag compris
- 		count: 1  	   //nombre de tweet recherché correspondant à 'q'
+ 		count: 3  	   //nombre de tweet recherché correspondant à 'q'
 	}
 
 	function gotData(err, data, response) {
@@ -51,25 +51,31 @@ function search_tweet(search_content){
 
   		var tweetStatus = data.statuses;
   		var tweetText = "";
-  		var name = data.screen_name;
+  		//var name = data.source.name;
 
-  		console.log("bonjour4")
+  		console.log("bonjour4");
 
   		for (var i = 0; i < tweetStatus.length; i++) {
-  			tweetText += tweetStatus[i].text;
+  			tweetText = tweetStatus[i].text;
+				name = tweetStatus[i].user.screen_name;
+				console.log(tweetText);
+				console.log(name);
+				analyseTweets(name, tweetText);
   		}
 
-  		console.log("bonjour5")
+  		console.log("bonjour5");
 
-  		var polarite = analyseTweets(tweetText);
-		// http://localhost:5001/polarity
 
-		console.log("bonjour6")
+
+
+
+
+/*
+		console.log(polarite);
 
 		reactTweet(name, polarite);
-
 		console.log("bonjour8")
-
+*/
 	}
 
 	T.get('search/tweets', params1, gotData);
@@ -78,16 +84,20 @@ function search_tweet(search_content){
 	gotData: fonction appelée affichant les data recupéré */
 }
 
-function analyseTweets(msgToAnalyze){
-	console.log(msgToAnalyze);
+function analyseTweets(name, msgToAnalyze){
 	request
-  	.post('http://restfull-app:5001/sentiment/analyze')
+  	.get('http://restfull-app:5001/sentiment/analyze')
   	.send({ text: msgToAnalyze })
   	.set('Accept', 'application/json')
-  	.end(function(err, sentiment){
-    	console.log(err);
-			console.log(sentiment);
-  	});
+  	.then(function(res){
+			if(res.status==200){
+				var response = obj = JSON.parse(res.text);
+
+				reactTweet(name, parseFloat(response.sentiment[1]));
+
+			}
+
+		})
 
 	/*
 	fetch('http://localhost:5001/polarity', {
@@ -113,14 +123,15 @@ function analyseTweets(msgToAnalyze){
 
 function reactTweet(name, polarity){
 
-
+		console.log(name);
+		console.log("going function");
 		//NEGATIF
 		if (polarity<-0.25 ) {
 			var tweetNeg = '@' + name + ' Ne soyez pas si pessimiste voyons :-(';
 			tweetIT(tweetNeg);
 		}
 		//NEUTRE
-		if (polarity>=0.25 && polarity<= 0.25) {
+		if (polarity>=-0.25 && polarity<= 0.25) {
 			var tweetNeut = '@' + name + ' Ma foi, c\'est bien vrai.';
 			tweetIT(tweetNeut);
 		}
@@ -130,12 +141,14 @@ function reactTweet(name, polarity){
 			tweetIT(tweetPos);
 		}
 
-		console.log("bonjour7")
 
 
 }
 
 function tweetIT(tweet_contents){
+
+		console.log("inside function");
+	console.log(tweet_contents)
 	var params2 ={ //definition du contenue du tweet
 		status: tweet_contents
 	}
