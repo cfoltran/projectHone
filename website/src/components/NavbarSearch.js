@@ -23,17 +23,20 @@ class NavbarSearch extends Component {
 
     render() {
         return (
-            <Navbar inverse collapseOnSelect expanded>
+            <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="#">JoAnalytweet</a>
                     </Navbar.Brand>
+                    <Navbar.Toggle />
                 </Navbar.Header>
+                <Navbar.Collapse>
                 <Nav>
                     <NavItem eventKey={1} href="Map.js#map"> <i className="fas fa-map"/>
                         Map
                     </NavItem>
                 </Nav>
+                </Navbar.Collapse>
                 <Nav>
                     <NavItem eventKey={2} href="Tweets.js#home"> <i className="fas fa-home"/>
                         Accueil
@@ -45,7 +48,7 @@ class NavbarSearch extends Component {
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i class="fas fa-line-chart"/>
+                    <NavItem eventKey={4} href="../../node_modules\keycode\test\mocha.js#stats"> <i className="fas fa-line-chart"/>
                         Statistique
                     </NavItem>
                 </Nav>
@@ -59,6 +62,7 @@ class NavbarSearch extends Component {
                         <ModalSearch/>
                     </NavItem>
                 </Nav>
+
             </Navbar>
         );
     }

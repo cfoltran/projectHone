@@ -1,9 +1,10 @@
 //todo collect input value from searchBar.js
 import React from 'react';
 
-import Searchbar from './NavbarSearch';
+import NavbarFeatures from './fesse';
 import DashBoard from "./DashBoard";
 import BarChart from './BarChart';
+import FooterPage from "./Footer";
 
 
 class Search extends React.Component{
@@ -14,7 +15,7 @@ class Search extends React.Component{
         return (
             <div>
 
-                <Searchbar/>
+                <NavbarFeatures/>
                 {/*--------------------------------*/}
                 {/*----------Get the search--------*/}
                 {/*--------------------------------*/}
@@ -51,12 +52,16 @@ class Search extends React.Component{
                 <section className="bg-dark">
                     <div className="container">
                         <h2 className="font-60 text-center padding-150">Bar chart</h2>
-                        <div className="row">
+                            <div className="row">
+
                             <BarChart/>
-                        </div>
+                            </div>
                     </div>
                 </section>
+                <FooterPage/>
             </div>
+
+
         )
     }
 

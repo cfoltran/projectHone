@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import NavbarSearch from './NavbarSearch';
+import NavbarFeatures from './fesse';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
@@ -19,6 +19,7 @@ import '../style/css/App.css';
 
 import '../style/css/bot.css';
 import Statistique from "./Statistic";
+import FooterPage from "./Footer";
 
 
 class Home extends Component {
@@ -61,7 +62,7 @@ class Home extends Component {
         let switchCaroussel=(this.state.checked)?"bg-dark":"bg-light";
         return (
             <div>
-                <NavbarSearch checked={this.state.checked} onSwitchHome={this.switchHome}/>
+                <NavbarFeatures checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
                 <section className={classSwitch}>
                     <div className="container">
@@ -84,11 +85,10 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-
                 <CarouselTweet/>
-
                 <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
 
+                <FooterPage/>
         </div>
         );
     }

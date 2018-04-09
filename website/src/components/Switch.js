@@ -23,14 +23,14 @@ export default class Switch extends Component
     render()
     {
         return (
-            <div>
+            <div className="font-40">
                 {/*<!--===========================================-->*/}
                 {/*          <!-- Switch Day / Night -->             */}
                 {/*<!--===========================================-->*/}
                 <li>
                     <div className="toggle-mode">
                         <div className="icon">
-                            <i className="fa fa-sun-o" aria-hidden="true"></i>
+                            <i className="fa fa-sun-o " aria-hidden="true"></i>
                         </div>
                         <div className="toggle-switch">
                             <label className="switch">
@@ -40,7 +40,7 @@ export default class Switch extends Component
                             </label>
                         </div>
                         <div className="icon">
-                            <i className="fa fa-moon-o" aria-hidden="true"></i>
+                            <i className="fa fa-moon-o " aria-hidden="true"></i>
                         </div>
                     </div>
                 </li>

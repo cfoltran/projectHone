@@ -75,7 +75,7 @@ class BarChart extends Component {
     }
   render() {
     return (
-        <div className="bar" id="bar"></div>
+        <div className="bar" id="bar"/>
     );
   }
 }
