@@ -22,8 +22,10 @@ import '../style/css/style.css';
 class NavbarSearch extends Component {
 
     render() {
+        let styleNav=(this.props.checked)?"navbar-dark bg-dark":"navbar-light bg-light";
+        let styleBtn=(this.props.checked)?"text-light":"text-dark";
         return (
-            <Navbar inverse collapseOnSelect expanded>
+            <Navbar inverse collapseOnSelect expanded className={styleNav}>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="#">JoAnalytweet</a>
@@ -49,7 +51,7 @@ class NavbarSearch extends Component {
                         Statistique
                     </NavItem>
                 </Nav>
-                <Nav>
+                <Nav className={styleBtn}>
                     <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                 </Nav>
                 <Nav pullRight>
