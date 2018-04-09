@@ -1,8 +1,8 @@
 //todo collect input value from searchBar.js
 import React from 'react';
 
-import Searchbar from './Searchbar';
-import DashBoard from "./DashBoard"
+import Searchbar from './NavbarSearch';
+import DashBoard from "./DashBoard";
 import BarChart from './BarChart';
 
 
