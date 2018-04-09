@@ -98,7 +98,7 @@ class Map extends Component {
                         .enter()
                         .append("path")
                         .attr("d", path)
-                        .attr("stroke","black")
+                        .attr("stroke","#CECECE")
 			.attr("fill", "#212529")
                         
                         .on("mouseover", function(d) {
