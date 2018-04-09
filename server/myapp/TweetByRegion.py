@@ -5,6 +5,8 @@ import numpy as np
 from textblob import Blobber
 from textblob_fr import PatternTagger, PatternAnalyzer
 from Connect import Connect
+from DataTweet import DataTweet
+import json
 
 
 
