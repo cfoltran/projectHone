@@ -49,11 +49,10 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*-----------Bar Chart------------*/}
                 {/*--------------------------------*/}
-                <section className="bg-dark">
+                <section className="bg-white">
                     <div className="container">
-                        <h2 className="font-60 text-center padding-150">Bar chart</h2>
+                        <h2 className="font-60 text-center padding-150">Bar chart :</h2>
                             <div className="row">
-
                             <BarChart/>
                             </div>
                     </div>
