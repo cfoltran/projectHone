@@ -50,7 +50,8 @@ class DashBoard extends Component {
             <div className="statRightHolder">
 
                 <ul>
-                    <li> <h3><span>Retweets</span></h3> <div id='rt' className="font-30"/> </li>
+                    <li> <h3><span>Retweets</span></h3> <div id='rt' className="font-30"/>
+                  </li>
                     <li> <h3><span>Like</span></h3> <div id='like' className="font-30"/> </li>
                 </ul>
 

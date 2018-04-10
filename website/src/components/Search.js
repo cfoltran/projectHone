@@ -7,8 +7,15 @@ import NavbarFeatures from "./NavbarFeatures";
 import FooterPage from "./Footer";
 
 
+
 class Search extends React.Component{
 
+  constructor(props) {
+     super(props);
+     this.state = {
+       tag: this.props.match.params.tag,
+     };
+   }
 
     render(){
         // const tag = Object.keys(this.state.tagSementic).map(key => <Searchbar key={key} details={this.state.tagSementic[key]}/>);
@@ -24,8 +31,7 @@ class Search extends React.Component{
                         <h2 className="font-70 text-dark">Recherche:</h2>
                         <div className="row text-center">
                             <div className="col-md-12  padding-150">
-                                <p className="text-dark font-40"> Vous avez recherchez: {this.props.match.params.tag} <br/>
-                                    Avec le sentiment: {this.props.match.params.sementic}
+                                <p className="text-dark font-40"> Vous avez recherchez: {this.state.tag} <br/>
                                     {/*Todo get the sementic*/}
                                 </p>
                             </div>
@@ -54,7 +60,7 @@ class Search extends React.Component{
                         <div className="container">
                             <h2 className="font-70 text-center padding-10">Bar chart:</h2>
                             <div className="row">
-                                <BarChart/>
+                                <BarChart props={this.state.tag}/>
                             </div>
                         </div>
                     </section >
