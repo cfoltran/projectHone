@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import Searchbar from './Searchbar';
+import NavbarFeatures from "./NavbarFeatures";
 
 
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
+import FooterPage from "./Footer";
 
 class MapFocus extends Component {
-    
-    constructor (props) {
-        super(props);
-    }
+
 
     render() {
         return (
-                <section id="mapFocusComponent" className="text-center bg-white" class="focusRegion">
-                    <Searchbar/>
+            <div>
+                <NavbarFeatures/>
+                <section id="mapFocusComponent" className="text-center bg-white focusRegion">
+
                     <div className="container">
                         <div className="row text-center">
                             <div className="col-md-12">
-                                <img src={`/img/regions/${this.props.match.params.region}.png`}/>
+                                <div className="opacity">
+                                    <img src={`/img/regions/${this.props.match.params.region}.png`} alt={this.props.match.params.region}/>
+                                </div>
                             </div>
                             <div className="col-md-12">
                                 <h2 className="font-60 bg-white">{ this.props.match.params.region }</h2>
@@ -27,7 +29,10 @@ class MapFocus extends Component {
                             </div>
                         </div>
                     </div>
-                </section>   
+                </section>
+                <FooterPage/>
+            </div>
+
         )
     }
 }

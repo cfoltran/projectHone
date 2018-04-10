@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import Searchbar from './Searchbar'
+import NavbarFeatures from './NavbarFeatures';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
-
+import FooterPage from "./Footer";
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -17,9 +17,8 @@ import bot from '../config/bot';
 
 //Style
 import '../style/css/App.css';
-import '../style/css/bot.css';
-import Statistique from "./Statistic";
 
+import '../style/css/bot.css';
 
 
 class Home extends Component {
@@ -55,13 +54,15 @@ class Home extends Component {
     switchHome = checked => {
         this.setState( { checked: checked} );
     };
+
     render() {
         // const tag = <Search ref={this.state.tag}/>;
         let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
-        let switchCaroussel=(this.state.checked)?"bg-dark":"bg-light";
         return (
-            <div className={switchCaroussel}>
-                <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
+            <div>
+                <NavbarFeatures checked={this.state.checked} onSwitchHome={this.switchHome}/>
+
+
                 <Loader/>
                 <section className={classSwitch}>
                     <div className="container">
@@ -72,7 +73,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </section>
-
 
                 <ThemeProvider theme={bot}>
                 <ChatBot
@@ -85,15 +85,15 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-
                 <CarouselTweet/>
-
                 <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
 
+                <FooterPage/>
+
+                <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
         </div>
         );
     }
-
 }
 
 export default Home;

@@ -1,5 +1,43 @@
+//        MAP          //
+/////////////////////////
+#map {
+    background: transparent;
+    color: #eee;
+}
+
+svg {
+    height: auto;
+    max-width: 100%;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 275px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: grey;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+//    MAP FOCUS     //
+//////////////////////
+
 #mapFocusComponent {   
    .focusRegion img {
         width: 20%;
+        opacity: #FF0000;
+    }
+
+    .opacity img {
+        background-color: rgba(255,255,255,.6);
+        
     }
 }
+
+

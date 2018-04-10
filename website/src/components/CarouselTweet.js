@@ -99,7 +99,7 @@ class CarouselTweet extends Component {
         });
 
         return (
-            <div>
+            <div id="tweets">
                 <Carousel
                     activeIndex={activeIndex}
                     next={this.next}

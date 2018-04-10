@@ -9,6 +9,7 @@ from StatisticsByRegion import StatisticsByRegion
 from StatisticsByHashtag import StatisticsByHashtag
 from flask import Flask, jsonify, abort, request, make_response, url_for
 from flask_cors import CORS, cross_origin
+from TopHashtag import TopHashtag
 
 
 app = Flask(__name__)
@@ -106,6 +107,12 @@ def get_tweet_with_time(hashtagSearched):
         listTweet.append(result[tweet])
 
     return jsonify({'tweets': listTweet})
+
+@app.route('/tophashtag/')
+@cross_origin()
+def getTopHashtag():
+    tophashtag = TopHashtag()
+    return jsonify({'tophashtag' : tophashtag.defaultSearch()})
 
 
 @app.before_first_request
