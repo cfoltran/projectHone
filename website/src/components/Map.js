@@ -49,7 +49,7 @@ class Map extends Component {
                                                     .attr("class", "tooltip")
                                                     .style("opacity", 0);
 
-          var htag=''
+          var htag='jo'
 
           function feeling(num)
           {
@@ -70,7 +70,7 @@ class Map extends Component {
 
                 // Load in GeoJSON data
 
-                // relation between map's json and tweets json
+                // relation between map's json and tweets json (considering ID and names)
 
                 var frStatesMap={'Ile-de-France': '0',
                 'Auvergne-Rhone-Alpes': '1',
@@ -114,8 +114,8 @@ class Map extends Component {
 
                     // makes map.json and data from python relatable
                     var dz;
-                    for(var i = 0; i < geojson.features.length-1; i++) {
-                      console.log(i+''+pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')))
+                    for(var i = 0; i < geojson.features.length; i++) {
+                      console.log(geojson.features[i].properties.nom)
                       if(pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')) != 'Dark-Zone') geojson.features[i].properties.value=data.statistics[frStatesMap[pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
                       else {
                         dz=i
