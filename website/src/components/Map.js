@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import * as d3 from 'd3';
 import '../style/scss/style.css';
 import { withRouter } from "react-router-dom";
@@ -7,9 +7,6 @@ import { withRouter } from "react-router-dom";
 
 class Map extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.initMap()
@@ -82,7 +79,7 @@ class Map extends Component {
                         for(var j = 0; j < geojson.features.length; j++){
                             var jsonState = geojson.features[j].properties.nom;
 
-                            if(dataState == jsonState){
+                            if(dataState === jsonState){
                                 // Copy the data value into the JSON
                                 geojson.features[j].properties.value = dataValue;
 
@@ -105,7 +102,7 @@ class Map extends Component {
 				d3.select(this).style("fill", function(d) {
                             // Get data value
                             var value = d.properties.value;
-                            if(typeof(value) == "number") {
+                            if(typeof(value) === "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
                                 else if(value >= -0.65 && value < -0.3)
