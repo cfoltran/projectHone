@@ -124,7 +124,7 @@ class Map extends Component {
                                 +  "Humeur : " + feeling(d.properties.value)+ "<br>"
                                     +  "nombre de tweet : " + d.properties.value)
                                 .style("left", (d3.event.pageX -350) + "px")
-                                .style("top", (d3.event.pageY -200) + "px")
+                                .style("top", (d3.event.pageY -100) + "px")
                         })
 
                         .on("click", function(d) {
