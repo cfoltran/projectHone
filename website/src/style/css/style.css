@@ -10,9 +10,9 @@ body {
 }
 /* utilities */
 
-
+/* pagging top pour la hauteur de la carte*/
 .padding-150 {
-    padding-top: 90px;
+    padding-top: 0px;
     padding-bottom: 100px;
 }
 
@@ -62,9 +62,23 @@ body {
     padding: 10px;
 }
 
+.padding-right-100{
+    padding-right: 300px;
+}
+
 .font-40 {
     font-size: 40px;
 }
+
+.font-25 {
+    font-size: 25px;
+}
+
+.font-30 {
+    font-size: 30px;
+}
+
+
 .font-60 {
     font-size: 60px;
 }
@@ -136,6 +150,7 @@ body {
     width:25px;
     float:left;
     font-size:1.5rem;
+    color:white;
 }
 
 .toggle-switch{
