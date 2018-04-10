@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
-import Searchbar from './Searchbar';
+
+import React, { Component } from 'react';
+import NavbarFeatures from "./NavbarFeatures";
 
 
 //Style
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
+import FooterPage from "./Footer";
 
 class MapFocus extends Component {
 
@@ -16,6 +18,7 @@ class MapFocus extends Component {
         this.switchHome = this.switchHome.bind(this);
     }
 
+
     switchHome = checked => {
         this.setState({checked: checked});
     };
@@ -24,14 +27,16 @@ class MapFocus extends Component {
         let switchFocus = (this.state.checked) ? "text-center bg-white" : "text-center bg-white";
         let switchText = (this.state.checked) ? "bg-secondary text-light" : "bg-white text-dark";
         return (
-            <section id="mapFocusComponent" class="focusRegion">
-                <Searchbar checked={this.state.checked} onSwitchHome={this.switchHome}/>
-                <div className={switchFocus}>
+
+            <div>
+                <NavbarFeatures/>
+                <section id="mapFocusComponent" className="text-center bg-white focusRegion">
+
                     <div className="container">
                         <div className="row text-center">
                             <div className="col-md-12">
-                                <div class="opacity">
-                                    <img src={`/img/regions/${this.props.match.params.region}.png`}/>
+                                <div className="opacity">
+                                    <img src={`/img/regions/${this.props.match.params.region}.png`} alt={this.props.match.params.region}/>
                                 </div>
                             </div>
                             <div className="col-md-12">
@@ -49,8 +54,10 @@ class MapFocus extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+                <FooterPage/>
+            </div>
+
         )
     }
 }
