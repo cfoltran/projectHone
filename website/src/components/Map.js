@@ -46,6 +46,8 @@ class Map extends Component {
                                                     .attr("class", "tooltip")
                                                     .style("opacity", 0);
 
+          var htag='jo'
+
           function feeling(num)
           {
             if(num >= -1 && num < -0.65)
@@ -61,34 +63,65 @@ class Map extends Component {
           }
 
             // Load in france data
-            d3.json('/static/fr-data-test.json', function(data) {
-              console.log(data)
+            d3.json('http://localhost:5001/statistics/region/all'+(htag?'/'+htag:''), function(data) {
+
                 // Load in GeoJSON data
+
+                // relation between map's json and tweets json (considering ID and names)
+
+                var frStatesMap={'Ile-de-France': '0',
+                'Auvergne-Rhone-Alpes': '1',
+                'Occitanie': '10',
+                'Pays_de_la_Loire': '11',
+                'Provence-Alpes-Cote_dAzur': '12',
+                'La_Reunion': '13',
+                'Martinique': '14',
+                'Guyane': '15',
+                'Guadeloupe': '16',
+                'Mayotte': '17',
+                'Bourgogne-Franche-Comte': '2',
+                'Bretagne': '3',
+                'Centre-Val_de_Loire': '4',
+                'Corse': '5',
+                'Grand_Est': '6',
+                'Hauts-de-France': '7',
+                'Normandie': '8',
+                'Nouvelle-Aquitaine': '9'}
+
                 d3.json('/static/departments.json', function(geojson) {
-                  console.log(geojson)
+
                     // Merge the fr. data and GeoJSON
                     // Loop through once for each fr. data value
-                    for(var i = 0; i < data.states.length; i++) {
-                        // Grab state name
-                        var dataState = data.states[i].state;
 
-                        // Grab data value, and convert form string to float
-                        var dataValue = parseFloat(data.states[i].value);
+                    //// removes the unformal chars
 
-                        // Find the corresponding state inside the GeoJSON
-                        for(var j = 0; j < geojson.features.length; j++){
-                            var jsonState = geojson.features[j].properties.nom;
-
-                            if(dataState === jsonState){
-                                // Copy the data value into the JSON
-                                geojson.features[j].properties.value = dataValue;
-
-                                // Stop looking through the JSON
-                                break;
-                            }
+                    function pure(str){
+                        var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+                        var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+                        str = str.split('');
+                        var strLen = str.length;
+                        var i, x;
+                        for (i = 0; i < strLen; i++) {
+                          if ((x = accents.indexOf(str[i])) != -1) {
+                            str[i] = accentsOut[x];
+                          }
                         }
+                        return str.join('');
                     }
-                    console.log(geojson)
+
+                    // makes map.json and data from python relatable
+                    var dz;
+                    for(var i = 0; i < geojson.features.length; i++) {
+                      console.log(geojson.features[i].properties.nom)
+                      if(pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')) != 'Dark-Zone') geojson.features[i].properties.value=data.statistics[frStatesMap[pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
+                      else {
+                        dz=i
+                        d3.json('http://localhost:5001/statistics/region/darkzone'+(htag?'/'+htag:''), function(darkzone) {
+                          geojson.features[dz].properties.value=darkzone.statistics['0']
+                        })
+                      }
+                    }
+
                     // Bind data and create one path per GeoJSON feature
                     deps.selectAll("path")
                         .data(geojson.features)
@@ -97,12 +130,12 @@ class Map extends Component {
                         .attr("d", path)
                         .attr("stroke","#CECECE")
 			.attr("fill", "#212529")
-                        
+
                         .on("mouseover", function(d) {
 				d3.select(this).style("fill", function(d) {
                             // Get data value
-                            var value = d.properties.value;
-                            if(typeof(value) === "number") {
+                            var value = d.properties.value.AveragePolarity;
+                            if(typeof(value) == "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];
                                 else if(value >= -0.65 && value < -0.3)
@@ -118,8 +151,8 @@ class Map extends Component {
                                 .duration(200)
                                 .style("opacity", .9);
                             div.html("Région : " + d.properties.nom + "<br>"
-                                +  "Humeur : " + feeling(d.properties.value)+ "<br>"
-                                    +  "nombre de tweet : " + d.properties.value)
+                                +  "Humeur : " + feeling(d.properties.value.AveragePolarity)+ "<br>"
+                                    +  "nombre de tweet : " + d.properties.value.NumbersOfTweets)
                                 .style("left", (d3.event.pageX -350) + "px")
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
@@ -137,7 +170,7 @@ class Map extends Component {
                                 .style("left", "0px")
                                 .style("top", "0px");
                         });
-                        
+
                 })
 
             });
@@ -150,4 +183,4 @@ class Map extends Component {
     }
 }
 
-export default withRouter(Map);
+export default Map;

@@ -61,18 +61,16 @@ class Home extends Component {
         return (
             <div>
                 <NavbarFeatures checked={this.state.checked} onSwitchHome={this.switchHome}/>
-
-
                 <Loader/>
                 <section className={classSwitch}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <Map/>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                           <div className="container">
+                               <div className="row">
+                                   <div className="col-md-12">
+                                       <Map/>
+                                   </div>
+                               </div>
+                           </div>
+                       </section>
 
                 <ThemeProvider theme={bot}>
                 <ChatBot
@@ -85,12 +83,10 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
+
                 <CarouselTweet/>
-                <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
 
                 <FooterPage/>
-
-                <Tweets checked={this.state.checked} onSwitchHome={this.switchHome}/>
         </div>
         );
     }

@@ -20,7 +20,7 @@ class App extends Component {
             <Router>
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route  path="/search/:tag/:sementic" component={Search}/>
+                    <Route  path="/search/:tag" component={Search}/>
                     <Route  path="/map/:region" component={MapFocus}/>
                     <Route component={GenericNotFound} />
                 </Switch>
