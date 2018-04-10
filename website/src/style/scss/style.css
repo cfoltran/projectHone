@@ -11,7 +11,7 @@ div.tooltip {
   text-align: center;
   color: white;
   width: 275px;
-  height: 60px;
+  height: 40px;
   padding: 2px;
   font: 12px sans-serif;
   background: grey;
@@ -20,10 +20,12 @@ div.tooltip {
   pointer-events: none;
   font-size: 16px; }
 
-#mapFocusComponent .focusRegion img {
-  width: 20%;
-  opacity: #FF0000; }
-#mapFocusComponent .opacity img {
-  background-color: rgba(255, 255, 255, 0.6); }
+#mapFocusComponent #opacity {
+  border: 20%; }
+#mapFocusComponent .progress {
+  margin-top: 5%;
+  font-size: 20px;
+  height: 40%;
+  border: 1px grey solid; }
 
 /*# sourceMappingURL=style.css.map */
