@@ -1,8 +1,10 @@
 import React from 'react';
-import ModalSearch from './ModalSearch';
 import Switch from './Switch.js';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem} from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {withRouter} from "react-router-dom";
+
 
 import Scrollchor from 'react-scrollchor';
 
@@ -12,8 +14,11 @@ class NavbarFeatures extends React.Component {
         this.state = {
             collapse: false,
             isWideEnough: false,
-            dropdownOpen: false
+            dropdownOpen: false,
+            modal: false
         };
+
+        this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
         this.toggle = this.toggle.bind(this);
     }
@@ -29,6 +34,23 @@ class NavbarFeatures extends React.Component {
             dropdownOpen: !this.state.dropdownOpen
         });
     }
+    searchTag = event => {
+        this.toggle();
+        event.preventDefault();
+
+        const tagSementic = {
+            tag: this.tag.value,
+        };
+        this.props.history.push(`/search/${tagSementic.tag}`);
+    };
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
+
 
     render() {
         return (
@@ -60,7 +82,7 @@ class NavbarFeatures extends React.Component {
                                 </NavItem>
                                 <NavItem>
                                     <Scrollchor  className="nav-link"  to="#presentation">
-                                        <i className="fas fa-hand-pointer-o"/> Présentation
+                                        <i className="fas fa-comment"/> Présentation
                                     </Scrollchor>
                                 </NavItem>
 
@@ -71,7 +93,36 @@ class NavbarFeatures extends React.Component {
                                 <Switch checked={this.props.checked} onSwitchHome={this.props.onSwitchHome}/>
                             </NavItem>
                             <NavItem>
-                                <ModalSearch/>
+                            <div>
+                                {/*<!--===========================================-->*/}
+                                {/*                 <!--Modal-->                     */}
+                                {/*<!--===========================================-->*/}
+
+                                <Button color="primary" onClick={this.toggle}> <i className="fas fa-search"><span> Rechercher</span></i></Button>
+                                <Modal contentclassName="padding-150x" isOpen={this.state.modal}
+                                       modalTransition={{timeout: 20}}
+                                       backdropTransition={{timeout: 10}}
+                                       toggle={this.toggle} className={this.props.className}>
+                                    <ModalHeader toggle={this.toggle}>
+                                        Recherche dun hashtag en fonction du sentimenent voulu!
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <div className="container padding-10">
+                                            <form onSubmit={e => this.searchTag(e)}>
+                                                <input type="text" required="required" ref={input => {
+                                                    this.tag = input
+                                                }}/>
+
+                                                <button className="btn btn-primary" ref="both_checked" type="onSubmit">
+                                                    Rechercher
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    </ModalFooter>
+                                </Modal>
+                            </div>
                             </NavItem>
                         </NavbarNav>
                     </Collapse>
@@ -81,4 +132,4 @@ class NavbarFeatures extends React.Component {
         );
     }
 }
-export default NavbarFeatures;
+export default withRouter(NavbarFeatures);

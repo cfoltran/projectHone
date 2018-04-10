@@ -11,16 +11,20 @@ import FooterPage from "./Footer";
 
 class MapFocus extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            region : "/img/r/"+ this.props.match.params.region +".svg",
+            color : this.props.match.params.color
+        }
+    }
+
     componentDidMount() {
         this.initMap()
     }
     
     initMap() {
-        //SVG region file
-        var region = "/img/r/"+ this.props.match.params.region +".svg"
-        var color = this.props.match.params.color;
-
-        // set up svg image tag
+        var region = this.state.region
         var images = d3.select("svg")
         .append('svg:image')
         .attr("fill","red")
@@ -35,7 +39,7 @@ class MapFocus extends Component {
         }
         // if it fails test another image
         imgTest.onerror = function() {
-            imgTest.src = region
+            imgTest.src = region;
         }
         // this will fail
         imgTest.src = "https://does.not/exist.png";
@@ -52,7 +56,8 @@ class MapFocus extends Component {
                         <div className="row text-center">
                             <div className="col-md-12">
                                 <div className="opacity">
-                                    <svg id="map" ref="mapRender"></svg>
+                                    <svg id="map" ref="mapRender" color={this.state.color}  ></svg>
+                                    <div id="polarity"> </div>
                                 </div>
                             </div>
                             <div className="col-md-12">
