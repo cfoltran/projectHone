@@ -28,15 +28,16 @@ div.tooltip {
 //    MAP FOCUS     //
 //////////////////////
 
-#mapFocusComponent {   
-   .focusRegion img {
-        width: 20%;
-        opacity: #FF0000;
+#mapFocusComponent {
+    #opacity {
+        border : 20%;
     }
 
-    .opacity img {
-        background-color: rgba(255,255,255,.6);
-        
+    .progress {
+        margin-top : 5%;
+        font-size: 20px; 
+        height: 40%;
+        border: 1px grey solid 
     }
 }
 
