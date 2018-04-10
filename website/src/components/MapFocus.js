@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavbarFeatures from "./NavbarFeatures";
+import * as d3 from 'd3';
 
 
 //Style
@@ -7,9 +8,40 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 import FooterPage from "./Footer";
 
+
 class MapFocus extends Component {
 
+    componentDidMount() {
+        this.initMap()
+    }
+    
+    initMap() {
+        //SVG region file
+        var region = "/img/r/"+ this.props.match.params.region +".svg"
+        var color = this.props.match.params.color;
 
+        // set up svg image tag
+        var images = d3.select("svg")
+        .append('svg:image')
+        .attr("fill","red")
+        .attr('width', 200)
+        .attr('height', 200);
+
+        // create a test image
+        var imgTest = new Image();
+        // if it loads successfully add it to the svg image
+        imgTest.onload = function() {
+            images.attr("xlink:href", imgTest.src)
+        }
+        // if it fails test another image
+        imgTest.onerror = function() {
+            imgTest.src = region
+        }
+        // this will fail
+        imgTest.src = "https://does.not/exist.png";
+    }
+
+//<img src={`/img/regions/${this.props.match.params.region}.png`} alt={this.props.match.params.region}/>
     render() {
         return (
             <div>
@@ -20,7 +52,7 @@ class MapFocus extends Component {
                         <div className="row text-center">
                             <div className="col-md-12">
                                 <div className="opacity">
-                                    <img src={`/img/regions/${this.props.match.params.region}.png`} alt={this.props.match.params.region}/>
+                                    <svg id="map" ref="mapRender"></svg>
                                 </div>
                             </div>
                             <div className="col-md-12">
