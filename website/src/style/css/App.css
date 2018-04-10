@@ -1,1 +1,7 @@
 section { display: flex !important; justify-content: center; align-items: center; min-height: 90vh; }
+
+@media screen and (max-width: 768px) {
+    .navbar--brand__name {
+        display: none;
+    }
+}
