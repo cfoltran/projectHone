@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../style/css/style.css';
 import FooterPage from "./Footer";
+import '../style/css/loader.css';
 
 
 class MapFocus extends Component {
@@ -15,7 +16,9 @@ class MapFocus extends Component {
         super(props);
         this.state = {
             region : "/img/r/"+ this.props.match.params.region +".svg",
-            color : this.props.match.params.color
+            color : this.props.match.params.color,
+            polarity : this.props.match.params.polarity,
+            percent : (this.props.match.params.polarity*100) / 2 +50
         }
     }
 
@@ -56,13 +59,16 @@ class MapFocus extends Component {
                         <div className="row text-center">
                             <div className="col-md-12">
                                 <div className="opacity">
-                                    <svg id="map" ref="mapRender" color={this.state.color}  ></svg>
-                                    <div id="polarity"> </div>
+                                    <svg id="map" ref="mapRender" color={this.state.color}/>                              
                                 </div>
                             </div>
                             <div className="col-md-12">
                                 <h2 className="font-60 bg-white">{ this.props.match.params.region }</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.percent+'%', backgroundColor: this.props.match.params.color}}>
+                                        Polarité : { this.state.polarity }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
