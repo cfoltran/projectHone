@@ -3,6 +3,14 @@ import * as d3 from 'd3';
 // import '../style/css/.css';
 
 class BarChart extends Component {
+
+  constructor(props) {
+     super(props);
+     this.state = {
+       tag: this.props,
+     };
+     //get the hash do this.state.tag 
+   }
     componentDidMount() {
         this.initBarChart()
     }
@@ -75,7 +83,6 @@ class BarChart extends Component {
     render() {
         return (
             <div className="ml-auto bar" ref="bar"></div>
-
         );
     }
 }

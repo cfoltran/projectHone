@@ -22,23 +22,11 @@ class CarouselTweet extends Component {
             activeIndex: 0,
             tweets : [
                 {
-
-                    Content: '#JO Trente-deux Russes non-invités font appel pour participer aux Jeux d’hiver à #Pyeongchang2018 http://lemde.fr/2C03lpF',
-                    Author: '@lemondefr',
-                    Date:'20/02/2018',
-                    Retweets: '25'
+                    Content: '',
+                    Author: '',
+                    Date:'',
+                    Retweets: ''
                 },
-                {
-                    caption: 'Beyonce'
-                },
-                {
-
-                    caption: 'Oprah'
-                },
-                {
-
-                    caption: 'Myrell Streep'
-                }
             ]
 
         }
@@ -47,6 +35,7 @@ class CarouselTweet extends Component {
                 return res.json()
             })
         .then(res => {
+
                 this.setState( { tweets: res.tweets });
             })
         .catch(error => console.error('Error:', error))
@@ -81,38 +70,36 @@ class CarouselTweet extends Component {
     }
 
     render() {
-        const { activeIndex, tweets } = this.state;
+      const { activeIndex, tweets } = this.state;
 
-        const slides = tweets.map((item,index) => {
-            return (
-                            <CarouselItem
-                                className="padding-150 h-500 "
-                                onExiting={this.onExiting}
-                                onExited={this.onExited}
-                                key={'itemcarousel'+index}
-                            >
-                                <img src={item.src} alt="" />
-                                <CarouselCaption   key={'captioncarousel'+index} className="text-cloud " captionText={ item.Date + " - " + item.Author + " - " + item.Retweets + " retweets "} captionHeader={item.Content} ></CarouselCaption>
-                            </CarouselItem>
+      const slides = tweets.map((item,index) => {
+          console.log(index);
+          return (
+                          <CarouselItem
+                              className="padding-150"
+                              onExiting={this.onExiting}
+                              onExited={this.onExited}
+                              key={index}
+                          >
+                              <CarouselCaption key={'captioncarousel'+item} className="text-cloud " captionText={ item.Date + " - " + item.Author + " - " + item.Retweets + " retweets "} captionHeader={item.Content} ></CarouselCaption>
+                          </CarouselItem>
 
-            );
-        });
-
-        return (
-            <div id="tweets">
-                <Carousel
-                    activeIndex={activeIndex}
-                    next={this.next}
-                    previous={this.previous}
-                >
-                    <CarouselIndicators items={tweets} activeIndex={activeIndex} onClickHandler={this.goToIndex} key="test" />
-                    {slides}
-                    <CarouselControl  className="text-dark " direction="prev" directionText="Previous" onClickHandler={this.previous} key="carouselprev" />
-                    <CarouselControl className="text-dark "  direction="next" directionText="Next" onClickHandler={this.next} key="carouselnext" />
-                </Carousel>
-            </div>
-        );
-    }
+          );
+      });
+              console.log(this.state.activeIndex);
+      return (
+              <Carousel
+                  activeIndex={this.state.activeIndex}
+                  next={this.next}
+                  previous={this.previous}
+              >
+                  <CarouselIndicators items={tweets} activeIndex={activeIndex} onClickHandler={this.goToIndex} key="test" />
+                  {slides}
+                  <CarouselControl  className="text-dark " direction="prev" directionText="Previous" onClickHandler={this.previous}  key="carouselprev"/>
+                  <CarouselControl className="text-dark "  direction="next" directionText="Next" onClickHandler={this.next} key="carouselnext"  />
+              </Carousel>
+      );
+  }
 }
 
 

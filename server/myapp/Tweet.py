@@ -13,7 +13,7 @@ from Connect import Connect
 textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
 MARGIN_DAY = 1  # Value used to retrieve all tweets below it
-TWEETS_PER_SEARCH = 100 # Max Value = 100
+TWEETS_PER_SEARCH = 5 # Max Value = 100
 
 textblob = Blobber(pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
 
