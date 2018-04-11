@@ -22,7 +22,7 @@ class DashBoard extends Component {
           d3.select('.ppc-progress-fill').style('transform','rotate('+ deg +'deg)');
           d3.select('.ppc-percents span').html(percent+'%');
 
-            d3.json("/static/dataForDashBoard.json", function(data) {
+            d3.json("localhost:5001/statistics/hashtag", function(data) {
               console.log(data[0]);
               d3.select('#tweet').html(data[0].age);
               d3.select('#rt').html(data[1].age);
@@ -50,9 +50,9 @@ class DashBoard extends Component {
             <div className="statRightHolder">
 
                 <ul>
-                    <li> <h3><span>Nombre de Tweet</span></h3> <div id='tweet' className="font-30"/>
+                    <li> <h3><span>Tweets</span></h3> <div id='tweet' className="font-30"/>
                   </li>
-                    <li> <h3><span>Nombre de RT moyen</span></h3> <div id='rt' className="font-30"/> </li>
+                    <li> <h3><span>Retweet moyen</span></h3> <div id='rt' className="font-30"/> </li>
 					<li> <h3><span>Humeur</span></h3> <div id='humeur' className="font-30"/> </li>
                 </ul>
 
