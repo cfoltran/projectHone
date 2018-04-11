@@ -7,19 +7,25 @@
 //React
 import React from 'react';
 import {render} from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 //componant
 import App from './App';
-import Search from './components/Search';
 
 //config
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import NavbarFeatures from "./components/NavbarFeatures";
 
 const Root = () =>{
     return(
-        <App/>
+        <div>
+            <App/>
+        </div>
     )
 };
 

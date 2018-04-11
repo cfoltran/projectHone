@@ -1,85 +1,187 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import '../style/css/map.css';
+import '../style/scss/style.css';
+import { withRouter } from "react-router-dom";
+
+
 
 class Map extends Component {
+
+
     componentDidMount() {
         this.initMap()
     }
 
-    componentDidUpdate(){
-        this.initMap()
-    }
+    // Source: http://shop.oreilly.com/product/0636920026938.do
+
 
     initMap() {
-        var width = 900, height = 900;
+            // Width and height
+            var propsForD3 = this.props;
+            var width = 1000, height = 1000;
 
-
-            var path = d3.geoPath();
-
+            // Define map projection
             var projection = d3.geoConicConformal()
-                .center([2.454071, 46.379229])
-                .scale(4000)
-                .translate([width / 2, height / 2]);
+                               .center([2.454071, 46.379229])
+                               .scale(4000)
+                               .translate([width / 2, height / 2]);
 
-            path.projection(projection);
+            // Define default path generator
+            var path = d3.geoPath()
+                         .projection(projection);
 
-            var svgMap = d3.select('#map').append("svg")
-                .attr("id", "svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("fil","#212529");
+            // Define quantize scale to sort data values into buckets of color
+            var color = ["#FF453E","#E87B31","#FFEEC8","#E8E23D","#6CFF3A"];
+
+            // Create SVG element
+            var svgMap = d3.select(this.refs.mapRender).append("svg");
+                                        svgMap.attr("id", "svg")
+                                        .attr("role", "img") // un peu d’a11y
+                                        .attr("viewBox", "0 0 "+ width + " " + height)
+                                        .attr("fill","#212529");
 
             var deps = svgMap.append("g");
 
-
             var div = d3.select(this.refs.mapRender).append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+                                                    .attr("class", "tooltip")
+                                                    .style("opacity", 0);
 
-            var lol=null;
-            var i= 1;
+          var htag=''
 
-            d3.json('/static/departments.json', function(geojson) {
+          function feeling(num)
+          {
+            num*=5
+            if(num >= -1 && num < -0.65)
+                return "Énervé";
+            else if(num >= -0.65 && num < -0.3)
+                return "Pas content";
+            else if(num >= -0.3 && num < 0.3)
+                return "Neutre";
+            else if(num >= 0.3 && num < 0.65)
+                return "Content";
+            else if(num >= 0.65 && num <= 1)
+                return "Trés content";
+          }
 
-                console.log(geojson)
-                deps.selectAll("path")
-                    .data(geojson.features)
-                    .enter()
-                    .append("path")
-                    .attr('class', 'department')
-                    .attr("d", path)
-                    .attr("fill","rgba(98,225,230,0.5)")
-                    .attr("stroke","black")
+            // Load in france data
+            d3.json('http://localhost:5001/statistics/region/all'+(htag?'/'+htag:''), function(data) {
 
-                    .on("mouseover", function(d) {
-                        d3.select(this).attr("fill","black");
-                        div.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                        div.html("Région : " + d.properties.nom + "<br>"
-                            +  "Code : " + d.properties.code)
-                            .style("left", (d3.event.pageX + 30) + "px")
-                            .style("top", (d3.event.pageY - 30) + "px")
-                    })
-                    .on("mouseout", function(d) {
-                        d3.select(this).attr("fill","rgba(98,225,230,0.5)");
-                        div.transition()
-                            .duration(0)
-                            .style("opacity", 0);
-                        div.html("")
-                            .style("left", "0px")
-                            .style("top", "0px");
-                    });
-            })
+                // Load in GeoJSON data
 
+                // relation between map's json and tweets json (considering ID and names)
+
+                var frStatesMap={'Ile-de-France': '0',
+                'Auvergne-Rhone-Alpes': '1',
+                'Occitanie': '10',
+                'Pays_de_la_Loire': '11',
+                'Provence-Alpes-Cote_dAzur': '12',
+                'La_Reunion': '13',
+                'Martinique': '14',
+                'Guyane': '15',
+                'Guadeloupe': '16',
+                'Mayotte': '17',
+                'Bourgogne-Franche-Comte': '2',
+                'Bretagne': '3',
+                'Centre-Val_de_Loire': '4',
+                'Corse': '5',
+                'Grand_Est': '6',
+                'Hauts-de-France': '7',
+                'Normandie': '8',
+                'Nouvelle-Aquitaine': '9'}
+
+                d3.json('/static/departments.json', function(geojson) {
+
+                    // Merge the fr. data and GeoJSON
+                    // Loop through once for each fr. data value
+
+                    //// removes the unformal chars
+
+                    function pure(str){
+                        var accents    = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+                        var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+                        str = str.split('');
+                        var strLen = str.length;
+                        var i, x;
+                        for (i = 0; i < strLen; i++) {
+                          if ((x = accents.indexOf(str[i])) != -1) {
+                            str[i] = accentsOut[x];
+                          }
+                        }
+                        return str.join('');
+                    }
+
+                    // makes map.json and data from python relatable
+                    var dz;
+                    for(var i = 0; i < geojson.features.length; i++) {
+                      console.log(geojson.features[i].properties.nom)
+                      if(pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')) != 'Dark-Zone') geojson.features[i].properties.value=data.statistics[frStatesMap[pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
+                      else {
+                        dz=i
+                        d3.json('http://localhost:5001/statistics/region/Dark-Zone'+(htag?'/'+htag:''), function(darkzone) {
+                          geojson.features[dz].properties.value=darkzone.statistics['0']
+                        })
+                      }
+                    }
+
+                    // Bind data and create one path per GeoJSON feature
+                    deps.selectAll("path")
+                        .data(geojson.features)
+                        .enter()
+                        .append("path")
+                        .attr("d", path)
+                        .attr("stroke","#CECECE")
+			.attr("fill", "#212529")
+
+                        .on("mouseover", function(d) {
+				d3.select(this).style("fill", function(d) {
+                            // Get data value
+                            var value = d.properties.value.AveragePolarity*5;
+                            if(typeof(value) == "number") {
+                                if(value >= -1 && value < -0.65)
+                                    return color[0];
+                                else if(value >= -0.65 && value < -0.3)
+                                    return color[1];
+                                else if(value >= -0.3 && value < 0.3)
+                                    return color[2];
+                                else if(value >= 0.3 && value < 0.65)
+                                    return color[3];
+                                else if(value >= 0.65 && value <= 1)
+                                    return color[4];
+                            }});
+                            div.transition()
+                                .duration(200)
+                                .style("opacity", .9);
+                            div.html("Région : " + d.properties.nom + "<br>"
+                                +  "Humeur : " + feeling(d.properties.value.AveragePolarity)+ "<br>"
+                                    +  "nombre de tweet : " + d.properties.value.NumbersOfTweets)
+                                .style("left", (d3.event.pageX -350) + "px")
+                                .style("top", (d3.event.pageY -200) + "px")
+                        })
+
+                       
+			.on("click", function(d) {
+                            propsForD3.history.push(`/map/${d.properties.nom}/${d3.select(this).style('fill')}/${d.properties.value}`);
+                        })
+                        .on("mouseout", function(d) {
+				d3.select(this).style("fill","#212529")
+                            div.transition()
+                                .duration(0)
+                                .style("opacity", 0);
+                            div.html("")
+                                .style("left", "0px")
+                                .style("top", "0px");
+                        });
+
+                })
+
+            });
 }
+
     render() {
         return (
-
-            <div className="bg-light" id="map" ref="mapRender"></div>
+            <div id="map" ref="mapRender"></div>
         )
     }
 }
 
-export default Map;
+export default withRouter(Map);

@@ -4,9 +4,11 @@ import React, { Component } from 'react';
 //Component
 import Loader from './Loader';
 import Map from './Map';
-import Searchbar from './Searchbar'
+import NavbarFeatures from './NavbarFeatures';
 import ChatBot from 'react-simple-chatbot';
 import Tweets from "./Tweets";
+import CarouselTweet from "./CarouselTweet";
+import FooterPage from "./Footer";
 
 //Config
 import { ThemeProvider } from 'styled-components';
@@ -15,20 +17,20 @@ import bot from '../config/bot';
 
 //Style
 import '../style/css/App.css';
-import '../style/css/bot.css'
 
-
-
+import '../style/css/bot.css';
 
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            checked: false
         };
 
         this.toggleFloating = this.toggleFloating.bind(this);
+        this.switchHome = this.switchHome.bind(this);
     }
 
     toggleFloating() {
@@ -49,23 +51,29 @@ class Home extends Component {
         }
     }
 
+    switchHome = checked => {
+        this.setState( { checked: checked} );
+    };
+
     render() {
         // const tag = <Search ref={this.state.tag}/>;
+        let classSwitch=(this.state.checked)?"padding-150 bg-dark":"padding-150 bg-light";
+        let styleBg=(this.props.checked)?"bg-dark":"bg-light";
+        let styleTitre=(this.props.checked)?"font-70 text-light":"font-70 text-dark";
+        let styleText=(this.props.checked)?"font-40 text-light":"font-40 text-dark";
         return (
             <div>
-                <Searchbar/>
+                <NavbarFeatures checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
-                <section className="padding-150 bg-light">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <Map/>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
+                <section className={classSwitch}>
+                           <div className="container">
+                               <div className="row">
+                                   <div className="col-md-12">
+                                       <Map/>
+                                   </div>
+                               </div>
+                           </div>
+                       </section>
 
                 <ThemeProvider theme={bot}>
                 <ChatBot
@@ -75,14 +83,29 @@ class Home extends Component {
                 opened={this.state.open}
                 headerTitle="Twot"
                 botAvatar="./img/logo.png"
-                placeholder="Tapez votre recherche..."
+                placeholder="Tapez votre recherche..." 
                 />
                 </ThemeProvider>
-                <Tweets/>
+
+                <CarouselTweet/>
+                 <section className={styleBg} id="presentation">
+                    <div className="container padding-150">
+                        <div className="row text-center">
+                            <div className="col-md-12">
+                                <h1 className={styleTitre}>Presentation<br/></h1>
+                                <hr/><br/>
+                                    <p className={styleText}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquid consectetur cumque,
+                                        deleniti doloremque ex expedita fugiat labore laborum mollitia officia, perferendis porro quod sapiente sed sequi soluta ut!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <FooterPage/>
         </div>
         );
     }
-
 }
 
 export default Home;

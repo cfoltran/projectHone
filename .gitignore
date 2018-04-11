@@ -1,8 +1,12 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
+# Byte-compiled / optimized / DLL files
 /node_modules
 /__pycache__
+*.py[cod]
+
+
 
 # testing
 /coverage
@@ -10,7 +14,8 @@
 # production
 /build
 
-# misc
+# misci
+.sass-cache
 .DS_Store
 .env.local
 .env.development.local
@@ -23,3 +28,4 @@ yarn-error.log*
 
 .idea
 server/myapp/__pycache__
+.vscode

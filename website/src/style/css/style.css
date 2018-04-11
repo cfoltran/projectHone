@@ -11,9 +11,25 @@ body {
 /* utilities */
 
 
-.padding-150 {
-    padding-top: 150px;
-    padding-bottom: 100px;
+@media screen and (min-width: 1212px) and (max-width : 99999px){
+	.padding-150 {
+    		padding-top: 0px;
+    		padding-bottom: 100px;
+	}
+}
+
+@media screen and (min-width: 30px) and (max-width : 990px){
+	.padding-150 {
+    	padding-top: 150px;
+    	padding-bottom: 100px;
+	}
+}
+
+@media screen and (min-width: 990px) and (max-width : 1212px){
+	.padding-150 {
+    	padding-top: 50px;
+    	padding-bottom: 100px;
+	}
 }
 
 
@@ -50,6 +66,9 @@ body {
 .h-250 {
     height: 250px;
 }
+.h-500 {
+    height: 500px;
+}
 
 .paddingZero {
     padding: 0;
@@ -59,9 +78,24 @@ body {
     padding: 10px;
 }
 
+.padding-right-100{
+    padding-right: 300px;
+}
+
 .font-40 {
     font-size: 40px;
 }
+
+.font-30 {
+    font-size: 30px;
+}
+.font-25 {
+    font-size: 25px;
+}
+.font-20 {
+    font-size: 20px;
+}
+
 .font-60 {
     font-size: 60px;
 }
@@ -133,6 +167,7 @@ body {
     width:25px;
     float:left;
     font-size:1.5rem;
+    color:white;
 }
 
 .toggle-switch{
@@ -192,4 +227,28 @@ input:checked+.slider:before{
 
 .slider.round:before{
     border-radius:50%;
+}
+
+/* Carousel */
+.carousel-caption {
+    bottom: 150px;
+}
+.text-cloud{
+    color: black;
+}
+.bg-dark .text-cloud{
+    color:rgb(236, 240, 241);
+}
+.carousel-control-next-icon {
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+}
+.bg-dark .carousel-control-next-icon {
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+}
+
+.carousel-control-prev-icon{
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E")
+}
+.bg-dark .carousel-control-prev-icon{
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E")
 }

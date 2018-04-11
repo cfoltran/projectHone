@@ -1,5 +1,5 @@
 
-    var width = 900, height = 900;
+var width = 900, height = 900;
 
 var path = d3.geoPath();
 
