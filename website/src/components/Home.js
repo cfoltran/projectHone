@@ -83,7 +83,7 @@ class Home extends Component {
                 opened={this.state.open}
                 headerTitle="Twot"
                 botAvatar="./img/logo.png"
-                placeholder="Tapez votre recherche..."
+                placeholder="Tapez votre recherche..." 
                 />
                 </ThemeProvider>
 
