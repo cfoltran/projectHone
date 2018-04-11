@@ -116,7 +116,7 @@ class Map extends Component {
                       if(pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')) != 'Dark-Zone') geojson.features[i].properties.value=data.statistics[frStatesMap[pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
                       else {
                         dz=i
-                        d3.json('http://localhost:5001/statistics/region/darkzone'+(htag?'/'+htag:''), function(darkzone) {
+                        d3.json('http://localhost:5001/statistics/region/Dark-Zone'+(htag?'/'+htag:''), function(darkzone) {
                           geojson.features[dz].properties.value=darkzone.statistics['0']
                         })
                       }
