@@ -46,7 +46,7 @@ display: inline-block;
 margin-right: 15px;
 color: #B6B5B5;
 font-weight: 300;
-font-size: 38px;
+font-size: 20px;
 }
 .statRightHolder span {
 display: inline-block;
@@ -127,7 +127,7 @@ margin-bottom: 25px;
   height: 200px;
   clip: rect(0, 100px, 200px, 0);
   background: #81CE97;
-  transform: rotate(60deg);
+  transform: rotate(180deg);
 }
 .gt-50 .ppc-progress {
   clip: rect(0, 100px, 200px, 0);
