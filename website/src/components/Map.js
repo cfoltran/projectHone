@@ -50,7 +50,7 @@ class Map extends Component {
 
           function feeling(num)
           {
-		num*=5
+            num*=5
             if(num >= -1 && num < -0.65)
                 return "Énervé";
             else if(num >= -0.65 && num < -0.3)
@@ -155,11 +155,11 @@ class Map extends Component {
                                 +  "Humeur : " + feeling(d.properties.value.AveragePolarity)+ "<br>"
                                     +  "nombre de tweet : " + d.properties.value.NumbersOfTweets)
                                 .style("left", (d3.event.pageX -350) + "px")
-                                .style("top", (d3.event.pageY -100) + "px")
+                                .style("top", (d3.event.pageY -200) + "px")
                         })
 
                         .on("click", function(d) {
-                            propsForD3.history.push(`/map/${d.properties.nom}`);
+                            propsForD3.history.push(`/map/${d.properties.nom}/${d3.select(this).style('fill')}/${d.properties.value}`);
                         })
 
                         .on("mouseout", function(d) {

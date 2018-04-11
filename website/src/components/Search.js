@@ -26,7 +26,7 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*----------Get the search--------*/}
                 {/*--------------------------------*/}
-                <section className="bg-white text-center">
+                <section className="bg-white text-center" id="search">
                     <div className="container">
                         <h2 className="font-70 text-dark">Recherche:</h2>
                         <div className="row text-center">
@@ -43,7 +43,7 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*----------Dash Board------------*/}
                 {/*--------------------------------*/}
-                <section className="bg-dark">
+                <section className="bg-dark" id="dash-board">
                     <div className="container">
                         <h2 className="font-70 text-center text-cloud">Dash Board :</h2>
                         <div className="row">
@@ -56,7 +56,7 @@ class Search extends React.Component{
                 {/*-----------Bar Chart------------*/}
                 {/*--------------------------------*/}
                 <div>
-                    <section className="bg-white">
+                    <section className="bg-white" id="bar-chart">
                         <div className="container">
                             <h2 className="font-70 text-center padding-10">Bar chart:</h2>
                             <div className="row">

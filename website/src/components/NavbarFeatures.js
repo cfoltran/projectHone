@@ -1,9 +1,11 @@
 import React from 'react';
 import Switch from './Switch.js';
-import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem} from 'mdbreact';
+import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink} from 'mdbreact';
+import { Col, Container, Row, Footer } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import {withRouter} from "react-router-dom";
+import Home from './Home'
 
 
 import Scrollchor from 'react-scrollchor';
@@ -26,12 +28,14 @@ class NavbarFeatures extends React.Component {
     onClick(){
         this.setState({
             collapse: !this.state.collapse,
+
         });
     }
 
     toggle() {
         this.setState({
-            dropdownOpen: !this.state.dropdownOpen
+            dropdownOpen: !this.state.dropdownOpen,
+              modal: !this.state.modal
         });
     }
     searchTag = event => {
@@ -44,46 +48,41 @@ class NavbarFeatures extends React.Component {
         this.props.history.push(`/search/${tagSementic.tag}`);
     };
 
-    toggle() {
-        this.setState({
-            modal: !this.state.modal
-        });
-    }
-
-
+    goToHome = event =>{
+         event.preventDefault();
+         this.props.history.push('/');
+    };
 
     render() {
+        let path = window.location.href;
+        let pathString = path.toString();
+
+        console.log(pathString[pathString.length - 1]);
         return (
-            <div className="font-25">
+            <div className="font-15">
 
             <Router>
-                <Navbar color="unique-color-dark" dark expand="md" scrolling fixed="top" >
+
+
+                <Navbar color="unique-color-dark" dark expand="lg" scrolling fixed="top" >
                     <NavbarBrand href="/">
                         <img src="/img/logo.svg" alt="" height="100" width="100"/>
-                        <strong className="font-30 padding-right-100">JoAnalytweet</strong>
+                        <strong className="font-25 ">JoAnalytweet</strong>
                     </NavbarBrand>
                     { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
                     <Collapse isOpen = { this.state.collapse } navbar>
                             <NavbarNav left>
                                 <NavItem>
-                                    <Scrollchor  className="nav-link" to="#">
-                                        <i className="fas fa-home"/> Accueil
-                                    </Scrollchor>
+                                    {pathString[pathString.length - 1] !== '/'  ? <NavLink to='/' onClick={e => this.goToHome(e)}><i className="fas fa-home"/> Accueil </NavLink> : null}
                                 </NavItem>
                                 <NavItem >
-                                    <Scrollchor  className="nav-link" to="#map">
-                                        <i className="fas fa-map"/> Map
-                                    </Scrollchor>
+                                     {pathString[pathString.length - 1] === '/'  ?  <Scrollchor  className="nav-link" to="/#map"> <i className="fas fa-map"/> Map</Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="search"> <i className="fas fa-search"/> Votre recherche</Scrollchor> : null }
                                 </NavItem>
                                 <NavItem>
-                                    <Scrollchor  className="nav-link"  to="#tweets">
-                                        <i className="fas fa-twitter"/> Tweet
-                                    </Scrollchor>
+                                   {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="/#tweets"> <i className="fas fa-twitter"/> Tweet </Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="#dash-board"> <i className="fas fa-area-chart"/>BarChart</Scrollchor> : null}
                                 </NavItem>
                                 <NavItem>
-                                    <Scrollchor  className="nav-link"  to="#presentation">
-                                        <i className="fas fa-comment"/> Présentation
-                                    </Scrollchor>
+                                    {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="#"> <i className="fas fa-comment"/> Présentation </Scrollchor>: pathString.length > 6  ? <Scrollchor  className="nav-link" to="#bar-chart"> <i className="fas fa-pie-chart"/>DashBoard</Scrollchor> : null}
                                 </NavItem>
 
                             </NavbarNav>
@@ -127,7 +126,9 @@ class NavbarFeatures extends React.Component {
                         </NavbarNav>
                     </Collapse>
                 </Navbar>
+
             </Router>
+
             </div>
         );
     }
