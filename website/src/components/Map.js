@@ -160,7 +160,7 @@ class Map extends Component {
 
                        
 			.on("click", function(d) {
-                            propsForD3.history.push(`/map/${d.properties.nom}/${d3.select(this).style('fill')}/${d.properties.value}`);
+                            propsForD3.history.push(`/map/${d.properties.nom}/${d3.select(this).style('fill')}/${d.properties.value.AveragePolarity}`);
                         })
                         .on("mouseout", function(d) {
 				d3.select(this).style("fill","#212529")
