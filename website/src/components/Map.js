@@ -46,10 +46,11 @@ class Map extends Component {
                                                     .attr("class", "tooltip")
                                                     .style("opacity", 0);
 
-          var htag='jo'
+          var htag=''
 
           function feeling(num)
           {
+		num*=5
             if(num >= -1 && num < -0.65)
                 return "Énervé";
             else if(num >= -0.65 && num < -0.3)
@@ -116,7 +117,7 @@ class Map extends Component {
                       if(pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,'')) != 'Dark-Zone') geojson.features[i].properties.value=data.statistics[frStatesMap[pure(geojson.features[i].properties.nom.replace(/\s/g,'_').replace(/'/g,''))]]
                       else {
                         dz=i
-                        d3.json('http://localhost:5001/statistics/region/darkzone'+(htag?'/'+htag:''), function(darkzone) {
+                        d3.json('http://localhost:5001/statistics/region/Dark-Zone'+(htag?'/'+htag:''), function(darkzone) {
                           geojson.features[dz].properties.value=darkzone.statistics['0']
                         })
                       }
@@ -134,7 +135,7 @@ class Map extends Component {
                         .on("mouseover", function(d) {
 				d3.select(this).style("fill", function(d) {
                             // Get data value
-                            var value = d.properties.value.AveragePolarity;
+                            var value = d.properties.value.AveragePolarity*5;
                             if(typeof(value) == "number") {
                                 if(value >= -1 && value < -0.65)
                                     return color[0];

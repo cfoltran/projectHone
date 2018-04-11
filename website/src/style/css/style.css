@@ -10,12 +10,19 @@ body {
 }
 /* utilities */
 
-/* pagging top pour la hauteur de la carte*/
-.padding-150 {
-    padding-top: 0px;
-    padding-bottom: 100px;
+
+@media(min-width: 1000px) {
+	.padding-150 {
+    		padding-top: 0px;
+    		padding-bottom: 100px;
+	}
 }
 
+
+.padding-150 {
+    	padding-top: 150px;
+    	padding-bottom: 100px;
+}
 
 .bg-dark {
     background: #212529;
