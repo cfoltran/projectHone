@@ -55,16 +55,6 @@ def getStatistics(hashtagSearched):
 @app.route('/statistics/region/<codeRegion>')
 @cross_origin()
 def regionRouting(codeRegion):
-<<<<<<< HEAD
-    statistics = Statistics(None, codeRegion)
-    df = statistics.retrieveTweets()
-    result = df.to_dict(orient='index')
-    # fix key error string
-    result = {str(k):v for k,v in result.items()}
-    json = jsonify({'statistics':result})
-    return json
-=======
->>>>>>> 7248061469bc8e8cb0b3159e219f4e8d927e03c2
 
     if(codeRegion == "all"):
         FILENAME = "regionalStats.json"
