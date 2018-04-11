@@ -155,7 +155,7 @@ class Map extends Component {
                                 +  "Humeur : " + feeling(d.properties.value.AveragePolarity)+ "<br>"
                                     +  "nombre de tweet : " + d.properties.value.NumbersOfTweets)
                                 .style("left", (d3.event.pageX -350) + "px")
-                                .style("top", (d3.event.pageY -200) + "px")
+                                .style("top", (d3.event.pageY -100) + "px")
                         })
 
                        
