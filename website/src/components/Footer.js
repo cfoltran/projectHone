@@ -6,7 +6,7 @@ class FooterPage extends React.Component {
     render(){
         return(
             <Footer color="unique-color-dark" className="page-footer font-small pt-0">
-                <div style={{backgroundColor: '#6351ce'}}>
+                <div style={{backgroundColor: '#0080ff'}}>
                     <Container className="text-left">
                         <Row className="py-4 d-flex align-items-center">
                             <Col md="6" lg="5" className="text-center text-md-left mb-4 mb-md-0">
@@ -22,34 +22,17 @@ class FooterPage extends React.Component {
                         </Row>
                     </Container>
                 </div>
-                <Container className="mt-5 mb-4 text-center text-md-left">
-                    <Row className="mt-3">
-                        <Col md="3" lg="4" xl="3" className="mb-4">
+                <Container className="mt-4 mb-4 text-center text-md-left">
+                    <Row className="mt-6">
+                        <Col md="6" lg="5" xl="3" className="mb-4">
                             <h6 className="text-uppercase font-weight-bold"><strong>Company name</strong></h6>
-                            <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
-                            <p> Lorem ipsum dolor sit
-                                amet, consectetur adipisicing elit.Lorem ipsum dolor sit
-                                amet, consectetur adipisicing elit.</p>
+                            <hr className="blue accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
+                            <p> Groupe 4H <br/>
+                             DUT Informatique, promotion 2018, IUT d'Orsay</p>
                         </Col>
-                        <Col md="2" lg="2" xl="2" className="mb-4">
-                            <h6 className="text-uppercase font-weight-bold"><strong>lorem</strong></h6>
-                            <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
-                            <p><a href="#!">lorem</a></p>
-                            <p><a href="#!">lorem</a></p>
-                            <p><a href="#!">lorem</a></p>
-                            <p><a href="#!">lorem lorem</a></p>
-                        </Col>
-                        <Col md="3" lg="2" xl="2" className="mb-4">
-                            <h6 className="text-uppercase font-weight-bold"><strong>lorem lorem</strong></h6>
-                            <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
-                            <p><a href="#!">lorem lorem</a></p>
-                            <p><a href="#!">lorem lorem</a></p>
-                            <p><a href="#!">lorem lorem</a></p>
-                            <p><a href="#!">lorem</a></p>
-                        </Col>
-                        <Col md="4" lg="3" xl="3" className="mb-4">
+                        <Col md="6" lg="5" xl="3" className="mb-4">
                             <h6 className="text-uppercase font-weight-bold"><strong>Contact</strong></h6>
-                            <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
+                            <hr className="blue accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '60px'}}/>
                             <p><i className="fa fa-home mr-3"></i>IUT ORSAY</p>
                             <p><i className="fa fa-envelope mr-3"></i> promo-4h@u-psud.fr</p>
                             <p><i className="fa fa-phone mr-3"></i> + 01 234 567 88</p>
@@ -59,7 +42,7 @@ class FooterPage extends React.Component {
                 </Container>
                 <div className="footer-copyright text-center">
                     <Container fluid>
-                        &copy; {(new Date().getFullYear())} Copyright: <a href="/">JOAnalytweet.com </a>
+                        &copy; {(new Date().getFullYear())} Copyright: <a href="/">IUT d'ORSAY </a>
                     </Container>
                 </div>
             </Footer>

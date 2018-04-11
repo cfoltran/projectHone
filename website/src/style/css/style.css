@@ -9,6 +9,35 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 /* utilities */
+.strong{
+    font-weight:bold;
+}
+
+.bg_pres {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    background: url('/img/presentation.jpeg') no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+.bg_search {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    background: url('/img/search.jpg') no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+@media screen and (max-device-width:480px)  {
+    .bg_pres {
+        background: #212529;
+    }
+}
+
 
 
 @media screen and (min-width: 1212px) and (max-width : 99999px){
@@ -46,13 +75,20 @@ body {
     color: white;
 }
 
+.blue {
+    color: #0080ff ;
+}
+
 .bg-purple{
     color: white;
     background-color:rgba(20,0,72,0.8);
 }
 
 .text-cloud {
-    color: rgb(236, 240, 241);
+    color: rgba(196, 193, 229, 0.99);
+}
+.text-presentation {
+    color: rgb(215, 221, 255);
 }
 
 .text-dark {

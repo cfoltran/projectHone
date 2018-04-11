@@ -76,13 +76,13 @@ class NavbarFeatures extends React.Component {
                                     {pathString[pathString.length - 1] !== '/'  ? <NavLink to='/' onClick={e => this.goToHome(e)}><i className="fas fa-home"/> Accueil </NavLink> : null}
                                 </NavItem>
                                 <NavItem >
-                                     {pathString[pathString.length - 1] === '/'  ?  <Scrollchor  className="nav-link" to="/#map"> <i className="fas fa-map"/> Map</Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="search"> <i className="fas fa-search"/> Votre recherche</Scrollchor> : null }
+                                     {pathString[pathString.length - 1] === '/'  ?  <Scrollchor  className="nav-link" to="#map"> <i className="fas fa-map"/> Map</Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="search"> <i className="fas fa-search"/> Votre recherche</Scrollchor> : null }
                                 </NavItem>
                                 <NavItem>
-                                   {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="/#tweets"> <i className="fas fa-twitter"/> Tweet </Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="#dash-board"> <i className="fas fa-area-chart"/>BarChart</Scrollchor> : null}
+                                   {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="#tweets"> <i className="fas fa-twitter"/> Tweet </Scrollchor> : pathString.length > 6  ? <Scrollchor  className="nav-link" to="#bar-chart"> <i className="fas fa-area-chart"/>BarChart</Scrollchor> : null}
                                 </NavItem>
                                 <NavItem>
-                                    {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="#"> <i className="fas fa-comment"/> Présentation </Scrollchor>: pathString.length > 6  ? <Scrollchor  className="nav-link" to="#bar-chart"> <i className="fas fa-pie-chart"/>DashBoard</Scrollchor> : null}
+                                    {pathString[pathString.length - 1] === '/' ? <Scrollchor  className="nav-link"  to="#presentation"> <i className="fas fa-comment"/> Présentation </Scrollchor>: pathString.length > 6  ? <Scrollchor  className="nav-link" to="#dash-board"> <i className="fas fa-pie-chart"/>DashBoard</Scrollchor> : null}
                                 </NavItem>
 
                             </NavbarNav>

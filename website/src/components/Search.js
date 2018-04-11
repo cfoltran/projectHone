@@ -26,9 +26,9 @@ class Search extends React.Component{
                 {/*--------------------------------*/}
                 {/*----------Get the search--------*/}
                 {/*--------------------------------*/}
-                <section className="bg-white text-center" id="search">
+                <section className="bg_search strong text-center" id="search">
                     <div className="container">
-                        <h2 className="font-70 text-dark">Recherche:</h2>
+                        <h2 className="font-70 text-dark">Votre recherche:</h2>
                         <div className="row text-center">
                             <div className="col-md-12  padding-150">
                                 <p className="text-dark font-40"> Vous avez recherchez: {this.state.tag} <br/>

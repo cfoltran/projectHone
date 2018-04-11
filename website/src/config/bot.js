@@ -1,13 +1,13 @@
 const theme = {
     background: '#f5f8fb',
     fontFamily: 'Helvetica Neue',
-    headerBgColor: '#0cebeb',
+    headerBgColor: '#0080ff',
     headerFontColor: '#fff',
     headerFontFamily: 'Helvetica Neue',
     headerFontSize: '15px',
-    botBubbleColor: '#20e3b2',
+    botBubbleColor: '#58a9fe',
     botFontColor: '#fff',
-    userBubbleColor: '#29ffc6',
+    userBubbleColor: '#71aeff',
     userFontColor: '#fff',
 };
 

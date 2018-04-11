@@ -90,14 +90,15 @@ class Home extends Component {
                 placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-                 <section className={styleBg} id="presentation">
-                    <div className="container padding-150">
+                 <section className="bg_pres" id="presentation">
+                    <div className="container padding-150 ">
                         <div className="row text-center">
                             <div className="col-md-12">
-                                <h1 className={styleTitre}>Presentation<br/></h1>
+                                <h1 className="font-70 text-presentation strong" >Presentation<br/></h1>
                                 <hr/><br/>
-                                    <p className={styleText}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab aliquid consectetur cumque,
-                                        deleniti doloremque ex expedita fugiat labore laborum mollitia officia, perferendis porro quod sapiente sed sequi soluta ut!</p>
+                                    <p className="font-40 text-presentation strong">JoAnalyTweet constitue le projet de deuxième année du groupe H de la promotion 2018 du DUT Informatique de l'IUT D'Orsay. Ce site internet a été porté par les 15 étudiants du groupe de janvier à avril 2018.
+                                                            JoAnalyTweet permet d'analyser le comportement et la perception des utilisateurs de Twitter pour mieux se rendre compte de l'impact des événements internationaux majeurs.
+                                                            Le groupe a choisi de travailler sur les Jeux Olympiques de Pyeongchang et de se concentrer sur la population Française pour la première version du site.</p>
                             </div>
                         </div>
                     </div>
