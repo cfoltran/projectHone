@@ -11,18 +11,27 @@ body {
 /* utilities */
 
 
-@media(min-width: 1000px) {
+@media screen and (min-width: 1212px) and (max-width : 99999px){
 	.padding-150 {
     		padding-top: 0px;
     		padding-bottom: 100px;
 	}
 }
 
-
-.padding-150 {
+@media screen and (min-width: 30px) and (max-width : 990px){
+	.padding-150 {
     	padding-top: 150px;
     	padding-bottom: 100px;
+	}
 }
+
+@media screen and (min-width: 990px) and (max-width : 1212px){
+	.padding-150 {
+    	padding-top: 50px;
+    	padding-bottom: 100px;
+	}
+}
+
 
 .bg-dark {
     background: #212529;
