@@ -10,6 +10,7 @@ import Tweets from "./Tweets";
 import CarouselTweet from "./CarouselTweet";
 import FooterPage from "./Footer";
 
+
 //Config
 import { ThemeProvider } from 'styled-components';
 import steps from '../config/steps';
@@ -63,6 +64,9 @@ class Home extends Component {
         let styleText=(this.props.checked)?"font-40 text-light":"font-40 text-dark";
         return (
             <div>
+            <section className={styleBg} id="toto">
+               <CarouselTweet/>
+                </section>
                 <NavbarFeatures checked={this.state.checked} onSwitchHome={this.switchHome}/>
                 <Loader/>
                 <section className={classSwitch}>
@@ -83,11 +87,9 @@ class Home extends Component {
                 opened={this.state.open}
                 headerTitle="Twot"
                 botAvatar="./img/logo.png"
-                placeholder="Tapez votre recherche..." 
+                placeholder="Tapez votre recherche..."
                 />
                 </ThemeProvider>
-
-                <CarouselTweet/>
                  <section className={styleBg} id="presentation">
                     <div className="container padding-150">
                         <div className="row text-center">
@@ -100,8 +102,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </section>
-
-
                 <FooterPage/>
         </div>
         );
