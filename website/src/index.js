@@ -7,6 +7,8 @@
 //React
 import React from 'react';
 import {render} from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 //componant
 import App from './App';
@@ -22,7 +24,6 @@ import NavbarFeatures from "./components/NavbarFeatures";
 const Root = () =>{
     return(
         <div>
-            <NavbarFeatures />
             <App/>
         </div>
     )
