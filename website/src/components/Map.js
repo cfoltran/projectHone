@@ -158,10 +158,10 @@ class Map extends Component {
                                 .style("top", (d3.event.pageY -200) + "px")
                         })
 
-                        .on("click", function(d) {
+                       
+			.on("click", function(d) {
                             propsForD3.history.push(`/map/${d.properties.nom}/${d3.select(this).style('fill')}/${d.properties.value}`);
                         })
-
                         .on("mouseout", function(d) {
 				d3.select(this).style("fill","#212529")
                             div.transition()
